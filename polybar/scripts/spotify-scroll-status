@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+zscroll \
+  --delay 0.2 \
+  --length 50 \
+  --update-command "/home/sk/.config/polybar/scripts/spotify-get-status" \
+  --update-interval 1 \
+  "$(/home/sk/.config/polybar/scripts/spotify-get-status)" &
+
+wait

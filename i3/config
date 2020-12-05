@@ -1,0 +1,218 @@
+# i3 config file (v4)
+
+# fonts
+font pango:MesloLGM Nerd Font 14px
+
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+# $mod is <Alt>, Mod4 is <Super>
+set $alt Mod1
+set $mod Mod4
+
+set $config   ~/.config
+set $dotfiles ~/src/github.com/skmatz/dotfiles
+
+# change focus
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# move focused window
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+# switch orientation to split
+bindsym $mod+bracketleft  split horizontal
+bindsym $mod+bracketright split vertical
+bindsym $mod+semicolon    split toggle
+
+# toggle fullscreen
+bindsym $mod+f fullscreen toggle
+
+# toggle floating
+bindsym $mod+Shift+f floating toggle
+
+# focus pranet/child container
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
+
+# move focused window to scratchpad
+bindsym $mod+minus move scratchpad
+
+# show/hide scratchpad window
+bindsym $mod+plus scratchpad show
+
+# define names for default workspaces
+set $ws1  1
+set $ws2  2
+set $ws3  3
+set $ws4  4
+set $ws5  5
+set $ws6  6
+set $ws7  7
+set $ws8  8
+set $ws9  9
+set $ws10 10
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+$alt+1 move container to workspace number $ws1
+bindsym $mod+$alt+2 move container to workspace number $ws2
+bindsym $mod+$alt+3 move container to workspace number $ws3
+bindsym $mod+$alt+4 move container to workspace number $ws4
+bindsym $mod+$alt+5 move container to workspace number $ws5
+bindsym $mod+$alt+6 move container to workspace number $ws6
+bindsym $mod+$alt+7 move container to workspace number $ws7
+bindsym $mod+$alt+8 move container to workspace number $ws8
+bindsym $mod+$alt+9 move container to workspace number $ws9
+bindsym $mod+$alt+0 move container to workspace number $ws10
+
+# move focused container to workspace, move to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1;  workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2;  workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3;  workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4;  workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5;  workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6;  workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7;  workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8;  workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9;  workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10
+
+# switch next/prev workspace
+bindsym $mod+Tab       workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# reload i3 config
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace
+bindsym $mod+Shift+r restart
+
+# exit app
+bindsym $mod+q [con_id="__focused__"] kill
+
+# terminate app
+bindsym $mod+Shift+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
+
+# resize window
+mode "resize" {
+  bindsym Left  resize shrink width  5 px or 5 ppt
+  bindsym Down  resize grow   height 5 px or 5 ppt
+  bindsym Up    resize shrink height 5 px or 5 ppt
+  bindsym Right resize grow   width  5 px or 5 ppt
+
+  bindsym $left  resize shrink width  5 px or 5 ppt
+  bindsym $down  resize grow   height 5 px or 5 ppt
+  bindsym $up    resize shrink height 5 px or 5 ppt
+  bindsym $right resize grow   width  5 px or 5 ppt
+
+  bindsym minus gaps inner current minus 5
+  bindsym plus  gaps inner current plus  5
+
+  # back to normal
+  bindsym $mod+r mode "default"
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# launch
+bindsym $mod+Return       exec alacritty
+bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
+bindsym $mod+c            exec gnome-control-center
+bindsym $mod+e            exec nautilus
+
+# Rofi
+bindsym $mod+space       exec rofi -matching fuzzy -show drun
+bindsym $mod+Shift+space exec rofi -matching fuzzy -show run
+bindsym $mod+Shift+s     exec rofi -matching fuzzy -show ssh
+bindsym $mod+Ctrl+space  exec rofi -matching fuzzy -show window
+bindsym $alt+Tab         exec rofi -matching fuzzy -show windowcd
+bindsym $mod+p           exec power.sh
+
+# screenshot
+bindsym --release Print            exec gnome-screenshot --window
+bindsym --release Shift+Print      exec gnome-screenshot --area
+bindsym --release $mod+Print       exec gnome-screenshot --clipboard
+bindsym --release $mod+Shift+Print exec gnome-screenshot --area --clipboard
+
+# floating modifier
+floating_modifier $mod
+
+# default border style for new windows
+default_border pixel 3
+
+# default gap size
+gaps inner 12
+
+# always show borders
+hide_edge_borders none
+
+# window-specific
+for_window [class="Gnome-control-center"] floating enable
+
+# colors
+# class                 border  background text    indicator child_border
+client.focused          #4c7899 #285577    #ffffff #f0932b   #12CBC4
+client.focused_inactive #333333 #5f676a    #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222    #888888 #292d2e   #222222
+client.urgent           #2f343a #eb4d4b    #ffffff #eb4d4b   #eb4d4b
+client.placeholder      #000000 #0c0c0c    #ffffff #000000   #0c0c0c
+
+# focus wrapping
+focus_wrapping no
+
+# window assignment
+assign [class="Google-chrome"] $ws1
+assign [class="Alacritty"]     $ws2
+assign [class="Code"]          $ws3
+assign [class="Slack"]         $ws4
+
+# launch apps
+exec --no-startup-id x-terminal-emulator
+exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+exec --no-startup-id slack
+
+# background image
+exec_always --no-startup-id feh --bg-scale $dotfiles/images/bg.jpg
+
+# lock
+# exec_always --no-startup-id xss-lock -l $dotfiles/scripts/lock.sh
+
+# Picom
+exec_always --no-startup-id picom -b --config $config/picom/picom.conf
+
+# Polybar
+exec_always --no-startup-id $config/polybar/launch.sh
+
+# repeat keys
+exec_always --no-startup-id xset r rate 200 60

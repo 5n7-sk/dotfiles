@@ -1,0 +1,21 @@
+- clean: ["~", "~/.config"]
+
+- create:
+    - ~/.vin/bin
+    - ~/go
+    - ~/sandbox
+
+- link:
+    ~/.config/alacritty: alacritty
+    ~/.config/git: git
+    ~/.config/i3: i3
+    ~/.config/picom: picom
+    ~/.config/polybar: polybar
+    ~/.config/rofi: rofi
+    ~/.config/vin: vin
+    ~/.profile: .profile
+    ~/.tmux.conf: .tmux.conf
+    ~/.zprofile: .zprofile
+    ~/.zsh: .zsh
+    ~/.zshenv: .zshenv
+    ~/.zshrc: .zshrc

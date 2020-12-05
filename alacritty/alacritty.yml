@@ -1,0 +1,66 @@
+background_opacity: 0.7
+
+colors:
+  bright:
+    black: "#808080"
+    blue: "#0066ff"
+    cyan: "#00ffff"
+    green: "#33ff00"
+    magenta: "#cc00ff"
+    red: "#fe0100"
+    white: "#FFFFFF"
+    yellow: "#feff00"
+  cursor:
+    cursor: "#ffffff"
+    text: "#F81CE5"
+  normal:
+    black: "#000000"
+    blue: "#0066ff"
+    cyan: "#00ffff"
+    green: "#33ff00"
+    magenta: "#cc00ff"
+    red: "#fe0100"
+    white: "#d0d0d0"
+    yellow: "#feff00"
+  primary:
+    background: "#000000"
+    foreground: "#ffffff"
+
+cursor:
+  style: Block
+
+font:
+  bold:
+    family: MesloLGM Nerd Font
+    style: Bold
+  bold_italic:
+    family: MesloLGM Nerd Font
+    style: Bold Italic
+  italic:
+    family: MesloLGM Nerd Font
+    style: Italic
+  normal:
+    family: MesloLGM Nerd Font
+    style: Regular
+  size: 12
+
+mouse:
+  hide_when_typing: true
+  url:
+    launcher: xdg-open
+
+scrolling:
+  history: 10000
+  multiplier: 10
+
+shell:
+  program: sh
+  args:
+    - -c
+    - tmux attach -t default || tmux new -s default
+
+window:
+  dynamic_title: false
+  padding:
+    x: 3
+    y: 3

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $(spotify-cli status --kind playback 2>/dev/null) = "" ]]; then
+  echo "Spotify offline"
+else
+  spotify-cli status --format "{{ .Title }} by {{ .Artist }}"
+fi

@@ -1,0 +1,7 @@
+[user]
+	email = shuntak217@gmail.com
+	name = Shunta Komatsu
+
+[ghq]
+	root = ~/go
+	root = ~/src

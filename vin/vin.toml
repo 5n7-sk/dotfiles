@@ -1,0 +1,95 @@
+[[app]]
+repo = "b4b4r07/gomi"
+keywords = ["linux", "x86_64"]
+
+[[app]]
+repo = "cli/cli"
+command = """
+gh completion -s zsh > ~/.zfunc/_gh
+"""
+
+[[app]]
+repo = "client9/misspell"
+keywords = ["linux"]
+
+[[app]]
+repo = "extrawurst/gitui"
+keywords = ["linux", "musl"]
+
+# [[app]]
+# repo = "gohugoio/hugo"
+# keywords = ["Linux", "64bit"]
+
+[[app]]
+repo = "itchyny/mmv"
+
+[[app]]
+repo = "moncho/dry"
+name = "dry"
+
+[[app]]
+repo = "nektos/act"
+keywords = ["Linux", "x86_64"]
+
+[[app]]
+repo = "ogham/exa"
+keywords = ["linux", "x86_64"]
+name = "exa"
+
+[[app]]
+repo = "Rigellute/spotify-tui"
+keywords = ["linux"]
+
+[[app]]
+repo = "sharkdp/bat"
+keywords = ["gnu", "linux", "x86_64"]
+
+[[app]]
+repo = "sharkdp/fd"
+keywords = ["gnu", "linux", "x86_64"]
+
+[[app]]
+repo = "skanehira/docui"
+keywords = ["linux", "x86_64"]
+
+[[app]]
+repo = "skmatz/ghrm"
+keywords = ["linux", "x86_64"]
+command = """
+ghrm completion -s zsh > ~/.zfunc/_ghrm
+"""
+
+[[app]]
+repo = "skmatz/git-bump"
+keywords = ["linux", "x86_64"]
+
+[[app]]
+repo = "skmatz/spotify-cli"
+keywords = ["linux", "x86_64"]
+
+[[app]]
+repo = "skmatz/spotify-skip-instrument"
+keywords = ["linux", "x86_64"]
+
+[[app]]
+repo = "skmatz/vin"
+keywords = ["linux", "x86_64"]
+command = """
+vin completion -s zsh > ~/.zfunc/_vin
+"""
+
+[[app]]
+repo = "skmatz/zscroll-go"
+keywords = ["linux", "x86_64"]
+command = """
+zscroll completion -s zsh > ~/.zfunc/_zscroll
+"""
+
+[[app]]
+repo = "stedolan/jq"
+keywords = ["linux64"]
+name = "jq"
+
+[[app]]
+repo = "x-motemen/ghq"
+keywords = ["amd64", "linux"]
