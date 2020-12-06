@@ -1,6 +1,7 @@
 - clean: ["~", "~/.config"]
 
 - create:
+    - ~/.fonts
     - ~/.vin/bin
     - ~/go
     - ~/sandbox
@@ -13,7 +14,7 @@
     ~/.config/polybar: polybar
     ~/.config/rofi: rofi
     ~/.config/vin: vin
-    ~/.profile: .profile
+    ~/.gitconfig: .gitconfig
     ~/.tmux.conf: .tmux.conf
     ~/.zprofile: .zprofile
     ~/.zsh: .zsh
