@@ -15,6 +15,7 @@
     ~/.config/rofi: rofi
     ~/.config/vin: vin
     ~/.gitconfig: .gitconfig
+    ~/.profile: .profile
     ~/.tmux.conf: .tmux.conf
     ~/.zprofile: .zprofile
     ~/.zsh: .zsh
