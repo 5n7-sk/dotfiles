@@ -198,7 +198,7 @@ assign [class="Code"]          $ws3
 assign [class="Slack"]         $ws4
 
 # launch apps
-exec --no-startup-id x-terminal-emulator
+exec --no-startup-id alacritty
 exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
 exec --no-startup-id slack
 
