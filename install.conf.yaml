@@ -20,3 +20,17 @@
     ~/.zsh: .zsh
     ~/.zshenv: .zshenv
     ~/.zshrc: .zshrc
+
+- yay:
+    - alacritty
+    - docker
+    - docker-compose
+    - feh
+    - i3lock-color-git
+    - polybar
+    - rofi
+    - spotify
+    - tmux
+    - unzip
+    - visual-studio-code-bin
+    - zsh
