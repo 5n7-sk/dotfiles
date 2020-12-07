@@ -18,3 +18,4 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 bindkey "\ef" emacs-forward-word
+bindkey "^[[3~" delete-char
