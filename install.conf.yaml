@@ -34,6 +34,7 @@
     - feh
     - google-chrome
     - i3lock-color-git
+    - picom
     - polybar
     - rofi
     - slack-desktop
@@ -41,4 +42,5 @@
     - tmux
     - unzip
     - visual-studio-code-bin
+    - xsel
     - zsh
