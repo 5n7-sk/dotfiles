@@ -202,6 +202,8 @@ exec --no-startup-id alacritty
 exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
 exec --no-startup-id slack
 
+exec --no-startup-id fcitx-autostart
+
 # background image
 exec_always --no-startup-id feh --bg-scale $dotfiles/images/bg.jpg
 

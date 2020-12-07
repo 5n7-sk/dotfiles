@@ -17,6 +17,7 @@
     ~/.gitconfig: .gitconfig
     ~/.profile: .profile
     ~/.tmux.conf: .tmux.conf
+    ~/.xprofile: .xprofile
     ~/.zprofile: .zprofile
     ~/.zsh: .zsh
     ~/.zshenv: .zshenv
@@ -24,12 +25,18 @@
 
 - yay:
     - alacritty
+    - discord
     - docker
     - docker-compose
+    - fcitx-configtool
+    - fcitx-im
+    - fcitx-mozc
     - feh
+    - google-chrome
     - i3lock-color-git
     - polybar
     - rofi
+    - slack-desktop
     - spotify
     - tmux
     - unzip
