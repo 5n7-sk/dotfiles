@@ -17,7 +17,9 @@
     ~/.gitconfig: .gitconfig
     ~/.profile: .profile
     ~/.tmux.conf: .tmux.conf
+    ~/.xmodmap: .xmodmap
     ~/.xprofile: .xprofile
+    ~/.xsession: .xsession
     ~/.zprofile: .zprofile
     ~/.zsh: .zsh
     ~/.zshenv: .zshenv
