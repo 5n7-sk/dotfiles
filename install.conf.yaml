@@ -36,8 +36,11 @@
     - feh
     - google-chrome
     - i3lock-color-git
+    - noto-fonts-emoji
+    - pavucontrol
     - picom
     - polybar
+    - pulseaudio
     - rofi
     - slack-desktop
     - spotify
