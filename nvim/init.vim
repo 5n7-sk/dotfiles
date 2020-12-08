@@ -58,11 +58,12 @@ nnoremap <Leader>w :wa<CR>
 
 " plugins
 let s:nvim_root = expand('~/.config/nvim')
-let s:dein_toml = s:nvim_root . '/rc/dein.toml'
-let s:dein_lazy_toml = s:nvim_root . '/rc/dein_lazy.toml'
+let g:plug_root = s:nvim_root . '/plugins'
+let s:dein_toml = g:plug_root . '/config/dein.toml'
+let s:dein_lazy_toml = g:plug_root . '/config/dein_lazy.toml'
 
-let s:plug_root = expand('~/.cache/dein')
-let s:dein_repo = s:plug_root . '/repos/github.com/Shougo/dein.vim'
+let s:dein_root = expand('~/.cache/dein')
+let s:dein_repo = s:dein_root . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo)
@@ -71,8 +72,8 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo, ':p')
 endif
 
-if dein#load_state(s:plug_root)
-  call dein#begin(s:plug_root)
+if dein#load_state(s:dein_root)
+  call dein#begin(s:dein_root)
 
   call dein#load_toml(s:dein_toml, {'lazy': 0})
   call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
