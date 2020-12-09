@@ -36,3 +36,9 @@ repo = "prabirshrestha/vim-lsp"
 hook_add = """
 exec "source " . g:plug_root . "/vim-lsp.rc.vim"
 """
+
+[[plugins]]
+repo = "Shougo/defx.nvim"
+hook_add = """
+exec "source " . g:plug_root . "/defx.nvim.rc.vim"
+"""
