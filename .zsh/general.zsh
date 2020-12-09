@@ -16,9 +16,3 @@ setopt numeric_glob_sort
 DIRSTACKSIZE=100
 setopt auto_pushd
 setopt pushd_ignore_dups
-
-bindkey "\ef" emacs-forward-word
-
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-bindkey "^[[3~" delete-char

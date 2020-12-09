@@ -1,3 +1,9 @@
+bindkey "\ef" emacs-forward-word
+
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "^[[3~" delete-char
+
 bindkey -v
 
 bindkey -M viins "jj" vi-cmd-mode
