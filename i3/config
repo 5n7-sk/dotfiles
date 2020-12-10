@@ -209,7 +209,7 @@ exec --no-startup-id imwheel
 exec_always --no-startup-id feh --bg-scale $dotfiles/images/bg.jpg
 
 # lock
-# exec_always --no-startup-id xss-lock -l $dotfiles/scripts/lock.sh
+exec_always --no-startup-id xautolock -detectsleep -locker $dotfiles/bin/lock.sh -secure -time 1
 
 # Picom
 exec_always --no-startup-id picom -b --config $config/picom/picom.conf
