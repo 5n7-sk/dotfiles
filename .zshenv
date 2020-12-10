@@ -1,5 +1,5 @@
 # basic
-export EDITOR="vim"
+export EDITOR="nvim"
 export LANG="en_US.UTF-8"
 export XDG_CONFIG_HOME="$HOME/.config"
 
