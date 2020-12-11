@@ -3,7 +3,7 @@ nnoremap <C-e> :<C-u>Defx<CR>
 autocmd FileType defx call s:defx_settings()
 function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> <CR>
-  \ defx#do_action('open')
+  \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m
@@ -15,11 +15,11 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> r
   \ defx#do_action('rename')
   nnoremap <silent><buffer><expr> t
-  \ defx#do_action('open','tabnew')
+  \ defx#do_action('drop','tabnew')
   nnoremap <silent><buffer><expr> s
-  \ defx#do_action('open', 'split')
+  \ defx#do_action('drop', 'split')
   nnoremap <silent><buffer><expr> v
-  \ defx#do_action('open', 'vsplit')
+  \ defx#do_action('drop', 'vsplit')
   nnoremap <silent><buffer><expr> n
   \ defx#do_action('new_file')
   nnoremap <silent><buffer><expr> N
@@ -59,3 +59,11 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> cd
   \ defx#do_action('change_vim_cwd')
 endfunction
+
+call defx#custom#option('_', {
+\   'columns': 'indent:git:icons:filename:mark',
+\   'resume': 1,
+\   'show_ignored_files': 1,
+\   'toggle': 1,
+\   'winwidth': 32,
+\ })

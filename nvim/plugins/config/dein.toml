@@ -17,6 +17,12 @@ exec "source " . g:plug_root . "/lightline.rc.vim"
 repo = "jiangmiao/auto-pairs"
 
 [[plugins]]
+repo = "kristijanhusak/defx-icons"
+
+[[plugins]]
+repo = "kristijanhusak/defx-git"
+
+[[plugins]]
 repo = "mattn/vim-lsp-settings"
 
 [[plugins]]
@@ -36,6 +42,9 @@ repo = "prabirshrestha/vim-lsp"
 hook_add = """
 exec "source " . g:plug_root . "/vim-lsp.rc.vim"
 """
+
+[[plugins]]
+repo = "ryanoasis/vim-devicons"
 
 [[plugins]]
 repo = "Shougo/defx.nvim"
