@@ -8,6 +8,8 @@ zinit light romkatv/powerlevel10k
 
 zinit wait lucid light-mode for \
   mollifier/cd-gitroot \
+  paulirish/git-open \
+  reegnz/jq-zsh-plugin \
   zdharma/fast-syntax-highlighting \
   zsh-users/zsh-autosuggestions
 
