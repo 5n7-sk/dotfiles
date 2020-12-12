@@ -1,5 +1,5 @@
-runtime! plugins/dein.rc.vim
 runtime! keymap.vim
+runtime! plugins/dein.rc.vim
 
 syntax enable
 
