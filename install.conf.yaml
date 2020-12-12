@@ -19,9 +19,9 @@
     ~/.imwheelrc: .imwheelrc
     ~/.profile: .profile
     ~/.tmux.conf: .tmux.conf
-    ~/.xmodmap: .xmodmap
+    ~/.xinitrc: .xinitrc
+    ~/.Xmodmap: .Xmodmap
     ~/.xprofile: .xprofile
-    ~/.xsession: .xsession
     ~/.zprofile: .zprofile
     ~/.zsh: .zsh
     ~/.zshenv: .zshenv
