@@ -5,5 +5,5 @@ map <Leader><CR> <Plug>(easymotion-bd-f)
 nmap <Leader><CR> <Plug>(easymotion-overwin-f)
 
 " move to line
-map<Leader>g <Plug>(easymotion-bd-jk)
+map <Leader>g <Plug>(easymotion-bd-jk)
 nmap <Leader>g <Plug>(easymotion-overwin-line)
