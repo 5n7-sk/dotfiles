@@ -36,4 +36,3 @@ if len(s:unused_plugins) > 0
   call map(s:unused_plugins, "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
-
