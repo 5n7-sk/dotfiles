@@ -1,4 +1,5 @@
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 inoremap jj <ESC>
 
