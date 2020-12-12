@@ -26,11 +26,5 @@ nnoremap <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>: set hlsea
 " enter replace mode using the word under the cursor
 nnoremap # <Space><Space> :%s/<C-r>///g<Left><Left>
 
-" move line(s)
-nnoremap <M-j> "zdd"zp
-nnoremap <M-k> "zdd<Up>"zP
-vnoremap <M-j> "zx"zp`[V`]
-vnoremap <M-k> "zx<Up>"zP`[V`]
-
 nnoremap <leader>q :q!<CR>
 nnoremap <Leader>w :wa<CR>
