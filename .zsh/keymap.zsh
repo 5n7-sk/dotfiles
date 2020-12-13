@@ -36,3 +36,10 @@ fzf::ghq() {
 }
 zle -N fzf::ghq
 bindkey "^G" fzf::ghq
+
+fzf::kill() {
+  local pid=$(ps -fu "$UID" | sed 1d | fzf -m | awk '{print $2}')
+  [[ -n "$pid" ]] && echo $pid | xargs kill -${1:-9}
+}
+zle -N fzf::kill
+bindkey "^K" fzf::kill
