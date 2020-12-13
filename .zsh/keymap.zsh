@@ -18,6 +18,12 @@ fzf::branch() {
 zle -N fzf::branch
 bindkey "^B" fzf::branch
 
+fzf::docker-remove-images() {
+  local images="$(docker images | tail +2 | sort | fzf --multi | awk '{print $3}')"
+  [[ -z "$images" ]] && return
+  docker rmi $images
+}
+
 fzf::history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
   CURSOR=$#BUFFER
