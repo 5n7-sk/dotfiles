@@ -18,6 +18,12 @@ fzf::branch() {
 zle -N fzf::branch
 bindkey "^B" fzf::branch
 
+fzf::docker-remove-images() {
+  local images="$(docker images | tail +2 | sort | fzf --multi | awk '{print $3}')"
+  [[ -z "$images" ]] && return
+  docker rmi $images
+}
+
 fzf::history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -30,3 +36,10 @@ fzf::ghq() {
 }
 zle -N fzf::ghq
 bindkey "^G" fzf::ghq
+
+fzf::kill() {
+  local pid=$(ps -fu "$UID" | sed 1d | fzf -m | awk '{print $2}')
+  [[ -n "$pid" ]] && echo $pid | xargs kill -${1:-9}
+}
+zle -N fzf::kill
+bindkey "^K" fzf::kill
