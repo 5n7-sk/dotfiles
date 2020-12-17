@@ -30,6 +30,7 @@
 
 - yay:
     - alacritty
+    - arandr
     - discord
     - docker
     - docker-compose
