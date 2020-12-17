@@ -16,9 +16,9 @@ keywords = ["linux"]
 repo = "extrawurst/gitui"
 keywords = ["linux", "musl"]
 
-# [[app]]
-# repo = "gohugoio/hugo"
-# keywords = ["Linux", "64bit"]
+[[app]]
+repo = "goreleaser/goreleaser"
+keywords = ["linux", "x86_64"]
 
 [[app]]
 repo = "itchyny/mmv"
