@@ -34,6 +34,7 @@
     - discord
     - docker
     - docker-compose
+    - dropbox
     - fcitx-configtool
     - fcitx-im
     - fcitx-mozc
