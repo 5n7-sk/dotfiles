@@ -1,6 +1,6 @@
 [[app]]
 repo = "aquasecurity/trivy"
-keywords = ["64bit", "linux"]
+keywords = ["linux", "64bit"]
 
 [[app]]
 repo = "b4b4r07/gomi"
@@ -33,7 +33,7 @@ name = "dry"
 
 [[app]]
 repo = "nektos/act"
-keywords = ["Linux", "x86_64"]
+keywords = ["linux", "x86_64"]
 
 [[app]]
 repo = "ogham/exa"
@@ -46,11 +46,11 @@ keywords = ["linux"]
 
 [[app]]
 repo = "sharkdp/bat"
-keywords = ["gnu", "linux", "x86_64"]
+keywords = ["x86_64", "linux", "musl"]
 
 [[app]]
 repo = "sharkdp/fd"
-keywords = ["gnu", "linux", "x86_64"]
+keywords = ["x86_64", "linux", "musl"]
 
 [[app]]
 repo = "skanehira/docui"
@@ -96,4 +96,3 @@ name = "jq"
 
 [[app]]
 repo = "x-motemen/ghq"
-keywords = ["amd64", "linux"]
