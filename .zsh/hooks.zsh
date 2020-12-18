@@ -1,5 +1,6 @@
 chpwd-ls() {
   if [[ $(ls -al | wc -l) -gt 32 ]]; then
+    echo "so many files"
     return
   fi
 
