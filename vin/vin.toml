@@ -1,4 +1,8 @@
 [[app]]
+repo = "aquasecurity/trivy"
+keywords = ["64bit", "linux"]
+
+[[app]]
 repo = "b4b4r07/gomi"
 keywords = ["linux", "x86_64"]
 
