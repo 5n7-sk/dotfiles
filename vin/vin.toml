@@ -57,7 +57,7 @@ repo = "skanehira/docui"
 keywords = ["linux", "x86_64"]
 
 [[app]]
-repo = "skmatz/ghrm"
+repo = "skmatz/github-remove-repository"
 keywords = ["linux", "x86_64"]
 command = """
 ghrm completion -s zsh > ~/.zfunc/_ghrm
