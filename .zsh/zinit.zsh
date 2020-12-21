@@ -4,7 +4,7 @@ fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
 
-zinit light romkatv/powerlevel10k
+zinit light denysdovhan/spaceship-prompt
 
 zinit wait lucid light-mode for \
   mollifier/cd-gitroot \
