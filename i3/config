@@ -188,6 +188,9 @@ client.unfocused        #333333 #222222    #888888 #292d2e   #222222
 client.urgent           #2f343a #eb4d4b    #ffffff #eb4d4b   #eb4d4b
 client.placeholder      #000000 #0c0c0c    #ffffff #000000   #0c0c0c
 
+# focus follows mouse
+focus_follows_mouse no
+
 # focus wrapping
 focus_wrapping no
 
