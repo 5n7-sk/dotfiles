@@ -49,9 +49,11 @@
     - neovim
     - nnn
     - noto-fonts-emoji
+    - okular
     - pavucontrol
     - picom
     - polybar
+    - poppler-data
     - pulseaudio
     - rofi
     - slack-desktop
