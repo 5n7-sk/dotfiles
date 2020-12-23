@@ -35,6 +35,10 @@
 - yay:
     - alacritty
     - arandr
+    - bluez
+    - bluez-firmware
+    - bluez-libs
+    - bluez-utils
     - discord
     - docker
     - docker-compose
@@ -60,6 +64,8 @@
     - polybar
     - poppler-data
     - pulseaudio
+    - pulseaudio-alsa
+    - pulseaudio-bluetooth
     - rofi
     - slack-desktop
     - spotify
