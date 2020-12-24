@@ -19,6 +19,7 @@
     ~/.config/polybar: polybar
     ~/.config/rofi: rofi
     ~/.config/vin: vin
+    ~/.config/zathura: zathura
     ~/.gitconfig: .gitconfig
     ~/.imwheelrc: .imwheelrc
     ~/.profile: .profile
@@ -76,5 +77,7 @@
     - vlc
     - xautolock
     - xsel
+    - zathura
+    - zathura-pdf-mupdf
     - zoom
     - zsh
