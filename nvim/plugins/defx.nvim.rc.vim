@@ -64,6 +64,7 @@ call defx#custom#option('_', {
 \   'columns': 'indent:git:icons:filename:mark',
 \   'resume': 1,
 \   'show_ignored_files': 1,
+\   'split': 'vertical',
 \   'toggle': 1,
 \   'winwidth': 32,
 \ })
