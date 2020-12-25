@@ -12,6 +12,10 @@ chpwd-ls() {
 }
 
 chpwd-rename-tmux() {
+  if [[ -z "$TMUX" ]]; then
+    return
+  fi
+
   autoload -Uz vcs_info
   vcs_info
 
