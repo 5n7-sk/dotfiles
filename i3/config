@@ -110,6 +110,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number 
 bindsym $mod+Tab       workspace next
 bindsym $mod+Shift+Tab workspace prev
 
+# move focused workspace between monitors
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less    move workspace to output left
+
 # reload i3 config
 bindsym $mod+Shift+c reload
 
