@@ -32,7 +32,7 @@ zle -N fzf::history
 bindkey "^H" fzf::history
 
 fzf::ghq() {
-  cd $(ghq list -p | fzf --preview "bat --color=always --style=header {}/README.*")
+  cd $(ghq list -p | fzf --preview "glow --style dark {}/README.*")
 }
 zle -N fzf::ghq
 bindkey "^G" fzf::ghq
