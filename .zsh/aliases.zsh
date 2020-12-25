@@ -61,6 +61,7 @@ fi
 
 if hash "git" >/dev/null 2>&1; then
   alias g="git"
+  alias ga="git add"
   alias gb="git branch"
   alias gc="git commit"
   alias gco="git checkout"
