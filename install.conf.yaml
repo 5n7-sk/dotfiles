@@ -30,7 +30,7 @@
     ~/.xprofile: .xprofile
     ~/.Xresources: .Xresources
     ~/.zprofile: .zprofile
-    ~/.zsh: .zsh
+    ~/.zsh: zsh
     ~/.zshenv: .zshenv
     ~/.zshrc: .zshrc
 
