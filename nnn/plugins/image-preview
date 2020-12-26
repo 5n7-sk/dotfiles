@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+viu -n "$1" | less -R
