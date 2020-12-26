@@ -3,6 +3,10 @@ repo = "aquasecurity/trivy"
 keywords = ["linux", "64bit"]
 
 [[app]]
+repo = "atanunq/viu"
+keywords = ["viu"]
+
+[[app]]
 repo = "b4b4r07/gomi"
 keywords = ["linux", "x86_64"]
 
