@@ -152,7 +152,6 @@ bindsym $mod+r mode "resize"
 # launch
 bindsym $mod+Return       exec alacritty
 bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
-bindsym $mod+c            exec gnome-control-center
 bindsym $mod+e            exec nautilus
 
 # Rofi
