@@ -7,6 +7,9 @@ exec "source " . g:plug_root . "/vim-easymotion.rc.vim"
 [[plugins]]
 repo = "editorconfig/editorconfig-vim"
 
+# [[plugins]]
+# repo = "dstein64/nvim-scrollview"
+
 [[plugins]]
 repo = "itchyny/lightline.vim"
 hook_add = """
@@ -42,6 +45,9 @@ repo = "prabirshrestha/vim-lsp"
 hook_add = """
 exec "source " . g:plug_root . "/vim-lsp.rc.vim"
 """
+
+# [[plugins]]
+# repo = "romgrk/barbar.nvim"
 
 [[plugins]]
 repo = "ryanoasis/vim-devicons"
