@@ -25,6 +25,10 @@ repo = "client9/misspell"
 keywords = ["linux"]
 
 [[app]]
+repo = "cosmtrek/air"
+keywords = ["linux", "amd64", ".tar.gz"]
+
+[[app]]
 repo = "extrawurst/gitui"
 keywords = ["linux", "musl"]
 
