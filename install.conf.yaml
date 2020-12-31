@@ -12,6 +12,7 @@
 
 - link:
     ~/.config/alacritty: alacritty
+    ~/.config/fs: fs
     ~/.config/git: git
     ~/.config/i3: i3
     ~/.config/nnn/plugins: nnn/plugins

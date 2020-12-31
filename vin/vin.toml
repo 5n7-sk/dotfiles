@@ -69,6 +69,13 @@ repo = "skanehira/docui"
 keywords = ["linux", "x86_64"]
 
 [[app]]
+repo = "skmatz/fs"
+keywords = ["linux", "x86_64"]
+command = """
+fs completion -s zsh > ~/.zfunc/_fs
+"""
+
+[[app]]
 repo = "skmatz/github-remove-repository"
 keywords = ["linux", "x86_64"]
 command = """

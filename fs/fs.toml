@@ -1,0 +1,97 @@
+[[snippet]]
+id = "editorconfig-py"
+name = ".editorconfig"
+content = """
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.md]
+indent_size = 2
+indent_style = space
+
+[*.py]
+indent_size = 4
+indent_style = space
+"""
+
+[[snippet]]
+id = "gitignore-py"
+name = ".gitignore"
+content = """
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.venv/
+*.egg-info/
+dist/
+"""
+
+[[snippet]]
+id = "licence-mit"
+name = "LICENSE"
+url = "https://raw.githubusercontent.com/skmatz/fs/master/LICENSE"
+
+[[snippet]]
+id = "prettierrc-js"
+name = ".prettierrc.js"
+content = """
+module.exports = {
+  semi: false,
+  singleQuote: false,
+  tabWidth: 2,
+  trailingComma: "es5",
+}
+"""
+
+[[snippet]]
+id = "makefile-go"
+name = "Makefile"
+content = """
+.PHONY: build
+build:
+	go build -o bin/{{ .Command }} cmd/{{ .Command }}/main.go
+
+.PHONY: format
+format:
+	goimports -w .
+
+.PHONY: lint
+lint:
+	golangci-lint run --tests ./...
+
+.PHONY: test
+test:
+	go test -v ./...
+"""
+
+[[snippet]]
+id = "mypy"
+name = ".mypy.ini"
+content = """
+[mypy]
+ignore_missing_imports = True
+"""
+
+[[snippet]]
+id = "pytest"
+name = "pytest.ini"
+content = """
+[pytest]
+addopts = -p no:warnings
+"""
+
+[[snippet]]
+id = "tox"
+name = "tox.ini"
+content = """
+[flake8]
+max-line-length = 120
+
+[isort]
+include_trailing_comma = true
+line_length = 120
+multi_line_output = 3
+"""
