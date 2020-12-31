@@ -127,6 +127,10 @@ if hash "xsel" >/dev/null 2>&1; then
   alias pbp="xsel --clipboard --output"
 fi
 
+ghg() {
+  curl -Ls https://api.github.com/repos/$1/releases/latest | jq -r ".assets[].browser_download_url" | fzf | wget -i -
+}
+
 mkcd() {
   mkdir -p $1
   cd $1
