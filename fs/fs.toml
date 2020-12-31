@@ -30,6 +30,14 @@ dist/
 """
 
 [[snippet]]
+id = "gitignore-go"
+name = ".gitignore"
+content = """
+bin/
+dist/
+"""
+
+[[snippet]]
 id = "licence-mit"
 name = "LICENSE"
 url = "https://raw.githubusercontent.com/skmatz/fs/master/LICENSE"
