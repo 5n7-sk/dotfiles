@@ -80,12 +80,12 @@ if hash "git" >/dev/null 2>&1; then
   alias gsw="git switch"
 fi
 
-if hash "gomi" >/dev/null 2>&1; then
-  alias rm="gomi"
-fi
-
 if hash "gitui" >/dev/null 2>&1; then
   alias gu="gitui"
+fi
+
+if hash "gomi" >/dev/null 2>&1; then
+  alias rm="gomi"
 fi
 
 if hash "htop" >/dev/null 2>&1; then
