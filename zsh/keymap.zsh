@@ -24,6 +24,11 @@ fzf::docker-remove-images() {
   docker rmi $images
 }
 
+fzf::docker-run-container() {
+  local image="$(docker images | tail +2 | sort | fzf | awk '{print $3}')"
+  docker run -it --rm $image
+}
+
 fzf::history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
   CURSOR=$#BUFFER
