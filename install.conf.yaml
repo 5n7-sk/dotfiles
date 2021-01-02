@@ -1,6 +1,8 @@
 - defaults:
     link:
+      create: true
       force: true
+      relink: true
 
 - clean: ["~", "~/.config"]
 
@@ -12,6 +14,7 @@
 
 - link:
     ~/.config/alacritty: alacritty
+    ~/.config/albert/albert.conf: albert/albert.conf
     ~/.config/fs: fs
     ~/.config/git: git
     ~/.config/i3: i3
