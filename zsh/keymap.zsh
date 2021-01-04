@@ -18,6 +18,13 @@ fzf::branch() {
 zle -N fzf::branch
 bindkey "^B" fzf::branch
 
+fzf::cd() {
+  local dir=$(fd --type directory | fzf --preview "tree {}")
+  [[ -n "$dir" ]] && cd $dir
+}
+zle -N fzf::cd
+bindkey "^T" fzf::cd
+
 fzf::docker-remove-images() {
   local images="$(docker images | tail +2 | sort | fzf --multi | awk '{print $3}')"
   [[ -z "$images" ]] && return
