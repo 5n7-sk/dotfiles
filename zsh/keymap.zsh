@@ -50,7 +50,8 @@ zle -N fzf::ghq
 bindkey "^G" fzf::ghq
 
 fzf::ghq-vscode() {
-  code $(ghq list -p | fzf --bind alt-j:preview-down,alt-k:preview-up --preview "glow --style dark {}/README.*")
+  local dir=$(ghq list -p | fzf --bind alt-j:preview-down,alt-k:preview-up --preview "glow --style dark {}/README.*")
+  [[ -n "$dir" ]] && code $dir
 }
 zle -N fzf::ghq-vscode
 bindkey "^V" fzf::ghq-vscode
