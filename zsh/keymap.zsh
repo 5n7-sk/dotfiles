@@ -44,13 +44,13 @@ zle -N fzf::history
 bindkey "^H" fzf::history
 
 fzf::ghq() {
-  cd $(ghq list -p | fzf --preview "glow --style dark {}/README.*")
+  cd $(ghq list -p | fzf --bind alt-j:preview-down,alt-k:preview-up --preview "glow --style dark {}/README.*")
 }
 zle -N fzf::ghq
 bindkey "^G" fzf::ghq
 
 fzf::ghq-vscode() {
-  code $(ghq list -p | fzf --preview "glow --style dark {}/README.*")
+  code $(ghq list -p | fzf --bind alt-j:preview-down,alt-k:preview-up --preview "glow --style dark {}/README.*")
 }
 zle -N fzf::ghq-vscode
 bindkey "^V" fzf::ghq-vscode
@@ -63,7 +63,7 @@ zle -N fzf::kill
 bindkey "^K" fzf::kill
 
 fzf::open() {
-  local file=$(fd --type file | fzf --preview "bat --color always --style header {}")
+  local file=$(fd --type file | fzf --bind alt-j:preview-down,alt-k:preview-up --preview "bat --color always --style header {}")
   [[ -n "$file" ]] && $EDITOR $file
 }
 zle -N fzf::open
