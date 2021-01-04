@@ -54,3 +54,10 @@ fzf::kill() {
 }
 zle -N fzf::kill
 bindkey "^K" fzf::kill
+
+fzf::open() {
+  local file=$(fd --type file | fzf --preview "bat --color always --style header {}")
+  [[ -n "$file" ]] && $EDITOR $file
+}
+zle -N fzf::open
+bindkey "^O" fzf::open
