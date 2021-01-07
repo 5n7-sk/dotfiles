@@ -33,7 +33,9 @@ fzf::docker-remove-images() {
 
 fzf::docker-run-container() {
   local image="$(docker images | tail +2 | sort | fzf | awk '{print $3}')"
-  docker run -it --rm $image
+  echo -n "command: "
+  read command
+  docker run -it --rm $image $command
 }
 
 fzf::history() {
