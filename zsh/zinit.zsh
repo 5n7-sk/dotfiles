@@ -10,6 +10,7 @@ zinit wait lucid light-mode for \
   mollifier/cd-gitroot \
   paulirish/git-open \
   reegnz/jq-zsh-plugin \
+  wfxr/forgit \
   zdharma/fast-syntax-highlighting \
   zsh-users/zsh-autosuggestions
 
