@@ -163,10 +163,10 @@ bindsym $alt+Tab         exec rofi -matching fuzzy -show windowcd
 bindsym $mod+p           exec power.sh
 
 # screenshot
-bindsym --release Print            exec gnome-screenshot --window
-bindsym --release Shift+Print      exec gnome-screenshot --area
-bindsym --release $mod+Print       exec gnome-screenshot --clipboard
-bindsym --release $mod+Shift+Print exec gnome-screenshot --area --clipboard
+bindsym --release Print            exec maim -B -i $(xdotool getactivewindow) ~/Pictures/screenshot-$(date '+%Y%m%d%H%M%S').png
+bindsym --release Shift+Print      exec maim -B -s ~/Pictures/screenshot-$(date '+%Y%m%d%H%M%S').png
+bindsym --release $mod+Print       exec maim -B -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym --release $mod+Shift+Print exec maim -B -s | xclip -selection clipboard -t image/png
 
 # floating modifier
 floating_modifier $mod

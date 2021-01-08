@@ -56,10 +56,10 @@
     - feh
     - fzf
     - gawk
-    - gnome-screenshot
     - google-chrome
     - i3lock-color-git
     - imwheel
+    - maim
     - muparser
     - nautilus
     - neofetch
@@ -84,6 +84,7 @@
     - visual-studio-code-bin
     - vlc
     - xautolock
+    - xclip
     - xsel
     - zathura
     - zathura-pdf-mupdf
