@@ -29,6 +29,10 @@ repo = "cosmtrek/air"
 keywords = ["linux", "amd64", ".tar.gz"]
 
 [[app]]
+repo = "dandavison/delta"
+keywords = ["linux", "musl"]
+
+[[app]]
 repo = "extrawurst/gitui"
 keywords = ["linux", "musl"]
 
