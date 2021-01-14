@@ -54,6 +54,7 @@
     - fcitx-im
     - fcitx-mozc
     - feh
+    - foliate
     - fzf
     - gawk
     - google-chrome
@@ -68,6 +69,7 @@
     - noto-fonts-emoji
     - obs-studio
     - okular
+    - otf-ipaexfont
     - pavucontrol
     - picom
     - polybar
