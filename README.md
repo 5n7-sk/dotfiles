@@ -1,6 +1,7 @@
 # DOTFILES
 
-![screenshot](misc/screenshot.png)
+![screenshot](misc/screenshot-1.png)
+![screenshot](misc/screenshot-2.png)
 
 - OS: Manjaro
 - DE: i3-gaps
