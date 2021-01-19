@@ -11,6 +11,7 @@
 - Bar: Polybar
 - Launcher: Rofi
 - Lock: i3lock-color
+- Notification: dunst
 - Editor: Neovim and VSCode
 - Music: Spotify with Spicetify
 - Other apps:
