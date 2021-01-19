@@ -210,6 +210,7 @@ exec --no-startup-id slack
 
 exec --no-startup-id albert
 exec --no-startup-id dropbox
+exec --no-startup-id dunst
 exec --no-startup-id fcitx-autostart
 exec --no-startup-id imwheel
 exec --no-startup-id xautolock -detectsleep -locker $dotfiles/bin/lock.sh -secure -time 30

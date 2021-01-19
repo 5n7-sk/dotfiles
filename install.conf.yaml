@@ -15,6 +15,7 @@
 - link:
     ~/.config/alacritty: alacritty
     ~/.config/albert/albert.conf: albert/albert.conf
+    ~/.config/dunst: dunst
     ~/.config/fs: fs
     ~/.config/git: git
     ~/.config/i3: i3
@@ -50,6 +51,7 @@
     - docker
     - docker-compose
     - dropbox
+    - dunst
     - fcitx-configtool
     - fcitx-im
     - fcitx-mozc
