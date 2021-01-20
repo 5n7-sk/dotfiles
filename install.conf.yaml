@@ -79,6 +79,7 @@
     - pulseaudio
     - pulseaudio-alsa
     - pulseaudio-bluetooth
+    - ranger
     - rofi
     - slack-desktop
     - spicetify-cli

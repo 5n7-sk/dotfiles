@@ -118,6 +118,10 @@ if hash "python" >/dev/null 2>&1; then
   alias venv="python -m venv .venv && source .venv/bin/activate"
 fi
 
+if hash "ranger" >/dev/null 2>&1; then
+  alias rr="ranger"
+fi
+
 if hash "tmux" >/dev/null 2>&1; then
   alias tt="tmux attach -t default || tmux new -s default"
 fi
