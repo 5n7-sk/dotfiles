@@ -19,10 +19,10 @@
     ~/.config/fs: fs
     ~/.config/git: git
     ~/.config/i3: i3
-    ~/.config/nnn/plugins: nnn/plugins
     ~/.config/nvim: nvim
     ~/.config/picom: picom
     ~/.config/polybar: polybar
+    ~/.config/ranger: ranger
     ~/.config/rofi: rofi
     ~/.config/vin: vin
     ~/.config/zathura: zathura
@@ -67,7 +67,6 @@
     - nautilus
     - neofetch
     - neovim
-    - nnn
     - noto-fonts-emoji
     - obs-studio
     - okular
