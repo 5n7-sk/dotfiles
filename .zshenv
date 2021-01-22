@@ -13,6 +13,9 @@ eval "$(anyenv init -)"
 # Docker
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
+# fnm
+eval "$(fnm env)"
+
 # fzf
 export PATH="$HOME/.fzf/bin:$PATH"
 
