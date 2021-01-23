@@ -57,3 +57,6 @@ repo = "Shougo/defx.nvim"
 hook_add = """
 exec "source " . g:plug_root . "/defx.nvim.rc.vim"
 """
+
+[[plugins]]
+repo = "wakatime/vim-wakatime"
