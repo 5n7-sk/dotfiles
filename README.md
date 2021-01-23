@@ -12,6 +12,7 @@
 - Launcher: Rofi
 - Lock: i3lock-color
 - Notification: dunst
+- File Manager: ranger
 - Editor: Neovim and VSCode
 - Music: Spotify with Spicetify
 - Other apps:
