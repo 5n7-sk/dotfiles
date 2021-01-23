@@ -67,10 +67,8 @@
     - nautilus
     - neofetch
     - neovim
-    - noto-fonts-emoji
     - obs-studio
     - okular
-    - otf-ipaexfont
     - pavucontrol
     - picom
     - polybar
@@ -95,3 +93,8 @@
     - zathura-pdf-mupdf
     - zoom
     - zsh
+
+    # fonts
+    - noto-fonts-emoji
+    - otf-ipaexfont
+    - ttf-font-awesome
