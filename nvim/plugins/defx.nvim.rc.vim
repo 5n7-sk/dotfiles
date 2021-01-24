@@ -4,6 +4,8 @@ autocmd FileType defx call s:defx_settings()
 function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> <CR>
   \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('drop')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m
