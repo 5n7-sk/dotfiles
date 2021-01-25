@@ -32,7 +32,7 @@ if [ -d "$HOME/sandbox" ]; then
   alias sb="cd "$HOME/sandbox""
 fi
 
-alias h="history"
+alias h="history -i"
 alias open="xdg-open"
 
 alias cp="cp -ir"
