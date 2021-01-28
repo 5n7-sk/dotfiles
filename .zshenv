@@ -33,3 +33,6 @@ export PATH="$DOTFILES/bin:$PATH"
 
 # vin
 export PATH="$HOME/.vin/bin:$PATH"
+
+# local
+[[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
