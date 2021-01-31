@@ -48,6 +48,9 @@ keywords = ["linux", "x86_64"]
 repo = "itchyny/mmv"
 
 [[app]]
+repo = "junegunn/fzf"
+
+[[app]]
 repo = "moncho/dry"
 name = "dry"
 
