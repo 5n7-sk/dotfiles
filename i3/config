@@ -202,11 +202,13 @@ assign [class="Google-chrome"] $ws1
 assign [class="Alacritty"]     $ws2
 assign [class="Code"]          $ws3
 assign [class="Slack"]         $ws4
+assign [class="discord"]       $ws4
 
 # launch apps
 exec --no-startup-id alacritty
 exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
 exec --no-startup-id slack
+exec --no-startup-id discord
 
 exec --no-startup-id albert
 exec --no-startup-id dropbox
