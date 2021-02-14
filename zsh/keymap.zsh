@@ -25,6 +25,13 @@ fzf::cd() {
 zle -N fzf::cd
 bindkey "^T" fzf::cd
 
+fzf::cd-from-root() {
+  local dir=$(fd . $HOME --type directory | fzf --preview "tree {}")
+  [[ -n "$dir" ]] && cd $dir
+}
+zle -N fzf::cd-from-root
+bindkey "^Y" fzf::cd-from-root
+
 fzf::docker-remove-images() {
   local images="$(docker images | tail +2 | sort | fzf --multi | awk '{print $3}')"
   [[ -z "$images" ]] && return
