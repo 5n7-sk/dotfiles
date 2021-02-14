@@ -28,7 +28,7 @@ bindkey "^T" fzf::cd
 fzf::docker-remove-images() {
   local images="$(docker images | tail +2 | sort | fzf --multi | awk '{print $3}')"
   [[ -z "$images" ]] && return
-  docker rmi $images
+  docker rmi $(echo $images | tr "\n" " ")
 }
 
 fzf::docker-run-container() {
