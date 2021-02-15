@@ -42,22 +42,16 @@ font:
   normal:
     family: MesloLGM Nerd Font
     style: Regular
-  size: 11
+  size: 12
 
 mouse:
   hide_when_typing: true
   url:
-    launcher: xdg-open
+    launcher: open
 
 scrolling:
   history: 10000
   multiplier: 10
-
-shell:
-  program: sh
-  args:
-    - -c
-    - tmux attach -t default || tmux new -s default
 
 window:
   dynamic_title: false

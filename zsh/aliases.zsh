@@ -126,9 +126,12 @@ if hash "tmux" >/dev/null 2>&1; then
   alias tt="tmux attach -t default || tmux new -s default"
 fi
 
-if hash "xsel" >/dev/null 2>&1; then
-  alias pbc="xsel --clipboard --input"
-  alias pbp="xsel --clipboard --output"
+if hash "pbcopy" >/dev/null 2>&1; then
+  alias pbc="pbcopy"
+fi
+
+if hash "pboaste" >/dev/null 2>&1; then
+  alias pbp="pbpaste"
 fi
 
 ghg() {
