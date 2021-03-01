@@ -53,6 +53,7 @@
     - docker-compose
     - dropbox
     - dunst
+    - enpass-bin
     - fcitx-configtool
     - fcitx-im
     - fcitx-mozc
