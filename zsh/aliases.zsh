@@ -50,10 +50,11 @@ if hash "docker-compose" >/dev/null 2>&1; then
   alias dc="docker-compose"
 fi
 
-if hash "exa" >/dev/null 2>&1; then
-  alias l="exa -hl --git"
-  alias la="exa -ahl --git"
-  alias ls="exa"
+if hash "lsd" >/dev/null 2>&1; then
+  alias l="lsd -l"
+  alias la="lsd -la"
+  alias ls="lsd -l"
+  alias tree="lsd --tree"
 else
   alias l="ls -l"
   alias la="ls -al"

@@ -59,9 +59,8 @@ repo = "nektos/act"
 keywords = ["linux", "x86_64"]
 
 [[app]]
-repo = "ogham/exa"
-keywords = ["linux", "x86_64"]
-name = "exa"
+repo = "Peltoche/lsd"
+keywords = ["x86_64", "linux", "musl"]
 
 [[app]]
 repo = "Rigellute/spotify-tui"

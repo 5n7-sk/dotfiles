@@ -20,6 +20,7 @@
     ~/.config/fs: fs
     ~/.config/git: git
     ~/.config/i3: i3
+    ~/.config/lsd: lsd
     ~/.config/nvim: nvim
     ~/.config/picom: picom
     ~/.config/polybar: polybar

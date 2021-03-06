@@ -4,8 +4,8 @@ chpwd-ls() {
     return
   fi
 
-  if hash "exa" >/dev/null 2>&1; then
-    exa -ahl --git
+  if hash "lsd" >/dev/null 2>&1; then
+    lsd -la
   else
     ls -al
   fi
