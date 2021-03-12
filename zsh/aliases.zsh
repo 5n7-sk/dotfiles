@@ -85,6 +85,12 @@ if hash "gitui" >/dev/null 2>&1; then
   alias gu="gitui"
 fi
 
+if hash "go" >/dev/null 2>&1; then
+  gmi() {
+    go mod init $(pwd | sed -e 's/.*github.com/github.com/g')
+  }
+fi
+
 if hash "gomi" >/dev/null 2>&1; then
   alias rm="gomi"
 fi
