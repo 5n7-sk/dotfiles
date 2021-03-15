@@ -1,6 +1,8 @@
 [user]
 	email = shuntak217@gmail.com
 	name = Shunta Komatsu
+[init]
+	defaultBranch = main
 [pull]
 	ff = only
 	rebase = false
