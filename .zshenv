@@ -8,13 +8,17 @@ export PATH="$HOME/bin:$PATH"
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+if hash "anyenv" >/dev/null 2>&1; then
+  eval "$(anyenv init -)"
+fi
 
 # Docker
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
 # fnm
-eval "$(fnm env)"
+if hash "fnm" >/dev/null 2>&1; then
+  eval "$(fnm env)"
+fi
 
 # fzf
 export PATH="$HOME/.fzf/bin:$PATH"
