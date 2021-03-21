@@ -1,4 +1,5 @@
 fpath+="$HOME/.zfunc"
+fpath+="$HOME/.zinit/completions"
 
 autoload -Uz compinit
 compinit
