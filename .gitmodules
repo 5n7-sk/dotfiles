@@ -6,3 +6,6 @@
 	path = dotbot-yay
 	url = https://github.com/oxson/dotbot-yay
 	ignore = dirty
+[submodule "dotbot-brew"]
+	path = dotbot-brew
+	url = https://github.com/d12frosted/dotbot-brew.git

@@ -99,3 +99,29 @@
     - noto-fonts-emoji
     - otf-ipaexfont
     - ttf-font-awesome
+
+- brew:
+    # - docker
+    # - git
+    - htop
+    - neovim
+    - ranger
+    - tmux
+    - wget
+    - zsh
+    -
+    - font-fira-code-nerd-font
+    - fontconfig
+
+- cask:
+    - alacritty
+    - alfred
+    - discord
+    # - docker
+    - enpass
+    - google-chrome
+    - karabiner-elements
+    - slack
+    - visual-studio-code
+    - vlc
+    - zoom
