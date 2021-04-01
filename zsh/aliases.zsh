@@ -33,7 +33,6 @@ if [ -d "$HOME/sandbox" ]; then
 fi
 
 alias h="history -i"
-alias open="xdg-open"
 
 alias cp="cp -ir"
 alias mkdir="mkdir -p"
