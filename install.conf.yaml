@@ -100,14 +100,20 @@
     - otf-ipaexfont
     - ttf-font-awesome
 
+- tap:
+    - koekeishiya/formulae
+
 - brew:
     # - docker
     # - git
     - htop
+    - neofetch
     - neovim
     - ranger
+    # - skhd
     - tmux
     - wget
+    # - yabai
     - zsh
     -
     - font-fira-code-nerd-font
