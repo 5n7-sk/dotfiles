@@ -1,3 +1,7 @@
 [[plugins]]
 repo = "cespare/vim-toml"
 on_ft = ["toml"]
+
+[[plugins]]
+repo = "mattn/vim-goimports"
+on_ft = ["go"]
