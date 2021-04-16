@@ -12,6 +12,10 @@ bindkey -M viins "^U" backward-kill-line
 bindkey -M viins "^W" backward-kill-word
 bindkey -M viins "^K" kill-line
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 fzf::branch() {
   git switch $(git branch -a | tr -d " " | fzf --height 100% --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
 }
