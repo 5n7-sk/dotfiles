@@ -32,6 +32,18 @@ repo = "mattn/vim-lsp-settings"
 repo = "NovaDev94/lightline-onedark"
 
 [[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
+repo = "nvim-lua/popup.nvim"
+
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+hook_add = """
+exec "source " . g:plug_root . "/telescope.rc.vim"
+"""
+
+[[plugins]]
 repo = "prabirshrestha/asyncomplete.vim"
 hook_add = """
 exec "source " . g:plug_root . "/asyncomplete.rc.vim"
