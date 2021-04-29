@@ -23,6 +23,7 @@ set smartcase
 set smartindent
 set smarttab
 set tabstop=4
+set termguicolors
 set title
 set virtualedit=onemore
 set visualbell

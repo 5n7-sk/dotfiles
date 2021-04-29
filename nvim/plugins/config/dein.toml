@@ -74,6 +74,12 @@ exec "source " . g:plug_root . "/defx.nvim.rc.vim"
 repo = "thinca/vim-scouter"
 
 [[plugins]]
+repo = "ulwlu/elly.vim"
+hook_add = """
+exec "source " . g:plug_root . "/elly.vim.rc.vim"
+"""
+
+[[plugins]]
 repo = "vimsence/vimsence"
 
 [[plugins]]
