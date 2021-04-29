@@ -71,4 +71,7 @@ exec "source " . g:plug_root . "/defx.nvim.rc.vim"
 """
 
 [[plugins]]
+repo = "thinca/vim-scouter"
+
+[[plugins]]
 repo = "wakatime/vim-wakatime"
