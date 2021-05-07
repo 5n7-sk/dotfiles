@@ -44,6 +44,12 @@ exec "source " . g:plug_root . "/telescope.rc.vim"
 """
 
 [[plugins]]
+repo = "nvim-telescope/telescope-media-files.nvim"
+hook_add = """
+exec "source " . g:plug_root . "/telescope-media-files.nvim.rc.vim"
+"""
+
+[[plugins]]
 repo = "prabirshrestha/asyncomplete.vim"
 hook_add = """
 exec "source " . g:plug_root . "/asyncomplete.rc.vim"
