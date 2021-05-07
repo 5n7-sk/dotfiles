@@ -59,10 +59,12 @@
     - fcitx-im
     - fcitx-mozc
     - feh
+    - ffmpegthumbnailer
     - fnm-bin
     - foliate
     - fzf
     - gawk
+    - gnome-epub-thumbnailer
     - google-chrome
     - i3lock-color-git
     - imwheel
