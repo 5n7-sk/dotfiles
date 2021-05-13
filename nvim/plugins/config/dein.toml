@@ -11,6 +11,12 @@ repo = "editorconfig/editorconfig-vim"
 # repo = "dstein64/nvim-scrollview"
 
 [[plugins]]
+repo = "folke/todo-comments.nvim"
+hook_add = """
+exec "source " . g:plug_root . "/todo-comments.nvim.rc.vim"
+"""
+
+[[plugins]]
 repo = "itchyny/lightline.vim"
 hook_add = """
 exec "source " . g:plug_root . "/lightline.rc.vim"
