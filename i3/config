@@ -210,8 +210,6 @@ exec --no-startup-id alacritty
 exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
 exec --no-startup-id slack
 exec --no-startup-id discord
-exec --no-startup-id spotify
-exec --no-startup-id enpass
 
 exec --no-startup-id albert
 # exec --no-startup-id dropbox
