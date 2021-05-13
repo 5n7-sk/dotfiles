@@ -18,6 +18,5 @@
 - Music: Spotify with Spicetify
 - Other apps:
   - Foliate (eBook reader)
-  - nnn (file manager)
   - Zathura (PDF viewer)
   - ...
