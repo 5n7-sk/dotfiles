@@ -41,6 +41,7 @@ fzf::docker-remove-images() {
   [[ -z "$images" ]] && return
   docker rmi $(echo $images | tr "\n" " ")
 }
+alias fzfdri="fzf::docker-remove-images"
 
 fzf::docker-run-container() {
   local image="$(docker images | tail +2 | sort | fzf | awk '{print $3}')"
@@ -48,6 +49,7 @@ fzf::docker-run-container() {
   read command
   docker run -it --rm $image $command
 }
+alias fzfdrc="fzf::docker-run-container"
 
 fzf::history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
