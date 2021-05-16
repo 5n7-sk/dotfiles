@@ -22,6 +22,8 @@ set showmatch matchtime=1
 set smartcase
 set smartindent
 set smarttab
+set splitbelow
+set splitright
 set tabstop=4
 set termguicolors
 set title
