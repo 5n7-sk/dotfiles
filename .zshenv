@@ -8,8 +8,13 @@ export PATH="$HOME/bin:$PATH"
 
 # anyenv
 export PATH="$HOME/.anyenv/bin:$PATH"
+
 if hash "anyenv" >/dev/null 2>&1; then
   eval "$(anyenv init -)"
+fi
+
+if hash "pyenv" >/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
 fi
 
 # Docker
