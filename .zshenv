@@ -1,3 +1,6 @@
+# exit if not interactive shell
+if [[ $- != *i* ]]; then return; fi
+
 # basic
 export EDITOR="nvim"
 export LANG="en_US.UTF-8"
