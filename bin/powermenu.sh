@@ -15,7 +15,7 @@ chosen="$(
     rofi \
       -dmenu \
       -p "$uptime" \
-      -theme "$DOTFILES/rofi/themes/powermenu.rasi"
+      -theme "$HOME/.config/rofi/themes/powermenu.rasi"
 )"
 
 case $chosen in

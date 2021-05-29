@@ -3,4 +3,4 @@
 rofi \
   -matching fuzzy \
   -show drun \
-  -theme "$DOTFILES/rofi/themes/launcher.rasi"
+  -theme "$HOME/.config/rofi/themes/launcher.rasi"
