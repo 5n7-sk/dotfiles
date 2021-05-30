@@ -9,17 +9,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
-# anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-
-if hash "anyenv" >/dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
-
-if hash "pyenv" >/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-
 # Docker
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 

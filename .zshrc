@@ -1,4 +1,5 @@
 source "$HOME/.zsh/aliases.zsh"
+source "$HOME/.zsh/asdf.zsh"
 source "$HOME/.zsh/completion.zsh"
 source "$HOME/.zsh/general.zsh"
 source "$HOME/.zsh/history.zsh"
