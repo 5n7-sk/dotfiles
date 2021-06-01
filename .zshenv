@@ -1,5 +1,5 @@
 # exit if not interactive shell
-if [[ $- != *i* ]]; then return; fi
+# if [[ $- != *i* ]]; then return; fi
 
 # basic
 export EDITOR="nvim"
