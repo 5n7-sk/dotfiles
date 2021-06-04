@@ -9,8 +9,6 @@ return require("packer").startup {
 
     use "andweeb/presence.nvim"
 
-    use {"arcticicestudio/nord-vim", setup = require("config.nord").setup}
-
     use {
       "b3nj5m1n/kommentary",
       config = require("config.kommentary").config,
@@ -36,11 +34,13 @@ return require("packer").startup {
       end
     }
 
-    -- use {
-    --   "hoob3rt/lualine.nvim",
-    --   requires = {"kyazdani42/nvim-web-devicons"},
-    --   config = require("config.lualine").config
-    -- }
+    use {"folke/tokyonight.nvim", config = require("config.tokyonight").config}
+
+    use {
+      "hoob3rt/lualine.nvim",
+      requires = {"folke/tokyonight.nvim", "kyazdani42/nvim-web-devicons"},
+      config = require("config.lualine").config
+    }
 
     use {"jiangmiao/auto-pairs"}
 
