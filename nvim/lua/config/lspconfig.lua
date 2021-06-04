@@ -3,7 +3,7 @@ local config = function()
   local bufset = require("utils").bufset
 
   local on_attach = function(client, buffer)
-    -- require("completion").on_attach()
+    require("lsp_signature").on_attach()
 
     bufset(buffer, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
