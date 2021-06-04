@@ -141,6 +141,12 @@ return require("packer").startup {
       config = require("config.octo").config
     }
 
+    use {
+      "romgrk/barbar.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      setup = require("config.barbar").setup
+    }
+
     use {"thinca/vim-quickrun", setup = require("config.quickrun").setup}
 
     use {"thinca/vim-scouter", opt = true}
