@@ -70,10 +70,10 @@ return require("packer").startup {
 
     use {"npxbr/glow.nvim", ft = "markdown"}
 
-    -- use {
-    --   "norcalli/nvim-colorizer.lua",
-    --   config = require("config.colorizer").config()
-    -- }
+    use {
+      "norcalli/nvim-colorizer.lua",
+      config = require("config.colorizer").config()
+    }
 
     use {"norcalli/snippets.nvim", config = require("config.snippets").config}
 
