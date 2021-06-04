@@ -11,6 +11,10 @@ repo = "b4b4r07/gomi"
 keywords = ["linux", "x86_64"]
 
 [[app]]
+repo = "BurntSushi/ripgrep"
+keywords = ["linux", "x86_64"]
+
+[[app]]
 repo = "charmbracelet/glow"
 keywords = ["linux", "x86_64"]
 
