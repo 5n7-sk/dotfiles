@@ -147,6 +147,15 @@ return require("packer").startup {
       setup = require("config.barbar").setup
     }
 
+    use {
+      "sudormrfbin/cheatsheet.nvim",
+      requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-telescope/telescope.nvim"}
+      }
+    }
+
     use {"thinca/vim-quickrun", setup = require("config.quickrun").setup}
 
     use {"thinca/vim-scouter", opt = true}
