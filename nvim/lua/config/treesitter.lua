@@ -1,6 +1,18 @@
 local config = function()
   require("nvim-treesitter.configs").setup {
-    ensure_installed = {"go", "python"},
+    ensure_installed = {
+      "bash",
+      "bibtex",
+      "go",
+      "html",
+      "javascript",
+      "json",
+      "latex",
+      "python",
+      "toml",
+      "typescript",
+      "yaml"
+    },
     highlight = {enable = true},
     indent = {enable = true}
   }
