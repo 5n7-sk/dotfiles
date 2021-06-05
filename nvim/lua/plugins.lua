@@ -2,6 +2,8 @@ vim.api.nvim_command("packadd packer.nvim")
 
 return require("packer").startup {
   function(use)
+    use {"ahmedkhalf/lsp-rooter.nvim", config = require("config.rooter").config}
+
     use {
       "akinsho/nvim-toggleterm.lua",
       config = require("config.toggleterm").config
@@ -35,6 +37,8 @@ return require("packer").startup {
     }
 
     use {"folke/tokyonight.nvim", config = require("config.tokyonight").config}
+
+    use {"folke/zen-mode.nvim", config = require("config.zen").config}
 
     use {
       "hoob3rt/lualine.nvim",
@@ -207,5 +211,7 @@ return require("packer").startup {
       opt = true,
       config = require("config.packer").config
     }
+
+    use {"yuki-yano/zero.nvim", config = require("config.zero").config}
   end
 }
