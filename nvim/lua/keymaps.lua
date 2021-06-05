@@ -7,6 +7,8 @@ map("n", "k", "gk")
 map("n", "gj", "j")
 map("n", "gk", "k")
 
+map("n", "$", "$l")
+
 map("n", "<c-h>", "<c-w>h")
 map("n", "<c-j>", "<c-w>j")
 map("n", "<c-k>", "<c-w>k")
