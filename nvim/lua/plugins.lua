@@ -99,25 +99,41 @@ return require("packer").startup {
 
     use {
       "glepnir/dashboard-nvim",
-      requires = "nvim-telescope/telescope.nvim",
+      requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-telescope/telescope.nvim"}
+      },
       setup = require("config.dashboard").setup
     }
 
     use {
       "nvim-telescope/telescope-ghq.nvim",
-      requires = "nvim-telescope/telescope.nvim",
+      requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-telescope/telescope.nvim"}
+      },
       config = require("config.telescope-ghq").config
     }
 
     use {
       "nvim-telescope/telescope-github.nvim",
-      requires = "nvim-telescope/telescope.nvim",
+      requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-telescope/telescope.nvim"}
+      },
       config = require("config.telescope-github").config
     }
 
     use {
       "nvim-telescope/telescope-media-files.nvim",
-      requires = "nvim-telescope/telescope.nvim",
+      requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-telescope/telescope.nvim"}
+      },
       config = require("config.telescope-media-files").config
     }
 
@@ -137,7 +153,11 @@ return require("packer").startup {
 
     use {
       "pwntester/octo.nvim",
-      requires = "nvim-telescope/telescope.nvim",
+      requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-lua/popup.nvim"},
+        {"nvim-telescope/telescope.nvim"}
+      },
       config = require("config.octo").config
     }
 
