@@ -8,6 +8,7 @@ local config = function()
       "javascript",
       "json",
       "latex",
+      "lua",
       "python",
       "toml",
       "typescript",
