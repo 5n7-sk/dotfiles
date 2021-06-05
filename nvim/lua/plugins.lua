@@ -106,9 +106,9 @@ return require("packer").startup {
     use {
       "glepnir/dashboard-nvim",
       requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-telescope/telescope.nvim"}
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
       },
       setup = require("config.dashboard").setup
     }
@@ -116,9 +116,9 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-ghq.nvim",
       requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-telescope/telescope.nvim"}
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
       },
       config = require("config.telescope-ghq").config
     }
@@ -126,9 +126,9 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-github.nvim",
       requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-telescope/telescope.nvim"}
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
       },
       config = require("config.telescope-github").config
     }
@@ -136,9 +136,9 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-media-files.nvim",
       requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-telescope/telescope.nvim"}
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
       },
       config = require("config.telescope-media-files").config
     }
@@ -160,9 +160,9 @@ return require("packer").startup {
     use {
       "pwntester/octo.nvim",
       requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-telescope/telescope.nvim"}
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
       },
       config = require("config.octo").config
     }
@@ -176,9 +176,9 @@ return require("packer").startup {
     use {
       "sudormrfbin/cheatsheet.nvim",
       requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-lua/popup.nvim"},
-        {"nvim-telescope/telescope.nvim"}
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
       }
     }
 
