@@ -62,6 +62,8 @@ return require("packer").startup {
 
     use {"lukas-reineke/format.nvim", config = require("config.format").config}
 
+    use {"MattesGroeger/vim-bookmarks"}
+
     use {
       "neovim/nvim-lspconfig",
       requires = {"kabouzeid/nvim-lspinstall", "ray-x/lsp_signature.nvim"},
@@ -184,6 +186,18 @@ return require("packer").startup {
       "TimUntersberger/neogit",
       requires = "nvim-lua/plenary.nvim",
       setup = require("config.neogit").setup
+    }
+
+    use {
+      "tom-anders/telescope-vim-bookmarks.nvim",
+      requires = {
+        "MattesGroeger/vim-bookmarks",
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
+      },
+      config = require("config.telescope-bookmarks").config,
+      setup = require("config.telescope-bookmarks").setup
     }
 
     use {"wakatime/vim-wakatime"}
