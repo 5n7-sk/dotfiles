@@ -1,7 +1,7 @@
 local config = function()
   local autocmd = require("utils").autocmd
 
-  autocmd("Format", "BufWritePre * FormatWrite", true)
+  autocmd("Format", "BufWritePost * FormatWrite", true)
 
   require("format").setup {
     ["*"] = {{cmd = {"sed -i 's/[ \t]*$//'"}}},
