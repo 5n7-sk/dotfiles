@@ -3,7 +3,9 @@ local config = function()
     ensure_installed = {
       "bash",
       "bibtex",
+      "dockerfile",
       "go",
+      "gomod",
       "html",
       "javascript",
       "json",
