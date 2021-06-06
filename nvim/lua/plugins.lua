@@ -46,7 +46,7 @@ return require("packer").startup {
       config = require("config.lualine").config
     }
 
-    use {"jiangmiao/auto-pairs"}
+    use {"windwp/nvim-autopairs", config = require("config.autopairs").config}
 
     use {"kevinhwang91/nvim-hlslens"}
 
