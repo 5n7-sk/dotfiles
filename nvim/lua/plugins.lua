@@ -87,6 +87,7 @@ return require("packer").startup {
       "nvim-lua/completion-nvim",
       requires = {
         {"aca/completion-tabnine", run = "./install.sh"},
+        {"nvim-treesitter/completion-treesitter"},
         {"steelsojka/completion-buffers"}
       },
       config = require("config.completion").config,

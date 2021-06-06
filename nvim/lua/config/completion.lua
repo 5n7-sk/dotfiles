@@ -14,7 +14,9 @@ local setup = function()
   vim.opt.shortmess:append({c = true})
 
   vim.g.completion_chain_complete_list = {
-    default = {{complete_items = {"buffers", "lsp", "snippet", "tabnine"}}}
+    default = {
+      {complete_items = {"buffers", "lsp", "snippet", "tabnine", "ts"}}
+    }
   }
   vim.g.completion_enable_snippet = "snippets.nvim"
   vim.g.completion_matching_strategy_list = {"exact", "substring"}
