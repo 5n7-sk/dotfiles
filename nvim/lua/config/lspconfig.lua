@@ -9,7 +9,7 @@ local config = function()
 
     bufmap(buffer, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
     bufmap(buffer, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
-    bufmap(buffer, "n", "<c-k><c-i>", "<cmd>lua vim.lsp.buf.hover()<cr>")
+    bufmap(buffer, "n", "<c-i>", "<cmd>lua vim.lsp.buf.hover()<cr>")
     bufmap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
     bufmap(buffer, "n", "<space>wl",
       "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
