@@ -145,6 +145,17 @@ return require("packer").startup {
     }
 
     use {
+      "nvim-telescope/telescope-project.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
+      },
+      config = require("config.telescope-project").config,
+      setup = require("config.telescope-project").setup
+    }
+
+    use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
       config = require("config.treesitter").config
