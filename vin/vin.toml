@@ -46,6 +46,10 @@ repo = "extrawurst/gitui"
 keywords = ["linux", "musl"]
 
 [[app]]
+repo = "gohugoio/hugo"
+keywords = ["extended", "linux"]
+
+[[app]]
 repo = "GoogleContainerTools/skaffold"
 name = "skaffold"
 
