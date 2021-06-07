@@ -179,6 +179,8 @@ return require("packer").startup {
       config = require("config.octo").config
     }
 
+    use {"ray-x/go.nvim", config = require("config.go").setup({})}
+
     use {
       "romgrk/barbar.nvim",
       requires = "kyazdani42/nvim-web-devicons",
