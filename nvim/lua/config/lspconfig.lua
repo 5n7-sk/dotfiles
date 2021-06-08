@@ -26,6 +26,32 @@ local config = function()
     for _, server in pairs(servers) do
       require("lspconfig")[server].setup({on_attach = on_attach})
     end
+
+    -- golangci-lint language server
+    if not require("lspconfig").golangcilsp then
+      require("lspconfig/configs").golangcilsp = {
+        default_config = {
+          cmd = {"golangci-lint-langserver"},
+          root_dir = require("lspconfig").util.root_pattern(".git", "go.mod"),
+          init_options = {
+            command = {
+              "golangci-lint",
+              "run",
+              "--enable-all",
+              "--disable",
+              "lll",
+              "--out-format",
+              "json"
+            }
+          }
+        }
+      }
+    end
+
+    require("lspconfig").golangcilsp.setup({
+      filetypes = {"go"},
+      on_attach = on_attach
+    })
   end
 
   setup_servers()
