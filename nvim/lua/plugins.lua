@@ -183,7 +183,7 @@ return require("packer").startup {
       config = require("config.octo").config
     }
 
-    use {"ray-x/go.nvim", config = require("config.go").config}
+    -- use {"ray-x/go.nvim", config = require("config.go").config}
 
     use {
       "romgrk/barbar.nvim",
