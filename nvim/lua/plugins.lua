@@ -71,9 +71,12 @@ return require("packer").startup {
     use {
       "neovim/nvim-lspconfig",
       requires = {
-        "kabouzeid/nvim-lspinstall",
-        "nametake/golangci-lint-langserver",
-        "ray-x/lsp_signature.nvim"
+        {"kabouzeid/nvim-lspinstall"},
+        {
+          "nametake/golangci-lint-langserver",
+          run = "go install github.com/nametake/golangci-lint-langserver@latest"
+        },
+        {"ray-x/lsp_signature.nvim"}
       },
       config = require("config.lspconfig").config
     }
