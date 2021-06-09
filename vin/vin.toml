@@ -132,6 +132,10 @@ zscroll completion -s zsh > ~/.zfunc/_zscroll
 """
 
 [[app]]
+repo = "starship/starship"
+keywords = ["x86_64", "linux", "musl"]
+
+[[app]]
 repo = "stedolan/jq"
 keywords = ["linux64"]
 name = "jq"

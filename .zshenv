@@ -35,5 +35,10 @@ export PATH="$DOTFILES/bin:$PATH"
 # vin
 export PATH="$HOME/.vin/bin:$PATH"
 
+# starship
+if hash "starship" >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
 # local
 [[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"

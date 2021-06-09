@@ -27,6 +27,7 @@
     ~/.config/ranger: ranger
     ~/.config/rofi: rofi
     ~/.config/vin: vin
+    ~/.config/starship.toml: starship/starship.toml
     ~/.config/zathura: zathura
     ~/.gitconfig: .gitconfig
     ~/.imwheelrc: .imwheelrc

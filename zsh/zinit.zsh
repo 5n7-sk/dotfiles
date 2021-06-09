@@ -4,8 +4,6 @@ fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
 
-zinit light denysdovhan/spaceship-prompt
-
 zinit wait lucid light-mode for \
   mollifier/cd-gitroot \
   NullSense/fuzzy-sys \
