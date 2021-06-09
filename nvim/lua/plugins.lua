@@ -68,6 +68,8 @@ return require("packer").startup {
 
     use {"MattesGroeger/vim-bookmarks"}
 
+    use {"mg979/vim-visual-multi", setup = require("config.visual-multi").setup}
+
     use {
       "neovim/nvim-lspconfig",
       requires = {
