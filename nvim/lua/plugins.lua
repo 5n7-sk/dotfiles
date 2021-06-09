@@ -152,6 +152,16 @@ return require("packer").startup {
     }
 
     use {
+      "nvim-telescope/telescope-packer.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+        "nvim-telescope/telescope.nvim"
+      },
+      config = require("config.telescope-packer").config
+    }
+
+    use {
       "nvim-telescope/telescope-project.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
