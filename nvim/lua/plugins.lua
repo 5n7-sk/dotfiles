@@ -207,6 +207,12 @@ return require("packer").startup {
     }
 
     use {
+      "sindrets/diffview.nvim",
+      requires = {"kyazdani42/nvim-web-devicons", opt = true},
+      config = require("config.diffview").config
+    }
+
+    use {
       "sudormrfbin/cheatsheet.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
