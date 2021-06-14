@@ -14,7 +14,7 @@ bindkey -M viins "^K" kill-line
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey "^e" edit-command-line
 
 fzf::branch() {
   git switch $(git branch -a | tr -d " " | fzf --height 100% --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
@@ -51,13 +51,6 @@ fzf::docker-run-container() {
 }
 alias fzfdrc="fzf::docker-run-container"
 
-fzf::history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
-  CURSOR=$#BUFFER
-}
-zle -N fzf::history
-bindkey "^H" fzf::history
-
 fzf::ghq() {
   cd $(ghq list -p | fzf --preview "glow --style dark {}/README.*")
 }
@@ -70,6 +63,13 @@ fzf::ghq-vscode() {
 }
 zle -N fzf::ghq-vscode
 bindkey "^V" fzf::ghq-vscode
+
+fzf::history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER")
+  CURSOR=$#BUFFER
+}
+zle -N fzf::history
+bindkey "^H" fzf::history
 
 fzf::kill() {
   local pid=$(ps -fu "$UID" | sed 1d | fzf -m | awk '{print $2}')
