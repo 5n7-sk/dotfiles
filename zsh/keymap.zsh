@@ -23,14 +23,14 @@ zle -N fzf::branch
 bindkey "^B" fzf::branch
 
 fzf::cd() {
-  local dir=$(fd --type directory | fzf --preview "tree {}")
+  local dir=$(fd --hidden --type directory | fzf --preview "tree {}")
   [[ -n "$dir" ]] && cd $dir
 }
 zle -N fzf::cd
 bindkey "^T" fzf::cd
 
 fzf::cd-from-root() {
-  local dir=$(fd . $HOME --type directory | fzf --preview "tree {}")
+  local dir=$(fd . $HOME --hidden --type directory | fzf --preview "tree {}")
   [[ -n "$dir" ]] && cd $dir
 }
 zle -N fzf::cd-from-root
@@ -79,7 +79,7 @@ zle -N fzf::kill
 bindkey "^K" fzf::kill
 
 fzf::open() {
-  local file=$(fd --type file | fzf --preview "bat --color always --style header {}")
+  local file=$(fd --hidden --type file | fzf --preview "bat --color always --style header {}")
   [[ -n "$file" ]] && $EDITOR $file
 }
 zle -N fzf::open
