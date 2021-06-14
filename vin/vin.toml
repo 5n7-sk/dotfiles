@@ -64,6 +64,11 @@ repo = "itchyny/mmv"
 repo = "junegunn/fzf"
 
 [[app]]
+repo = "mikefarah/yq"
+keywords = ["linux", "amd64", ".tar.gz"]
+name = "yq"
+
+[[app]]
 repo = "moncho/dry"
 name = "dry"
 
