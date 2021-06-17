@@ -17,9 +17,6 @@ if hash "fnm" >/dev/null 2>&1; then
   eval "$(fnm env)"
 fi
 
-# fzf
-export PATH="$HOME/.fzf/bin:$PATH"
-
 # go
 export GOPATH="$HOME/go"
 export PATH="/usr/local/go/bin:$PATH"
