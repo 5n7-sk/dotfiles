@@ -12,5 +12,3 @@ zinit wait lucid light-mode for \
   wfxr/forgit \
   zdharma/fast-syntax-highlighting \
   zsh-users/zsh-autosuggestions
-
-zinit snippet OMZ::plugins/dotenv/dotenv.plugin.zsh
