@@ -41,6 +41,7 @@ alias mv="mv -i"
 
 if hash "docker" >/dev/null 2>&1; then
   alias d="docker"
+  alias dcl="docker container prune -f && docker image prune -f"
   alias dim="docker images"
   alias dps="docker ps"
   alias dpsa="docker ps -a"
