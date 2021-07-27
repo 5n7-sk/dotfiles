@@ -57,9 +57,8 @@
     - dropbox
     - dunst
     - enpass-bin
-    - fcitx-configtool
-    - fcitx-im
-    - fcitx-mozc
+    - fcitx5-im
+    - fcitx5-mozc
     - feh
     - ffmpegthumbnailer
     - fnm-bin
