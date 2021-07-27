@@ -21,7 +21,7 @@
     ~/.config/git: git
     ~/.config/i3: i3
     ~/.config/lsd: lsd
-    ~/.config/lua-formatter: lua-formatter
+    ~/.config/luaformatter: luaformatter
     ~/.config/nvim: nvim
     ~/.config/picom: picom
     ~/.config/polybar: polybar
