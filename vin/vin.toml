@@ -1,4 +1,8 @@
 [[app]]
+repo = "Aloxaf/silicon"
+keywords = ["x86_64", "linux"]
+
+[[app]]
 repo = "aquasecurity/trivy"
 keywords = ["linux", "64bit"]
 
