@@ -66,7 +66,8 @@ return require("packer").startup {
       "ray-x/go.nvim",
       config = function()
         require("go").setup()
-      end
+      end,
+      ft = "go"
     }
 
     -- explore
@@ -78,7 +79,8 @@ return require("packer").startup {
       config = function()
         local map = require("utils").map
         map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
-
+      end,
+      setup = function()
         vim.g.nvim_tree_width = 40
       end
     }
@@ -102,6 +104,7 @@ return require("packer").startup {
       -- todo viewer
       {
         "folke/todo-comments.nvim",
+        after = {"telescope.nvim"},
         requires = {"folke/trouble.nvim"},
         config = function()
           require("todo-comments").setup()
@@ -114,6 +117,7 @@ return require("packer").startup {
       -- bibtex references viewer
       {
         "nvim-telescope/telescope-bibtex.nvim",
+        after = {"telescope.nvim"},
         config = function()
           require("telescope").load_extension("bibtex")
         end
@@ -121,6 +125,7 @@ return require("packer").startup {
       -- ghq integraction
       {
         "nvim-telescope/telescope-ghq.nvim",
+        after = {"telescope.nvim"},
         config = function()
           require("telescope").load_extension("ghq")
         end
@@ -128,6 +133,7 @@ return require("packer").startup {
       -- GitHub integration
       {
         "nvim-telescope/telescope-github.nvim",
+        after = {"telescope.nvim"},
         config = function()
           require("telescope").load_extension("gh")
         end
@@ -135,6 +141,7 @@ return require("packer").startup {
       -- media files viewer
       {
         "nvim-telescope/telescope-media-files.nvim",
+        after = {"telescope.nvim"},
         config = function()
           require("telescope").load_extension("media_files")
         end
@@ -339,6 +346,7 @@ return require("packer").startup {
       -- highlight current block
       {
         "folke/twilight.nvim",
+        after = {"nvim-treesitter"},
         config = function()
           require("twilight").setup()
         end,
@@ -350,6 +358,7 @@ return require("packer").startup {
       -- Treesitter information viewer
       {
         "nvim-treesitter/playground",
+        after = {"nvim-treesitter"},
         config = function()
           require("nvim-treesitter.configs").setup {
             playground = {enable = true}
@@ -359,6 +368,7 @@ return require("packer").startup {
       -- rainbow parentheses
       {
         "p00f/nvim-ts-rainbow",
+        after = {"nvim-treesitter"},
         config = function()
           require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
         end
@@ -409,11 +419,11 @@ return require("packer").startup {
     -- Markdown viewer
     use {
       "npxbr/glow.nvim",
-      ft = "markdown",
       setup = function()
         local map = require("utils").map
         map("n", "<leader>gl", "<cmd>Glow<cr>")
-      end
+      end,
+      ft = "markdown"
     }
 
     -- EasyMotion
@@ -441,7 +451,6 @@ return require("packer").startup {
       config = function()
         require("diffview").setup()
       end
-
     }
 
     -- run script quickly
@@ -483,11 +492,11 @@ return require("packer").startup {
     -- screenshot
     use {
       "segeljakt/vim-silicon",
-      cmd = {"Silicon"},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>ss", "<cmd>Silicon<cr>")
-      end
+      end,
+      cmd = {"Silicon"}
     }
 
     -- cheatsheet viewer
@@ -499,7 +508,7 @@ return require("packer").startup {
     -- Git integration
     use {
       "TimUntersberger/neogit",
-      requires = "nvim-lua/plenary.nvim",
+      requires = {"nvim-lua/plenary.nvim"},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
