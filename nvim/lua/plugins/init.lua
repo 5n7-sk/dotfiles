@@ -553,7 +553,7 @@ return require("packer").startup {
     use {"editorconfig/editorconfig-vim"}
 
     -- calculate power as Vimmer
-    use {"thinca/vim-scouter", opt = true}
+    use {"thinca/vim-scouter", cmd = {"Scouter"}}
 
     -- WakaTime
     use {"wakatime/vim-wakatime"}
