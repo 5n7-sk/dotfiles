@@ -44,9 +44,12 @@ return require("packer").startup {
 
         require("format").setup {
           ["*"] = {{cmd = {"sed -i 's/[ \t]*$//'"}}},
+          bash = {{cmd = {"shfmt -i 2 -w"}}},
           go = {{cmd = {"goimports -w"}}},
           lua = {{cmd = {"lua-format -i"}}},
-          python = {{cmd = {"black --quiet", "isort"}}}
+          python = {{cmd = {"black --quiet", "isort"}}},
+          sh = {{cmd = {"shfmt -i 2 -w"}}},
+          zsh = {{cmd = {"shfmt -i 2 -w"}}}
         }
       end
     }
@@ -309,7 +312,10 @@ return require("packer").startup {
     use {
       "ntpeters/vim-better-whitespace",
       setup = function()
-        vim.g.better_whitespace_filetypes_blacklist = {"dashboard"}
+        vim.g.better_whitespace_filetypes_blacklist = {
+          "dashboard",
+          "TelescopePrompt"
+        }
       end
     }
 

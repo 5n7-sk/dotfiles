@@ -77,6 +77,10 @@ repo = "moncho/dry"
 name = "dry"
 
 [[app]]
+repo = "mvdan/sh"
+name = "shfmt"
+
+[[app]]
 repo = "nektos/act"
 keywords = ["linux", "x86_64"]
 
