@@ -14,7 +14,6 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 alias ghhome="cd "$HOME/src/github.com/skmatz""
-alias gohome="cd "$GOPATH/src/github.com/skmatz""
 
 if [[ -d "$HOME/Desktop" ]]; then
   alias de="cd "$HOME/Desktop""
@@ -146,11 +145,6 @@ ghg() {
 mkcd() {
   mkdir -p $1
   cd $1
-}
-
-mozc-restart() {
-  killall ibus-daemon
-  ibus-daemon -d -x &
 }
 
 targz() {
