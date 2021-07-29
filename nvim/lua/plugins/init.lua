@@ -79,8 +79,7 @@ return require("packer").startup {
       config = function()
         local map = require("utils").map
         map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
-      end,
-      setup = function()
+
         vim.g.nvim_tree_width = 40
       end
     }
