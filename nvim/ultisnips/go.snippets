@@ -1,0 +1,98 @@
+snippet import "import declaration"
+import "$1"
+endsnippet
+
+snippet pkg "package declaration"
+package ${1:main}
+endsnippet
+
+snippet pkgm "main package template"
+package main
+
+func main() {
+	$1
+}
+endsnippet
+
+snippet pkgmr "main package template"
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func run() error {
+	return nil
+}
+
+func main() {
+	if err := run(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+endsnippet
+
+snippet struct "struct declaration"
+type $1 struct {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet interface "interface declaration"
+type $1 interface {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet if "if statement"
+if ${1:condition}${1/(.+)/ /}{
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet switch "switch statement"
+switch $1${1/(.+)/ /}{
+case $2:
+	$3
+}
+endsnippet
+
+snippet main "main function"
+func main() {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet method "method"
+func ($1 $2) $3($4)${5/(.+)/ /}$5 {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet func "function"
+func $1($2)${3/(.+)/ /}$3 {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet map "map type"
+map[$1]$2
+endsnippet
+
+snippet tag "struct tag"
+\`$1:"$2"\`
+endsnippet
+
+snippet iferr "error handling"
+if err != nil {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet iferrf "error handling"
+if err := $1($2); err != nil {
+	${0:${VISUAL}}
+}
+endsnippet

@@ -17,9 +17,10 @@ map("n", "<c-l>", "<c-w>l")
 map("n", "sh", "<c-w>s")
 map("n", "sv", "<c-w>v")
 
+-- kill line without copying
+map("n", "<m-k>", "\"_dd")
+
 map("n", "<c-t>n", "<cmd>tabnew<cr>")
-map("n", "<c-t>h", "<cmd>tabprevious<cr>")
-map("n", "<c-t>l", "<cmd>tabnext<cr>")
 
 map("n", "<leader>q", "<cmd>q!<cr>")
 map("n", "<leader>w", "<cmd>wa<cr>")

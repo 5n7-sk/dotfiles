@@ -5,6 +5,16 @@ vim.opt.number = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.virtualedit = "onemore"
+vim.opt.whichwrap = vim.o.whichwrap .. "h,l"
+
+-- tab appearance/behavior
+vim.opt.expandtab = true
+vim.opt.list = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+
+-- ignore continuetion of comments
+vim.opt.formatoptions:remove({"cro"})
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

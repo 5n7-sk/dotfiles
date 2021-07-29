@@ -1,0 +1,552 @@
+vim.api.nvim_command("packadd packer.nvim")
+
+return require("packer").startup {
+  function(use)
+    -- plugin manager
+
+    -- packer
+    use {"wbthomason/packer.nvim", opt = true}
+
+    -- coding support
+
+    -- commenting
+    use {
+      "b3nj5m1n/kommentary",
+      config = function()
+        local map = require("utils").map
+        map("n", "<c-_>", "<Plug>kommentary_line_default", {noremap = false})
+        map("v", "<c-_>", "<Plug>kommentary_visual_default", {noremap = false})
+      end,
+      setup = function()
+        vim.g.kommentary_create_default_mappings = false
+      end
+    }
+
+    -- surrond text
+    use {
+      "blackCauldron7/surround.nvim",
+      config = function()
+        require("surround").setup({})
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>df", "<cmd>DiffviewOpen<cr>")
+        map("n", "<leader>dF", "<cmd>DiffviewClose<cr>")
+      end
+    }
+
+    -- formatter
+    use {
+      "lukas-reineke/format.nvim",
+      config = function()
+        local autocmd = require("utils").autocmd
+        autocmd("Format", "BufWritePost * FormatWrite", true)
+
+        require("format").setup {
+          ["*"] = {{cmd = {"sed -i 's/[ \t]*$//'"}}},
+          go = {{cmd = {"goimports -w"}}},
+          lua = {{cmd = {"lua-format -i"}}},
+          python = {{cmd = {"black --quiet", "isort"}}}
+        }
+      end
+    }
+
+    -- snippets
+    use {
+      "SirVer/ultisnips",
+      setup = function()
+        vim.g.UltiSnipsSnippetDirectories = {"~/.config/nvim/ultisnips"}
+      end
+    }
+
+    -- language specific
+
+    -- go
+    use {
+      "ray-x/go.nvim",
+      config = function()
+        require("go").setup()
+      end
+    }
+
+    -- explore
+
+    -- file explore
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {"kyazdani42/nvim-web-devicons"},
+      config = function()
+        local map = require("utils").map
+        map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
+
+        vim.g.nvim_tree_width = 40
+      end
+    }
+
+    -- Telescope
+    use {
+      -- Telescope
+      {
+        "nvim-telescope/telescope.nvim",
+        requires = {
+          "kyazdani42/nvim-web-devicons",
+          "nvim-lua/plenary.nvim",
+          "nvim-lua/popup.nvim"
+        },
+        setup = function()
+          local map = require("utils").map
+          map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+          map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
+        end
+      },
+      -- todo viewer
+      {
+        "folke/todo-comments.nvim",
+        requires = {"folke/trouble.nvim"},
+        config = function()
+          require("todo-comments").setup()
+        end,
+        setup = function()
+          local map = require("utils").map
+          map("n", "<leader>td", "<cmd>TodoTelescope<cr>")
+        end
+      },
+      -- bibtex references viewer
+      {
+        "nvim-telescope/telescope-bibtex.nvim",
+        config = function()
+          require("telescope").load_extension("bibtex")
+        end
+      },
+      -- ghq integraction
+      {
+        "nvim-telescope/telescope-ghq.nvim",
+        config = function()
+          require("telescope").load_extension("ghq")
+        end
+      },
+      -- GitHub integration
+      {
+        "nvim-telescope/telescope-github.nvim",
+        config = function()
+          require("telescope").load_extension("gh")
+        end
+      },
+      -- media files viewer
+      {
+        "nvim-telescope/telescope-media-files.nvim",
+        config = function()
+          require("telescope").load_extension("media_files")
+        end
+      }
+    }
+
+    -- LSP
+
+    -- LSP config
+    use {
+      "neovim/nvim-lspconfig",
+      requires = {
+        {
+          "ahmedkhalf/lsp-rooter.nvim",
+          config = function()
+            require("lsp-rooter").setup()
+          end
+        },
+        {"kabouzeid/nvim-lspinstall"},
+        {"ray-x/lsp_signature.nvim"}
+      },
+      config = require("plugins.lspconfig").config
+    }
+
+    -- completion
+    use {
+      "hrsh7th/nvim-compe",
+      requires = {
+        {
+          "windwp/nvim-autopairs",
+          config = function()
+            require("nvim-autopairs").setup()
+            require("nvim-autopairs.completion.compe").setup({
+              map_complete = true
+            })
+          end
+        },
+        {"tzachar/compe-tabnine", run = "./install.sh"}
+      },
+      config = require("plugins.compe").config,
+      setup = function()
+        vim.opt.completeopt = {"menuone", "noselect"}
+      end
+    }
+
+    -- preview definition/implementation as popup
+    use {
+      "rmagatti/goto-preview",
+      config = function()
+        require("goto-preview").setup {width = 120, height = 30}
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "gpd",
+          "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+        map("n", "gpi",
+          "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+      end
+    }
+
+    -- appearance
+
+    -- buffer tab
+    use {
+      "akinsho/nvim-bufferline.lua",
+      requires = {"kyazdani42/nvim-web-devicons"},
+      config = function()
+        require("bufferline").setup {
+          options = {
+            middle_mouse_command = "bdelete! %d",
+            diagnostics = "nvim_lsp",
+            offsets = {{filetype = "NvimTree"}}
+          }
+        }
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "bh", "<cmd>BufferLineCyclePrev<cr>")
+        map("n", "bl", "<cmd>BufferLineCycleNext<cr>")
+        map("n", "bp", "<cmd>BufferLinePick<cr>")
+
+        vim.g.indent_blankline_filetype_exclude = {
+          "dashboard",
+          "help",
+          "packer"
+        }
+        vim.g.indent_blankline_show_first_indent_level = false
+      end
+    }
+
+    -- scrollbar
+    use {"dstein64/nvim-scrollview"}
+
+    -- show commit history
+    use {"f-person/git-blame.nvim"}
+
+    -- colorscheme
+    use {
+      "folke/tokyonight.nvim",
+      config = function()
+        vim.api.nvim_command("colorscheme tokyonight")
+      end,
+      setup = function()
+        vim.g.tokyonight_italic_keywords = false
+        vim.g.tokyonight_style = "night"
+        vim.opt.termguicolors = true
+      end
+    }
+
+    -- dashboard
+    use {
+      "glepnir/dashboard-nvim",
+      requires = {"nvim-telescope/telescope.nvim"},
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>fb", "<cmd>DashboardJumpMarks<cr>")
+        map("n", "<leader>tc", "<cmd>DashboardChangeColorscheme<cr>")
+        map("n", "<leader>ff", "<cmd>DashboardFindFile<cr>")
+        map("n", "<leader>fh", "<cmd>DashboardFindHistory<cr>")
+        map("n", "<leader>fa", "<cmd>DashboardFindWord<cr>")
+        map("n", "<leader>cn", "<cmd>DashboardNewFile<cr>")
+
+        vim.g.dashboard_default_executive = "telescope"
+      end
+    }
+
+    -- status line
+    use {
+      "glepnir/galaxyline.nvim",
+      requires = {"kyazdani42/nvim-web-devicons"},
+      config = require("plugins.galaxyline").config
+    }
+
+    -- smooth scrolling
+    use {
+      "karb94/neoscroll.nvim",
+      config = function()
+        require("neoscroll").setup {mappings = {"<C-d>", "<C-u>"}}
+      end
+    }
+
+    -- highlight search results
+    use {"kevinhwang91/nvim-hlslens"}
+
+    -- show Git sings (added, removed, changed)
+    use {
+      "lewis6991/gitsigns.nvim",
+      requires = {"nvim-lua/plenary.nvim"},
+      config = function()
+        require("gitsigns").setup()
+      end
+    }
+
+    -- indent line
+    use {"lukas-reineke/indent-blankline.nvim"}
+
+    -- color code
+    use {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup()
+      end
+    }
+
+    -- highlight trailing spaces
+    use {
+      "ntpeters/vim-better-whitespace",
+      setup = function()
+        vim.g.better_whitespace_filetypes_blacklist = {"dashboard"}
+      end
+    }
+
+    -- minimap viewer
+    use {"rinx/nvim-minimap", cmd = {"MinimapOpen", "MinimapToggle"}}
+
+    -- highlight ranges entered in command line
+    use {
+      "winston0410/range-highlight.nvim",
+      requires = {"winston0410/cmd-parser.nvim"},
+      config = function()
+        require("range-highlight").setup()
+      end
+    }
+
+    -- highlight cursor words
+    use {"yamatsum/nvim-cursorline"}
+
+    -- Treesitter
+    use {
+      -- Treesitter for Neovim
+      {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = function()
+          require("nvim-treesitter.configs").setup {
+            ensure_installed = "maintained",
+            highlight = {enable = true},
+            indent = {enable = true}
+          }
+        end
+      },
+      -- highlight current block
+      {
+        "folke/twilight.nvim",
+        config = function()
+          require("twilight").setup()
+        end,
+        setup = function()
+          local map = require("utils").map
+          map("n", "<leader>tw", "<cmd>Twilight<cr>")
+        end
+      },
+      -- Treesitter information viewer
+      {
+        "nvim-treesitter/playground",
+        config = function()
+          require("nvim-treesitter.configs").setup {
+            playground = {enable = true}
+          }
+        end
+      },
+      -- rainbow parentheses
+      {
+        "p00f/nvim-ts-rainbow",
+        config = function()
+          require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
+        end
+      }
+    }
+
+    -- tools
+
+    -- terminal on Vim
+    use {
+      "akinsho/nvim-toggleterm.lua",
+      config = function()
+        require("toggleterm").setup {
+          direction = "float",
+          open_mapping = "<c-t>t"
+        }
+      end
+    }
+
+    -- automarically mkdir when saving new file
+    use {
+      "jghauser/mkdir.nvim",
+      config = function()
+        require("mkdir")
+      end
+    }
+
+    -- undo history visualizer
+    use {
+      "mbbill/undotree",
+      config = function()
+        vim.g.undotree_SetFocusWhenToggle = 1
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>ud", "<cmd>UndotreeToggle<cr>")
+      end
+    }
+
+    -- peek lines interactively
+    use {
+      "nacro90/numb.nvim",
+      config = function()
+        require("numb").setup()
+      end
+    }
+
+    -- Markdown viewer
+    use {
+      "npxbr/glow.nvim",
+      ft = "markdown",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>gl", "<cmd>Glow<cr>")
+      end
+    }
+
+    -- EasyMotion
+    use {
+      "phaazon/hop.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader><cr>", "<cmd>HopWord<cr>", {silent = true})
+      end
+    }
+
+    -- symbol outline viewer
+    use {
+      "simrat39/symbols-outline.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>ol", "<cmd>SymbolsOutline<cr>")
+      end
+    }
+
+    -- diff viewer
+    use {
+      "sindrets/diffview.nvim",
+      requires = {"kyazdani42/nvim-web-devicons"},
+      config = function()
+        require("diffview").setup()
+      end
+
+    }
+
+    -- run script quickly
+    use {
+      "thinca/vim-quickrun",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>r", "<cmd>QuickRun<cr>")
+      end
+    }
+
+    -- restart Neovim
+    use {"famiu/nvim-reload"}
+
+    -- multi cursor
+    use {
+      "mg979/vim-visual-multi",
+      setup = function()
+        vim.g.VM_leader = "<space>"
+        vim.g.VM_maps = {
+          ["Find Under"] = "<m-d>",
+          ["Find Subword Under"] = "<m-d>",
+          ["Mouse Cursor"] = "<m-leftmouse>",
+          ["Mouse Word"] = "<m-rightmouse>"
+        }
+        vim.g.VM_mouse_mappings = true
+      end
+    }
+
+    -- GitHub integration
+    use {
+      "pwntester/octo.nvim",
+      requires = {"nvim-telescope/telescope.nvim"},
+      config = function()
+        require("octo").setup()
+      end
+    }
+
+    -- screenshot
+    use {
+      "segeljakt/vim-silicon",
+      cmd = {"Silicon"},
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>ss", "<cmd>Silicon<cr>")
+      end
+    }
+
+    -- cheatsheet viewer
+    use {
+      "sudormrfbin/cheatsheet.nvim",
+      requires = {"nvim-telescope/telescope.nvim"}
+    }
+
+    -- Git integration
+    use {
+      "TimUntersberger/neogit",
+      requires = "nvim-lua/plenary.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
+      end
+    }
+
+    -- window selector
+    use {
+      "tkmpypy/chowcho.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>pw", "<cmd>Chowcho<cr>")
+      end
+    }
+
+    -- move cursor to beginning of line
+    use {
+      "yuki-yano/zero.nvim",
+      config = function()
+        require("zero").setup()
+      end
+    }
+
+    -- misc
+
+    -- Discord Rich Presence
+    use {"andweeb/presence.nvim"}
+
+    -- zen mode
+    use {
+      "folke/zen-mode.nvim",
+      config = function()
+        require("zen-mode").setup()
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>zm", "<cmd>ZenMode<cr>")
+      end
+    }
+
+    -- editorconfig
+    use {"editorconfig/editorconfig-vim"}
+
+    -- calculate power as Vimmer
+    use {"thinca/vim-scouter", opt = true}
+
+    -- WakaTime
+    use {"wakatime/vim-wakatime"}
+  end
+}
