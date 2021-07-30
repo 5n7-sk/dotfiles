@@ -80,13 +80,14 @@ return require("packer").startup {
       end,
       ft = {"json"}
     }
+
     -- go
     use {
       "ray-x/go.nvim",
       config = function()
         require("go").setup()
       end,
-      ft = "go"
+      ft = {"go"}
     }
 
     -- explore
