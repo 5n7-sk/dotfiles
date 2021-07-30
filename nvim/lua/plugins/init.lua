@@ -53,6 +53,7 @@ return require("packer").startup {
           python = {{cmd = {"black --quiet", "isort"}}},
           sh = {{cmd = {"shfmt -i 2 -w"}}},
           typescript = {{cmd = {"prettier -w"}}},
+          yaml = {{cmd = {"prettier -w"}}},
           zsh = {{cmd = {"shfmt -i 2 -w"}}}
         }
       end
