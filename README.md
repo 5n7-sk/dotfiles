@@ -2,7 +2,6 @@
 
 ![screenshot](misc/screenshot-1.png)
 ![screenshot](misc/screenshot-2.png)
-![screenshot](misc/screenshot-3.png)
 
 - OS: Manjaro
 - DE: i3-gaps
