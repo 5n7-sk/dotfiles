@@ -68,6 +68,18 @@ return require("packer").startup {
 
     -- language specific
 
+    -- json
+    use {
+      "gennaro-tedesco/nvim-jqx",
+      config = function()
+        require("nvim-jqx.config").query_key = "Q"
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>jq", "<cmd>JqxList<cr>")
+      end,
+      ft = {"json"}
+    }
     -- go
     use {
       "ray-x/go.nvim",
