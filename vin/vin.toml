@@ -45,6 +45,10 @@ repo = "dandavison/delta"
 keywords = ["linux", "musl"]
 
 [[app]]
+repo = "dundee/gdu"
+name = "gdu"
+
+[[app]]
 repo = "extrawurst/gitui"
 # tag = "v0.11.0"
 keywords = ["linux", "musl"]
