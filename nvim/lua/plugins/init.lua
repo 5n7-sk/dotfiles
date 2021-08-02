@@ -91,6 +91,15 @@ return require("packer").startup {
       ft = {"go"}
     }
 
+    -- python
+    use {
+      "petobens/poet-v",
+      setup = function()
+        vim.g.poetv_auto_activate = true
+      end,
+      ft = {"python"}
+    }
+
     -- explore
 
     -- file explore
