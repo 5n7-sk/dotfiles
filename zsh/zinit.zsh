@@ -6,7 +6,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 
 zinit wait lucid light-mode for \
   agkozak/zsh-z \
-  darvid/zsh-poetry \
   mollifier/cd-gitroot \
   NullSense/fuzzy-sys \
   paulirish/git-open \
