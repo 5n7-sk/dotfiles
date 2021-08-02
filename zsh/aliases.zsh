@@ -104,7 +104,7 @@ if hash "kubectl" >/dev/null 2>&1; then
 fi
 
 if hash "nvim" >/dev/null 2>&1; then
-  alias v="nvim ."
+  alias v="nvim"
 fi
 
 if hash "poetry" >/dev/null 2>&1; then
