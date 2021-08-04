@@ -313,7 +313,11 @@ return require("packer").startup {
     }
 
     -- highlight search results
-    use {"kevinhwang91/nvim-hlslens"}
+    -- temporary use this commit to avoid errors
+    use {
+      "kevinhwang91/nvim-hlslens",
+      commit = "ada900452b2f7100c5e6bafafb87ec2979f1b423"
+    }
 
     -- show Git sings (added, removed, changed)
     use {
