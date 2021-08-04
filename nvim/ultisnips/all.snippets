@@ -1,0 +1,15 @@
+snippet date "YYYY-MM-DD"
+`!v strftime("%Y-%m-%d")`
+endsnippet
+
+snippet time "hh:mm"
+`!v strftime("%H:%M")`
+endsnippet
+
+snippet datetime "YYYY-MM-DD hh:mm" w
+`!v strftime("%Y-%m-%d %H:%M")`
+endsnippet
+
+snippet uuid "UUID" w
+`!p if not snip.c: import uuid; snip.rv = str(uuid.uuid4())`
+endsnippet
