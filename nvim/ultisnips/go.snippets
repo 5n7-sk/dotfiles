@@ -34,6 +34,30 @@ func main() {
 }
 endsnippet
 
+snippet echo "echo template"
+package main
+
+import (
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+)
+
+func main() {
+	e := echo.New()
+
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	e.GET("/ping", func(c echo.Context) error {
+		return c.String(http.StatusOK, "pong")
+	})
+
+	e.Logger.Fatal(e.Start(":1313"))
+}
+endsnippet
+
 snippet struct "struct declaration"
 type $1 struct {
 	${0:${VISUAL}}
