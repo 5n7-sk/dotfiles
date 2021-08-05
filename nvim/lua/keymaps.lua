@@ -7,6 +7,13 @@ map("n", "k", "gk")
 map("n", "gj", "j")
 map("n", "gk", "k")
 
+-- cursor behaivor for virtualedit
+-- recuired: set virtualedit and whichwrap properly
+function _G.smart_h()
+  return vim.fn.col(".") == 1 and "hl" or "h"
+end
+map("n", "h", "v:lua.smart_h()", {expr = true})
+
 map("n", "$", "$l")
 
 map("n", "sh", "<c-w>s")
