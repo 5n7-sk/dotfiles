@@ -126,6 +126,7 @@ return require("packer").startup {
         },
         setup = function()
           local map = require("utils").map
+          map("n", "<c-p>", "<cmd>Telescope commands<cr>")
           map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
           map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
         end
