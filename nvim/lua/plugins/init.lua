@@ -102,7 +102,7 @@ return require("packer").startup {
 
     -- explore
 
-    -- file explore
+    -- file explorer
     use {
       "kyazdani42/nvim-tree.lua",
       requires = {"kyazdani42/nvim-web-devicons"},
