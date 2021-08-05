@@ -13,9 +13,6 @@ vim.opt.list = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
--- ignore continuetion of comments
-vim.opt.formatoptions:remove({"cro"})
-
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
