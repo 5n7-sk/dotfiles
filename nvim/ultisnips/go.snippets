@@ -70,6 +70,14 @@ type $1 interface {
 }
 endsnippet
 
+snippet enum "enum declaration"
+type $1 int
+
+const (
+	$2 $1 = iota
+)
+endsnippet
+
 snippet if "if statement"
 if ${1:condition}${1/(.+)/ /}{
 	${0:${VISUAL}}
