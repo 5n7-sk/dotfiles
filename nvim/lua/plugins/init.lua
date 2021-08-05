@@ -573,6 +573,8 @@ return require("packer").startup {
     -- Discord Rich Presence
     use {"andweeb/presence.nvim"}
 
+    use {"drzel/vim-repo-edit", cmd = {"RepoEdit"}}
+
     -- zen mode
     use {
       "folke/zen-mode.nvim",
