@@ -10,7 +10,8 @@ map("n", "gk", "k")
 -- cursor behaivor for virtualedit
 -- recuired: set virtualedit and whichwrap properly
 function _G.smart_h()
-  return vim.fn.col(".") == 1 and "hl" or "h"
+  return string.len(vim.fn.getline(vim.fn.line(".") - 1)) > 0 and
+           vim.fn.col(".") == 1 and "hl" or "h"
 end
 map("n", "h", "v:lua.smart_h()", {expr = true})
 
