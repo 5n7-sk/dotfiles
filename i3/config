@@ -203,7 +203,6 @@ assign [class="Alacritty"]     $ws2
 assign [class="Code"]          $ws3
 assign [class="Slack"]         $ws4
 assign [class="discord"]       $ws4
-# assign [class="Enpass"]        $ws5
 for_window [class="Spotify"] move to workspace $ws5
 
 # launch apps
@@ -216,6 +215,7 @@ exec --no-startup-id spotify
 exec --no-startup-id albert
 # exec --no-startup-id dropbox
 exec --no-startup-id dunst
+exec --no-startup-id enpass
 exec --no-startup-id fcitx5
 exec --no-startup-id imwheel
 exec --no-startup-id xautolock -detectsleep -locker $dotfiles/bin/lock.sh -secure -time 30
