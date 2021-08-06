@@ -1,6 +1,7 @@
 local map = require("utils").map
 
-map("i", "jj", "<esc>")
+map("i", "<esc>", "<esc>l")
+map("i", "jj", "<esc>l")
 
 map("n", "j", "gj")
 map("n", "k", "gk")
