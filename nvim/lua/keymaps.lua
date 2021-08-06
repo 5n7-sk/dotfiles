@@ -36,6 +36,7 @@ map("n", "<m-L>", "<cmd>vertical resize +10<cr>")
 map("n", "<m-k>", "\"_dd")
 
 map("n", "<c-t>n", "<cmd>tabnew<cr>")
+map("n", "<m-w>", "<cmd>bd<cr>")
 
 map("n", "<leader>q", "<cmd>q!<cr>")
 map("n", "<leader>w", "<cmd>wa<cr>")
