@@ -69,7 +69,8 @@ return require("packer").startup {
 
     -- language specific
 
-    -- json
+    -- JSON
+    -- jq integration
     use {
       "gennaro-tedesco/nvim-jqx",
       config = function()
@@ -82,7 +83,8 @@ return require("packer").startup {
       ft = {"json"}
     }
 
-    -- go
+    -- Go
+    -- LSP support for Go
     use {
       "ray-x/go.nvim",
       config = function()
@@ -101,7 +103,8 @@ return require("packer").startup {
       ft = {"json"}
     }
 
-    -- python
+    -- Python
+    -- Poetry integration
     use {
       "petobens/poet-v",
       setup = function()
