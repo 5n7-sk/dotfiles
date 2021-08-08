@@ -422,6 +422,14 @@ return require("packer").startup {
         config = function()
           require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
         end
+      },
+      -- complete tags
+      {
+        "windwp/nvim-ts-autotag",
+        after = {"nvim-treesitter"},
+        config = function()
+          require("nvim-treesitter.configs").setup {autotag = {enable = true}}
+        end
       }
     }
 
