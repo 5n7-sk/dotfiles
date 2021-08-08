@@ -91,6 +91,16 @@ return require("packer").startup {
       ft = {"go"}
     }
 
+    -- Node.js
+    -- show latest package versions in package.json
+    use {
+      "vuki656/package-info.nvim",
+      config = function()
+        require("package-info").setup()
+      end,
+      ft = {"json"}
+    }
+
     -- python
     use {
       "petobens/poet-v",
