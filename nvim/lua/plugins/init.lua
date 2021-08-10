@@ -418,17 +418,13 @@ return require("packer").startup {
                 enable = true,
                 lookahead = true,
                 keymaps = {
-                  ["of"] = "@function.outer",
-                  ["if"] = "@function.inner",
+                  ["ic"] = "@class.inner",
                   ["oc"] = "@class.outer",
-                  ["ic"] = "@class.inner"
+                  ["if"] = "@function.inner",
+                  ["of"] = "@function.outer"
                 }
               },
-              swap = {
-                enable = true,
-                swap_next = {["sw"] = "@parameter.inner"},
-                swap_previous = {["sW"] = "@parameter.inner"}
-              }
+              swap = {enable = true, swap_next = {["sw"] = "@parameter.inner"}}
             }
           }
         end
@@ -468,8 +464,8 @@ return require("packer").startup {
       "akinsho/nvim-toggleterm.lua",
       config = function()
         require("toggleterm").setup {
-          direction = "float",
-          open_mapping = "<c-t>t"
+          open_mapping = "<c-t>t",
+          direction = "float"
         }
       end
     }
