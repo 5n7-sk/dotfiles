@@ -188,7 +188,9 @@ return require("packer").startup {
         config = function()
           require("telescope").load_extension("media_files")
         end
-      }
+      },
+      -- emoji picker
+      {"nvim-telescope/telescope-symbols.nvim", after = {"telescope.nvim"}}
     }
 
     -- LSP
@@ -403,6 +405,32 @@ return require("packer").startup {
         setup = function()
           local map = require("utils").map
           map("n", "<leader>tw", "<cmd>Twilight<cr>")
+        end
+      },
+      -- text objects
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = {"nvim-treesitter"},
+        config = function()
+          require("nvim-treesitter.configs").setup {
+            textobjects = {
+              select = {
+                enable = true,
+                lookahead = true,
+                keymaps = {
+                  ["of"] = "@function.outer",
+                  ["if"] = "@function.inner",
+                  ["oc"] = "@class.outer",
+                  ["ic"] = "@class.inner"
+                }
+              },
+              swap = {
+                enable = true,
+                swap_next = {["sw"] = "@parameter.inner"},
+                swap_previous = {["sW"] = "@parameter.inner"}
+              }
+            }
+          }
         end
       },
       -- Treesitter information viewer
