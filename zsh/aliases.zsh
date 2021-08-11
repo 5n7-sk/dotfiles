@@ -44,6 +44,8 @@ if hash "docker" >/dev/null 2>&1; then
   alias dim="docker images"
   alias dps="docker ps"
   alias dpsa="docker ps -a"
+
+  alias aws="docker run -it --rm -v "$HOME/.aws:/root/.aws" -v $(pwd):/aws amazon/aws-cli"
 fi
 
 if hash "docker-compose" >/dev/null 2>&1; then
@@ -127,6 +129,10 @@ fi
 
 if hash "ranger" >/dev/null 2>&1; then
   alias rr="ranger"
+fi
+
+if hash "terraform" >/dev/null 2>&1; then
+  alias tf="terraform"
 fi
 
 if hash "tmux" >/dev/null 2>&1; then
