@@ -14,3 +14,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           dockerfile: ./docker/neovim/Dockerfile
+          cache: true
