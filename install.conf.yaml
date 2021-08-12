@@ -13,23 +13,23 @@
     - ~/sandbox
 
 - link:
-    ~/.config/alacritty: alacritty
-    ~/.config/albert/albert.conf: albert/albert.conf
-    ~/.config/bat: bat
-    ~/.config/dunst: dunst
-    ~/.config/fs: fs
-    ~/.config/git: git
-    ~/.config/i3: i3
-    ~/.config/lsd: lsd
-    ~/.config/luaformatter: luaformatter
-    ~/.config/nvim: nvim
-    ~/.config/picom: picom
-    ~/.config/polybar: polybar
-    ~/.config/ranger: ranger
-    ~/.config/rofi: rofi
-    ~/.config/vin: vin
-    ~/.config/starship.toml: starship/starship.toml
-    ~/.config/zathura: zathura
+    ~/.config/alacritty: .config/alacritty
+    ~/.config/albert/albert.conf: .config/albert/albert.conf
+    ~/.config/bat: .config/bat
+    ~/.config/dunst: .config/dunst
+    ~/.config/fs: .config/fs
+    ~/.config/git: .config/git
+    ~/.config/i3: .config/i3
+    ~/.config/lsd: .config/lsd
+    ~/.config/luaformatter: .config/luaformatter
+    ~/.config/nvim: .config/nvim
+    ~/.config/picom: .config/picom
+    ~/.config/polybar: .config/polybar
+    ~/.config/ranger: .config/ranger
+    ~/.config/rofi: .config/rofi
+    ~/.config/vin: .config/vin
+    ~/.config/starship.toml: .config/starship/starship.toml
+    ~/.config/zathura: .config/zathura
     ~/.gitconfig: .gitconfig
     ~/.imwheelrc: .imwheelrc
     ~/.profile: .profile
