@@ -27,8 +27,8 @@
     ~/.config/polybar: .config/polybar
     ~/.config/ranger: .config/ranger
     ~/.config/rofi: .config/rofi
-    ~/.config/vin: .config/vin
     ~/.config/starship.toml: .config/starship/starship.toml
+    ~/.config/vin: .config/vin
     ~/.config/zathura: .config/zathura
     ~/.gitconfig: .gitconfig
     ~/.imwheelrc: .imwheelrc
