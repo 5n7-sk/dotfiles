@@ -65,6 +65,18 @@ RUN git clone --depth 1 https://github.com/asdf-vm/asdf.git "$HOME/.asdf" && \
 
 COPY .config/nvim /root/.config/nvim
 
-RUN nvim --headless +PackerSync +sleep30 +qa
+RUN nvim --headless +PackerSync +sleep30 +qa && \
+    nvim --headless +LspInstall bash +sleep10 +qa && \
+    nvim --headless +LspInstall css +sleep10 +qa && \
+    nvim --headless +LspInstall go +sleep10 +qa && \
+    nvim --headless +LspInstall html +sleep10 +qa && \
+    nvim --headless +LspInstall json +sleep10 +qa && \
+    nvim --headless +LspInstall latex +sleep10 +qa && \
+    nvim --headless +LspInstall lua +sleep10 +qa && \
+    nvim --headless +LspInstall python +sleep10 +qa && \
+    nvim --headless +LspInstall terraform +sleep10 +qa && \
+    nvim --headless +LspInstall typescript +sleep10 +qa && \
+    nvim --headless +LspInstall vim +sleep10 +qa && \
+    nvim --headless +LspInstall yaml +sleep10 +qa
 
 CMD ["nvim"]
