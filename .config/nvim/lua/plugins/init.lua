@@ -470,6 +470,14 @@ return require("packer").startup {
       end
     }
 
+    -- display keymaps
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup()
+      end
+    }
+
     -- automarically mkdir when saving new file
     use {
       "jghauser/mkdir.nvim",

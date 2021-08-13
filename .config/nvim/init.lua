@@ -19,6 +19,8 @@ vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 
+vim.opt.timeoutlen = 300
+
 -- install packer.nvim if not exists
 local path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
