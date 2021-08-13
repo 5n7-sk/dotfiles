@@ -646,8 +646,5 @@ return require("packer").startup {
 
     -- calculate power as Vimmer
     use {"thinca/vim-scouter", cmd = {"Scouter"}}
-
-    -- WakaTime
-    use {"wakatime/vim-wakatime"}
   end
 }
