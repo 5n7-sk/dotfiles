@@ -48,7 +48,7 @@ if hash "docker" >/dev/null 2>&1; then
   alias aws="docker run -it --rm -v "$HOME/.aws:/root/.aws" -v "$(pwd):/work" -w /work amazon/aws-cli"
   alias gcloud="docker run -it --rm -v "$(pwd):/work" -w /work gcr.io/google.com/cloudsdktool/cloud-sdk /bin/bash"
 
-  alias sbd="docker run -it --rm ghcr.io/skmatz/neovim"
+  alias sbd="docker run -it --rm ghcr.io/skmatz/neovim /bin/bash"
 fi
 
 if hash "docker-compose" >/dev/null 2>&1; then
