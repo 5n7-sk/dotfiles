@@ -52,6 +52,7 @@ return require("packer").startup {
           markdown = {{cmd = {"prettier -w"}}},
           python = {{cmd = {"black --quiet", "isort"}}},
           sh = {{cmd = {"shfmt -i 2 -w"}}},
+          terraform = {{cmd = {"terraform fmt -write"}}},
           typescript = {{cmd = {"prettier -w"}}},
           yaml = {{cmd = {"prettier -w"}}},
           zsh = {{cmd = {"shfmt -i 2 -w"}}}
