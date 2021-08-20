@@ -140,9 +140,12 @@ return require("packer").startup {
         },
         setup = function()
           local map = require("utils").map
-          map("n", "<c-p>", "<cmd>Telescope commands<cr>")
-          map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-          map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
+          map("n", "<c-p>",
+            "<cmd>lua require(\"telescope.builtin\").commands()<cr>")
+          map("n", "<leader>ff",
+            "<cmd>lua require(\"telescope.builtin\").find_files({hidden = true})<cr>")
+          map("n", "<leader>lg",
+            "<cmd>lua require(\"telescope.builtin\").live_grep()<cr>")
         end
       },
       -- todo viewer
@@ -305,7 +308,7 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<leader>fb", "<cmd>DashboardJumpMarks<cr>")
         map("n", "<leader>tc", "<cmd>DashboardChangeColorscheme<cr>")
-        map("n", "<leader>ff", "<cmd>DashboardFindFile<cr>")
+        -- map("n", "<leader>ff", "<cmd>DashboardFindFile<cr>")
         map("n", "<leader>fh", "<cmd>DashboardFindHistory<cr>")
         map("n", "<leader>fa", "<cmd>DashboardFindWord<cr>")
         map("n", "<leader>cn", "<cmd>DashboardNewFile<cr>")
