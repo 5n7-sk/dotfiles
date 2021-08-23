@@ -27,7 +27,7 @@ local config = function()
     "html",
     "jsonls",
     "pyright",
-    -- "sumneko_lua",
+    "sumneko_lua",
     "terraformls",
     -- "texlab",
     "vimls",
