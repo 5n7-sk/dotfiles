@@ -220,6 +220,13 @@ return require("packer").startup {
       "hrsh7th/nvim-compe",
       requires = {
         {
+          "onsails/lspkind-nvim",
+          config = function()
+            require("lspkind").init()
+          end
+        },
+        {"tzachar/compe-tabnine", run = "./install.sh"},
+        {
           "windwp/nvim-autopairs",
           config = function()
             require("nvim-autopairs").setup()
@@ -227,8 +234,7 @@ return require("packer").startup {
               map_complete = true
             })
           end
-        },
-        {"tzachar/compe-tabnine", run = "./install.sh"}
+        }
       },
       config = require("plugins.compe").config,
       setup = function()
