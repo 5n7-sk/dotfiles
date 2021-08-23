@@ -1,6 +1,7 @@
 local config = function()
   local bufmap = require("utils").bufmap
   local bufset = require("utils").bufset
+  local installer = require("nvim-lsp-installer")
 
   local on_attach = function(_, buffer)
     require("lsp_signature").on_attach()
@@ -19,21 +20,34 @@ local config = function()
       "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
   end
 
-  local setup_servers = function()
-    require("lspinstall").setup()
+  local server_names = {
+    "bashls",
+    "dockerls",
+    "gopls",
+    "html",
+    "jsonls",
+    "pyright",
+    -- "sumneko_lua",
+    "terraformls",
+    -- "texlab",
+    "vimls",
+    "yamlls"
+  }
 
-    local servers = require("lspinstall").installed_servers()
-    for _, server in pairs(servers) do
-      require("lspconfig")[server].setup({on_attach = on_attach})
+  for _, server_name in ipairs(server_names) do
+    local ok, server = installer.get_server(server_name)
+    if ok then
+      if not server:is_installed() then
+        server:install()
+      end
     end
   end
 
-  setup_servers()
-
-  require("lspinstall").post_install_hook = function()
-    setup_servers()
-    vim.cmd("bufdo e")
-  end
+  installer.on_server_ready(function(server)
+    local opts = {on_attach = on_attach}
+    server:setup(opts)
+    vim.cmd("do User LspAttachBuffers")
+  end)
 end
 
 return {config = config}

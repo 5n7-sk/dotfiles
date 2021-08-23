@@ -209,8 +209,8 @@ return require("packer").startup {
             require("lsp-rooter").setup()
           end
         },
-        {"kabouzeid/nvim-lspinstall"},
-        {"ray-x/lsp_signature.nvim"}
+        {"ray-x/lsp_signature.nvim"},
+        {"williamboman/nvim-lsp-installer", requires = {"rcarriga/nvim-notify"}}
       },
       config = require("plugins.lspconfig").config
     }
@@ -576,6 +576,13 @@ return require("packer").startup {
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("octo").setup()
+      end
+    }
+
+    use {
+      "rcarriga/nvim-notify",
+      config = function()
+        vim.notify = require("notify")
       end
     }
 
