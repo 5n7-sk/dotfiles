@@ -45,6 +45,14 @@ local config = function()
 
   installer.on_server_ready(function(server)
     local opts = {on_attach = on_attach}
+
+    if server.name == "pyright" then
+      local python_path = ".venv/bin/python"
+      if vim.fn.filereadable(python_path) then
+        opts.settings = {python = {pythonPath = python_path}}
+      end
+    end
+
     server:setup(opts)
     vim.cmd("do User LspAttachBuffers")
   end)
