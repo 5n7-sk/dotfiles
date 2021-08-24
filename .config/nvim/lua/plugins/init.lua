@@ -50,7 +50,7 @@ return require("packer").startup {
           go = {{cmd = {"goimports -w"}}},
           lua = {{cmd = {"lua-format -i"}}},
           markdown = {{cmd = {"prettier -w"}}},
-          python = {{cmd = {"black --quiet", "isort"}}},
+          python = {{cmd = {"poetry run black --quiet", "poetry run isort"}}},
           sh = {{cmd = {"shfmt -i 2 -w"}}},
           terraform = {{cmd = {"terraform fmt -write"}}},
           typescript = {{cmd = {"prettier -w"}}},
