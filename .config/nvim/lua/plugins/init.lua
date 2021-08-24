@@ -70,6 +70,10 @@ return require("packer").startup {
 
     -- language specific
 
+    -- i3
+    -- syntax highlighting
+    use {"mboughaba/i3config.vim"}
+
     -- JSON
     -- jq integration
     use {
