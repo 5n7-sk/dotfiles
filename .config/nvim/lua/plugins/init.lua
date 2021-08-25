@@ -152,6 +152,18 @@ return require("packer").startup {
             "<cmd>lua require(\"telescope.builtin\").live_grep()<cr>")
         end
       },
+      -- UltiSnips integration
+      {
+        "fhill2/telescope-ultisnips.nvim",
+        after = {"telescope.nvim"},
+        config = function()
+          require("telescope").load_extension("ultisnips")
+        end,
+        setup = function()
+          local map = require("utils").map
+          map("n", "<leader>sp", "<cmd>Telescope ultisnips<cr>")
+        end
+      },
       -- todo viewer
       {
         "folke/todo-comments.nvim",
