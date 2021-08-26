@@ -32,9 +32,11 @@ RUN apt-get update && \
     llvm \
     make \
     tk-dev \
+    tmux \
     wget \
     xz-utils \
-    zlib1g-dev && \
+    zlib1g-dev \
+    zsh && \
     apt-get -y clean && \
     rm -r /var/lib/apt/lists/*
 
