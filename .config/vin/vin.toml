@@ -15,6 +15,10 @@ repo = "b4b4r07/gomi"
 keywords = ["linux", "x86_64"]
 
 [[app]]
+repo = "Bhupesh-V/ugit"
+keywords = ["ugit"]
+
+[[app]]
 repo = "BurntSushi/ripgrep"
 keywords = ["linux", "x86_64"]
 
