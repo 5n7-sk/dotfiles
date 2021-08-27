@@ -50,7 +50,6 @@ local config = function()
     if server.name == "efm" then
       opts.filetypes = {"python"}
       opts.settings = {
-        rootMarkers = {".git/"},
         languages = {
           python = {
             -- flake8
