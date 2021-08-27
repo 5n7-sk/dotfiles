@@ -270,6 +270,7 @@ return require("packer").startup {
           "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
         map("n", "gpi",
           "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+        map("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>")
       end
     }
 
