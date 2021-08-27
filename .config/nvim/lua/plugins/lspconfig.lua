@@ -23,6 +23,7 @@ local config = function()
   local server_names = {
     "bashls",
     "dockerls",
+    "efm",
     "gopls",
     "html",
     "jsonls",
@@ -45,6 +46,23 @@ local config = function()
 
   installer.on_server_ready(function(server)
     local opts = {on_attach = on_attach}
+
+    if server.name == "efm" then
+      opts.filetypes = {"python"}
+      opts.settings = {
+        rootMarkers = {".git/"},
+        languages = {
+          python = {
+            -- flake8
+            {
+              lintCommand = "poetry run flake8 --stdin-display-name ${INPUT} -",
+              lintStdin = true,
+              lintFormats = {"%f:%l%c: %m"}
+            }
+          }
+        }
+      }
+    end
 
     if server.name == "pyright" then
       local python_path = ".venv/bin/python"
