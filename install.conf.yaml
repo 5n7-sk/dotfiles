@@ -34,6 +34,7 @@
     ~/.imwheelrc: .imwheelrc
     ~/.profile: .profile
     ~/.tmux.conf: .tmux.conf
+    ~/.tool-versions: .tool-versions
     ~/.xinitrc: .xinitrc
     ~/.Xmodmap: .Xmodmap
     ~/.xprofile: .xprofile
