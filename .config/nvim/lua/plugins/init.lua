@@ -35,6 +35,33 @@ return require("packer").startup {
       end
     }
 
+    -- completion
+    use {
+      "hrsh7th/nvim-compe",
+      requires = {
+        {
+          "onsails/lspkind-nvim",
+          config = function()
+            require("lspkind").init()
+          end
+        },
+        {"tzachar/compe-tabnine", run = "./install.sh"},
+        {
+          "windwp/nvim-autopairs",
+          config = function()
+            require("nvim-autopairs").setup()
+            require("nvim-autopairs.completion.compe").setup({
+              map_complete = true
+            })
+          end
+        }
+      },
+      config = require("plugins.compe").config,
+      setup = function()
+        vim.opt.completeopt = {"menuone", "noselect"}
+      end
+    }
+
     -- formatter
     use {
       "lukas-reineke/format.nvim",
@@ -257,33 +284,6 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<f2>", "<cmd>Lspsaga rename<cr>")
         map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
-      end
-    }
-
-    -- completion
-    use {
-      "hrsh7th/nvim-compe",
-      requires = {
-        {
-          "onsails/lspkind-nvim",
-          config = function()
-            require("lspkind").init()
-          end
-        },
-        {"tzachar/compe-tabnine", run = "./install.sh"},
-        {
-          "windwp/nvim-autopairs",
-          config = function()
-            require("nvim-autopairs").setup()
-            require("nvim-autopairs.completion.compe").setup({
-              map_complete = true
-            })
-          end
-        }
-      },
-      config = require("plugins.compe").config,
-      setup = function()
-        vim.opt.completeopt = {"menuone", "noselect"}
       end
     }
 
