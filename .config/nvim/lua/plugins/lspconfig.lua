@@ -54,7 +54,7 @@ local config = function()
           python = {
             -- flake8
             {
-              lintCommand = "poetry run flake8 --stdin-display-name ${INPUT} -",
+              lintCommand = "flake8 --stdin-display-name ${INPUT} -",
               lintStdin = true,
               lintFormats = {"%f:%l%c: %m"}
             }
