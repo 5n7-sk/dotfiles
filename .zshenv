@@ -12,12 +12,7 @@ export PATH="$HOME/bin:$PATH"
 # Docker
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
-# go
-export GOPATH="$HOME/go"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
-
-# python
+# Python
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # dotfiles
@@ -27,7 +22,7 @@ export PATH="$DOTFILES/bin:$PATH"
 # vin
 export PATH="$HOME/.vin/bin:$PATH"
 
-# starship
+# Starship
 if hash "starship" >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
