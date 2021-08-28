@@ -14,8 +14,6 @@ local config = function()
     bufmap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
     bufmap(buffer, "n", "<space>wl",
       "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
-    bufmap(buffer, "n", "<f2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
-    bufmap(buffer, "n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
     bufmap(buffer, "n", "<space>e",
       "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
   end

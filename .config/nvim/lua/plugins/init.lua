@@ -248,6 +248,18 @@ return require("packer").startup {
       config = require("plugins.lspconfig").config
     }
 
+    use {
+      "glepnir/lspsaga.nvim",
+      config = function()
+        require("lspsaga").init_lsp_saga()
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<f2>", "<cmd>Lspsaga rename<cr>")
+        map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
+      end
+    }
+
     -- completion
     use {
       "hrsh7th/nvim-compe",
