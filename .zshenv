@@ -12,11 +12,6 @@ export PATH="$HOME/bin:$PATH"
 # Docker
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
-# fnm
-if hash "fnm" >/dev/null 2>&1; then
-  eval "$(fnm env)"
-fi
-
 # go
 export GOPATH="$HOME/go"
 export PATH="/usr/local/go/bin:$PATH"
