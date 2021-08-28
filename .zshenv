@@ -12,6 +12,10 @@ export PATH="$HOME/bin:$PATH"
 # Docker
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
+# Go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
 # Python
 export PATH="$HOME/.poetry/bin:$PATH"
 
