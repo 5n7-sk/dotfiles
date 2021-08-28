@@ -142,6 +142,23 @@ return require("packer").startup {
           "nvim-lua/plenary.nvim",
           "nvim-lua/popup.nvim"
         },
+        config = function()
+          require("telescope").setup {
+            defaults = {
+              vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--column",
+                "--glob=!.git/**",
+                "--hidden",
+                "--line-number",
+                "--no-heading",
+                "--smart-case",
+                "--with-filename"
+              }
+            }
+          }
+        end,
         setup = function()
           local map = require("utils").map
           map("n", "<c-p>",
