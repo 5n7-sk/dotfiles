@@ -1,3 +1,9 @@
 snippet shebang "shebang"
 #!/usr/bin/env ${1:bash}
 endsnippet
+
+snippet executable "if command exists"
+if hash "docker" >/dev/null 2>&1; then
+	$1
+fi
+endsnippet
