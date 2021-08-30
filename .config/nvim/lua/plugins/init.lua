@@ -19,11 +19,16 @@ return require("packer").startup {
     use {
       "b3nj5m1n/kommentary",
       config = function()
-        local map = require("utils").map
-        map("n", "<c-_>", "<Plug>kommentary_line_default", {noremap = false})
-        map("v", "<c-_>", "<Plug>kommentary_visual_default", {noremap = false})
+        require("kommentary.config").configure_language("default", {
+          prefer_single_line_comments = true
+        })
+
       end,
       setup = function()
+        local map = require("utils").map
+        map("n", "<c-_>", "<plug>kommentary_line_default", {noremap = false})
+        map("v", "<c-_>", "<plug>kommentary_visual_default", {noremap = false})
+
         vim.g.kommentary_create_default_mappings = false
       end
     }
