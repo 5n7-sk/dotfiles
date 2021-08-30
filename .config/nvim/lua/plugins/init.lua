@@ -342,7 +342,7 @@ return require("packer").startup {
     -- scrollbar
     use {"dstein64/nvim-scrollview"}
 
-    -- show commit history
+    -- show line blame
     use {"f-person/git-blame.nvim"}
 
     -- colorscheme
