@@ -203,12 +203,10 @@ return require("packer").startup {
         end,
         setup = function()
           local map = require("utils").map
-          map("n", "<c-p>",
-            "<cmd>lua require(\"telescope.builtin\").commands()<cr>")
+          map("n", "<c-p>", "<cmd>Telescope commands<cr>")
           map("n", "<leader>ff",
-            "<cmd>lua require(\"telescope.builtin\").find_files({hidden = true})<cr>")
-          map("n", "<leader>lg",
-            "<cmd>lua require(\"telescope.builtin\").live_grep()<cr>")
+            "<cmd>Telescope find_files find_command=rg,--files,--glob=!.git/**,--hidden,--no-ignore<cr>")
+          map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
         end
       },
       -- UltiSnips integration
