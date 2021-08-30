@@ -527,16 +527,6 @@ return require("packer").startup {
       end
     }
 
-    -- delete buffers
-    use {
-      "famiu/bufdelete.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<m-w>",
-          "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
-      end
-    }
-
     -- display keymaps
     use {
       "folke/which-key.nvim",
