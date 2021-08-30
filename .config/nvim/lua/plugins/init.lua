@@ -1,5 +1,9 @@
 vim.api.nvim_command("packadd packer.nvim")
-require("impatient")
+
+-- ignore errors
+pcall(function()
+  require("impatient")
+end)
 
 return require("packer").startup {
   function(use)
