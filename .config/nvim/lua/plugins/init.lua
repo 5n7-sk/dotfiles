@@ -1,4 +1,5 @@
 vim.api.nvim_command("packadd packer.nvim")
+require("impatient")
 
 return require("packer").startup {
   function(use)
@@ -6,6 +7,11 @@ return require("packer").startup {
 
     -- packer
     use {"wbthomason/packer.nvim", opt = true}
+
+    -- core
+
+    -- speed-up
+    use {"lewis6991/impatient.nvim", rocks = {"mpack"}}
 
     -- coding support
 
