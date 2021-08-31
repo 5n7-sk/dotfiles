@@ -3,7 +3,7 @@ snippet shebang "shebang"
 endsnippet
 
 snippet executable "if command exists"
-if hash "docker" >/dev/null 2>&1; then
-	$1
+if hash "$1" >/dev/null 2>&1; then
+	${0:${VISUAL}}
 fi
 endsnippet
