@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# asdf
+if hash "asdf" >/dev/null 2>&1; then
+  asdf update
+  asdf plugin update --all
+fi
+
+# npm
+if hash "npm" >/dev/null 2>&1; then
+  npm install -g npm
+fi
+
+# pip
+if hash "pip" >/dev/null 2>&1; then
+  pip install --upgrade pip
+fi
+
+# poetry
+if hash "poetry" >/dev/null 2>&1; then
+  poetry self update
+fi
+
+# yay
+if hash "yay" >/dev/null 2>&1; then
+  yay -Syyu --noconfirm
+  yay -Yc
+fi
+
+# zinit
+if hash "zinit" >/dev/null 2>&1; then
+  zinit self-update
+  zinit update
+fi
