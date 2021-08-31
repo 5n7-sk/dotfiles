@@ -209,6 +209,19 @@ return require("packer").startup {
           map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
         end
       },
+      -- clipboard manager
+      {
+        "AckslD/nvim-neoclip.lua",
+        after = {"telescope.nvim"},
+        config = function()
+          require("telescope").load_extension("neoclip")
+          require("neoclip").setup()
+        end,
+        setup = function()
+          local map = require("utils").map
+          map("n", "<leader>cb", "<cmd>Telescope neoclip<cr>")
+        end
+      },
       -- UltiSnips integration
       {
         "fhill2/telescope-ultisnips.nvim",
