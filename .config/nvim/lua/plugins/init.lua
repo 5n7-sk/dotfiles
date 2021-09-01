@@ -167,11 +167,13 @@ return require("packer").startup {
       "kyazdani42/nvim-tree.lua",
       requires = {"kyazdani42/nvim-web-devicons"},
       config = function()
+        require("plugins.nvim-tree").config()
+      end,
+      setup = function()
         local map = require("utils").map
         map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
-
-        vim.g.nvim_tree_width = 40
-      end
+      end,
+      cmd = {"NvimTreeToggle"}
     }
 
     -- Telescope
