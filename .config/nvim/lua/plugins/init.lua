@@ -682,6 +682,15 @@ return require("packer").startup {
       cmd = {"Silicon"}
     }
 
+    -- Google Keep
+    use {
+      "stevearc/gkeep.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>gk", "<cmd>GkeepToggle<cr>")
+      end
+    }
+
     -- cheatsheet viewer
     use {
       "sudormrfbin/cheatsheet.nvim",
