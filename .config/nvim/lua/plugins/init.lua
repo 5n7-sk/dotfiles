@@ -52,26 +52,26 @@ return require("packer").startup {
 
     -- completion
     use {
-      "hrsh7th/nvim-compe",
+      "hrsh7th/nvim-cmp",
       requires = {
-        {
-          "onsails/lspkind-nvim",
-          config = function()
-            require("lspkind").init()
-          end
-        },
-        {"tzachar/compe-tabnine", run = "./install.sh"},
+        {"hrsh7th/cmp-buffer"},
+        {"hrsh7th/cmp-calc"},
+        {"hrsh7th/cmp-emoji"},
+        {"hrsh7th/cmp-nvim-lsp"},
+        {"hrsh7th/cmp-nvim-lua"},
+        {"hrsh7th/cmp-path"},
+        {"onsails/lspkind-nvim"},
+        {"quangnguyen30192/cmp-nvim-ultisnips"},
+        {"tzachar/cmp-tabnine", run = "./install.sh"},
         {
           "windwp/nvim-autopairs",
           config = function()
             require("nvim-autopairs").setup()
-            require("nvim-autopairs.completion.compe").setup({
-              map_complete = true
-            })
+            require("nvim-autopairs.completion.cmp").setup({map_complete = true})
           end
         }
       },
-      config = require("plugins.compe").config,
+      config = require("plugins.cmp").config,
       setup = function()
         vim.opt.completeopt = {"menuone", "noselect"}
       end
