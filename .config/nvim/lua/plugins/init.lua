@@ -166,9 +166,7 @@ return require("packer").startup {
     use {
       "kyazdani42/nvim-tree.lua",
       requires = {"kyazdani42/nvim-web-devicons"},
-      config = function()
-        require("plugins.nvim-tree").config()
-      end,
+      config = require("plugins.nvim-tree").config,
       setup = function()
         local map = require("utils").map
         map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
