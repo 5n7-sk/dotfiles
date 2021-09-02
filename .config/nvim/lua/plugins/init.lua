@@ -724,6 +724,7 @@ return require("packer").startup {
     -- Discord Rich Presence
     use {"andweeb/presence.nvim"}
 
+    -- github1s like
     use {"drzel/vim-repo-edit", cmd = {"RepoEdit"}}
 
     -- calculate startup time
