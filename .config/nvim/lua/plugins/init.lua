@@ -634,6 +634,17 @@ return require("packer").startup {
       end
     }
 
+    -- replace text
+    use {
+      "windwp/nvim-spectre",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>s", "<cmd>lua require(\"spectre\").open()<cr>")
+        map("n", "<leader>S",
+          "<cmd>lua require(\"spectre\").open_visual({select_word = true})<cr>")
+      end
+    }
+
     -- restart Neovim
     use {"famiu/nvim-reload"}
 
