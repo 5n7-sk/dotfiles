@@ -60,8 +60,7 @@ local config = function()
   end
 
   local inactive_statusline = function()
-    return buffer_not_empty() and
-             not hasvalue(gl.short_line_list, vim.bo.filetype)
+    return buffer_not_empty() and not hasvalue(gl.short_line_list, vim.bo.filetype)
   end
 
   local checkwidth = function()
@@ -157,8 +156,7 @@ local config = function()
   end
 
   local function get_current_func()
-    local has_func, func_name = pcall(vim.api.nvim_buf_get_var, 0,
-                                  "coc_current_function")
+    local has_func, func_name = pcall(vim.api.nvim_buf_get_var, 0, "coc_current_function")
     if not has_func then
       return
     end
@@ -211,10 +209,7 @@ local config = function()
           "FileIcon"
         },
         condition = buffer_not_empty,
-        highlight = {
-          require("galaxyline.provider_fileinfo").get_file_icon,
-          colors.section_bg
-        }
+        highlight = {require("galaxyline.provider_fileinfo").get_file_icon, colors.section_bg}
       }
     },
     {
@@ -224,13 +219,7 @@ local config = function()
         highlight = {colors.fg, colors.section_bg}
       }
     },
-    {
-      CocFunc = {
-        provider = CocFunc,
-        icon = " λ",
-        highlight = {colors.yellow, colors.section_bg}
-      }
-    },
+    {CocFunc = {provider = CocFunc, icon = " λ", highlight = {colors.yellow, colors.section_bg}}},
     {
       Space = {
         provider = function()
@@ -239,46 +228,14 @@ local config = function()
         highlight = {colors.bg, colors.bg}
       }
     },
-    {
-      DiagnosticError = {
-        provider = "DiagnosticError",
-        icon = "  ",
-        highlight = {colors.red1, colors.bg}
-      }
-    },
-    {
-      DiagnosticWarn = {
-        provider = "DiagnosticWarn",
-        icon = "  ",
-        highlight = {colors.orange, colors.bg}
-      }
-    },
-    {
-      DiagnosticInfo = {
-        provider = "DiagnosticInfo",
-        icon = "  ",
-        highlight = {colors.blue, colors.bg}
-      }
-    },
-    {
-      DiagnosticHint = {
-        provider = "DiagnosticHint",
-        icon = "  ",
-        highlight = {colors.grey, colors.bg}
-      }
-    }
+    {DiagnosticError = {provider = "DiagnosticError", icon = "  ", highlight = {colors.red1, colors.bg}}},
+    {DiagnosticWarn = {provider = "DiagnosticWarn", icon = "  ", highlight = {colors.orange, colors.bg}}},
+    {DiagnosticInfo = {provider = "DiagnosticInfo", icon = "  ", highlight = {colors.blue, colors.bg}}},
+    {DiagnosticHint = {provider = "DiagnosticHint", icon = "  ", highlight = {colors.grey, colors.bg}}}
   }
 
   -- Mid section
-  gls.mid = {
-    {
-      CocStatus = {
-        provider = CocStatus,
-        highlight = {colors.green, colors.bg},
-        icon = "  "
-      }
-    }
-  }
+  gls.mid = {{CocStatus = {provider = CocStatus, highlight = {colors.green, colors.bg}, icon = "  "}}}
 
   local get_coc_git_status = function()
     if vim.fn.exists("b:coc_git_status") ~= 1 then
@@ -336,14 +293,7 @@ local config = function()
 
   -- Right side
   local right_1 = {
-    {
-      DiffAdd = {
-        provider = CocDiffAdd,
-        condition = checkwidth,
-        icon = "+",
-        highlight = {colors.green, colors.bg}
-      }
-    },
+    {DiffAdd = {provider = CocDiffAdd, condition = checkwidth, icon = "+", highlight = {colors.green, colors.bg}}},
     {
       DiffModified = {
         provider = CocDiffModified,
@@ -352,14 +302,7 @@ local config = function()
         highlight = {colors.orange, colors.bg}
       }
     },
-    {
-      DiffRemove = {
-        provider = CocDiffRemove,
-        condition = checkwidth,
-        icon = "-",
-        highlight = {colors.red1, colors.bg}
-      }
-    },
+    {DiffRemove = {provider = CocDiffRemove, condition = checkwidth, icon = "-", highlight = {colors.red1, colors.bg}}},
     {
       Space = {
         provider = function()
@@ -379,8 +322,7 @@ local config = function()
             return " "
           end
         },
-        condition = buffer_not_empty and
-          require("galaxyline.condition").check_git_workspace,
+        condition = buffer_not_empty and require("galaxyline.condition").check_git_workspace,
         highlight = {colors.fg, colors.section_bg}
       }
     },
@@ -389,8 +331,7 @@ local config = function()
         provider = function()
           return " "
         end,
-        condition = buffer_not_empty and
-          require("galaxyline.condition").check_git_workspace,
+        condition = buffer_not_empty and require("galaxyline.condition").check_git_workspace,
         highlight = {colors.fg, colors.section_bg}
       }
     },
@@ -402,8 +343,7 @@ local config = function()
             return " "
           end
         },
-        condition = buffer_not_empty and
-          require("galaxyline.condition").check_git_workspace,
+        condition = buffer_not_empty and require("galaxyline.condition").check_git_workspace,
         highlight = {colors.fg, colors.section_bg}
       }
     },
@@ -500,8 +440,7 @@ local config = function()
     gl.load_galaxyline()
   end
 
-  vim.api.nvim_set_keymap("n", "!", ":lua ToggleGalaxyline()<CR>",
-    {noremap = true, silent = true})
+  vim.api.nvim_set_keymap("n", "!", ":lua ToggleGalaxyline()<CR>", {noremap = true, silent = true})
 
   -- Short status line
   gls.short_line_left = {
@@ -522,10 +461,7 @@ local config = function()
           "FileIcon"
         },
         condition = inactive_statusline,
-        highlight = {
-          require("galaxyline.provider_fileinfo").get_file_icon,
-          colors.section_bg
-        }
+        highlight = {require("galaxyline.provider_fileinfo").get_file_icon, colors.section_bg}
       }
     },
     {
@@ -538,12 +474,7 @@ local config = function()
   }
 
   gls.short_line_right = {
-    {
-      SBufferIcon = {
-        provider = "BufferIcon",
-        highlight = {colors.fg, colors.bg}
-      }
-    }
+    {SBufferIcon = {provider = "BufferIcon", highlight = {colors.fg, colors.bg}}}
     -- {
     --   SGitIcon = {
     --     provider = function() return '  ' end,

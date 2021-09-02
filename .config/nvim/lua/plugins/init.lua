@@ -18,9 +18,7 @@ return require("packer").startup {
     use {
       "b3nj5m1n/kommentary",
       config = function()
-        require("kommentary.config").configure_language("default", {
-          prefer_single_line_comments = true
-        })
+        require("kommentary.config").configure_language("default", {prefer_single_line_comments = true})
       end,
       setup = function()
         local map = require("utils").map
@@ -173,11 +171,7 @@ return require("packer").startup {
       -- Telescope
       {
         "nvim-telescope/telescope.nvim",
-        requires = {
-          "kyazdani42/nvim-web-devicons",
-          "nvim-lua/plenary.nvim",
-          "nvim-lua/popup.nvim"
-        },
+        requires = {"kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
         config = function()
           require("telescope").setup {
             defaults = {
@@ -316,10 +310,8 @@ return require("packer").startup {
       end,
       setup = function()
         local map = require("utils").map
-        map("n", "gpd",
-          "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
-        map("n", "gpi",
-          "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+        map("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+        map("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
         map("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>")
       end
     }
@@ -345,11 +337,7 @@ return require("packer").startup {
         map("n", "bl", "<cmd>BufferLineCycleNext<cr>")
         map("n", "bp", "<cmd>BufferLinePick<cr>")
 
-        vim.g.indent_blankline_filetype_exclude = {
-          "dashboard",
-          "help",
-          "packer"
-        }
+        vim.g.indent_blankline_filetype_exclude = {"dashboard", "help", "packer"}
         vim.g.indent_blankline_show_first_indent_level = false
       end
     }
@@ -431,10 +419,7 @@ return require("packer").startup {
     use {
       "ntpeters/vim-better-whitespace",
       setup = function()
-        vim.g.better_whitespace_filetypes_blacklist = {
-          "dashboard",
-          "TelescopePrompt"
-        }
+        vim.g.better_whitespace_filetypes_blacklist = {"dashboard", "TelescopePrompt"}
       end
     }
 
@@ -506,9 +491,7 @@ return require("packer").startup {
         "nvim-treesitter/playground",
         after = {"nvim-treesitter"},
         config = function()
-          require("nvim-treesitter.configs").setup {
-            playground = {enable = true}
-          }
+          require("nvim-treesitter.configs").setup {playground = {enable = true}}
         end
       },
       -- rainbow parentheses
@@ -535,10 +518,7 @@ return require("packer").startup {
     use {
       "akinsho/nvim-toggleterm.lua",
       config = function()
-        require("toggleterm").setup {
-          open_mapping = "<c-t>t",
-          direction = "float"
-        }
+        require("toggleterm").setup {open_mapping = "<c-t>t", direction = "float"}
       end
     }
 
@@ -547,8 +527,7 @@ return require("packer").startup {
       "famiu/bufdelete.nvim",
       setup = function()
         local map = require("utils").map
-        map("n", "<m-w>",
-          "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
+        map("n", "<m-w>", "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
       end
     }
 
@@ -640,8 +619,7 @@ return require("packer").startup {
       setup = function()
         local map = require("utils").map
         map("n", "<leader>s", "<cmd>lua require(\"spectre\").open()<cr>")
-        map("n", "<leader>S",
-          "<cmd>lua require(\"spectre\").open_visual({select_word = true})<cr>")
+        map("n", "<leader>S", "<cmd>lua require(\"spectre\").open_visual({select_word = true})<cr>")
       end
     }
 
@@ -699,10 +677,7 @@ return require("packer").startup {
     }
 
     -- cheatsheet viewer
-    use {
-      "sudormrfbin/cheatsheet.nvim",
-      requires = {"nvim-telescope/telescope.nvim"}
-    }
+    use {"sudormrfbin/cheatsheet.nvim", requires = {"nvim-telescope/telescope.nvim"}}
 
     -- Git integration
     use {

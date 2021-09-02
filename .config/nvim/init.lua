@@ -27,12 +27,7 @@ vim.opt.timeoutlen = 300
 local path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(path)) > 0 then
-  vim.fn.system({
-    "git",
-    "clone",
-    "https://github.com/wbthomason/packer.nvim",
-    path
-  })
+  vim.fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", path})
 end
 
 require("plugins")

@@ -9,9 +9,7 @@ local config = function()
     },
     formatting = {
       format = function(entry, vim_item)
-        vim_item.kind =
-          require("lspkind").presets.default[vim_item.kind] .. " " ..
-            vim_item.kind
+        vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
 
         vim_item.menu = ({
           buffer = "[Buffer]",
@@ -34,10 +32,7 @@ local config = function()
       ["<c-d>"] = cmp.mapping.scroll_docs(5),
       ["<c-space>"] = cmp.mapping.complete(),
       ["<c-e>"] = cmp.mapping.close(),
-      ["<cr>"] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true
-      }
+      ["<cr>"] = cmp.mapping.confirm {behavior = cmp.ConfirmBehavior.Replace, select = true}
     },
     sources = {
       {name = "buffer"},
