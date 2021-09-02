@@ -1,3 +1,5 @@
+pcall(require, "impatient")
+
 vim.g.mapleader = " "
 
 vim.opt.cursorline = true

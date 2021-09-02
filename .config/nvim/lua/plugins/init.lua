@@ -1,10 +1,5 @@
 vim.api.nvim_command("packadd packer.nvim")
 
--- ignore errors
-pcall(function()
-  require("impatient")
-end)
-
 return require("packer").startup {
   function(use)
     -- plugin manager
