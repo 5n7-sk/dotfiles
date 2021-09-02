@@ -201,6 +201,7 @@ return require("packer").startup {
           map("n", "<leader>ff",
             "<cmd>Telescope find_files find_command=rg,--files,--glob=!.git/**,--hidden,--no-ignore<cr>")
           map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
+          map("n", "<c-m>", "<cmd>Telescope lsp_workspace_diagnostics<cr>")
         end
       },
       -- clipboard manager
