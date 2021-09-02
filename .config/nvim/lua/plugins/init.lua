@@ -726,6 +726,9 @@ return require("packer").startup {
 
     use {"drzel/vim-repo-edit", cmd = {"RepoEdit"}}
 
+    -- calculate startup time
+    use {"dstein64/vim-startuptime", cmd = "StartupTime"}
+
     -- zen mode
     use {
       "folke/zen-mode.nvim",
