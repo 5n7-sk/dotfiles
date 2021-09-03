@@ -3,7 +3,7 @@
 i3lock \
   --nofork \
   --no-unlock-indicator \
-  --image="$DOTFILES/images/lock/lock.jpg" \
+  --image="$DOTFILES/images/calvin-and-hobbes.jpg" \
   --ignore-empty-password \
   --tiling \
   \
