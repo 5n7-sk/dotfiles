@@ -628,6 +628,7 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<leader>s", "<cmd>lua require(\"spectre\").open()<cr>")
         map("n", "<leader>S", "<cmd>lua require(\"spectre\").open_visual({select_word = true})<cr>")
+        map("v", "<leader>s", "<cmd>lua require(\"spectre\").open_visual()<cr>")
       end
     }
 
