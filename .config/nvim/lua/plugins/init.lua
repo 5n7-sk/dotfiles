@@ -1,4 +1,4 @@
-vim.api.nvim_command("packadd packer.nvim")
+vim.cmd("packadd packer.nvim")
 
 return require("packer").startup {
   function(use)
@@ -360,7 +360,7 @@ return require("packer").startup {
     use {
       "folke/tokyonight.nvim",
       config = function()
-        vim.api.nvim_command("colorscheme tokyonight")
+        vim.cmd("colorscheme tokyonight")
       end,
       setup = function()
         vim.g.tokyonight_italic_keywords = false

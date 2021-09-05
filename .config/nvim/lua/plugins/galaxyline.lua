@@ -190,7 +190,7 @@ local config = function()
             s = "SELECT",
             S = "S-LINE"
           }
-          vim.api.nvim_command("hi GalaxyViMode guibg=" .. mode_color())
+          vim.cmd("hi GalaxyViMode guibg=" .. mode_color())
           if alias[vim.fn.mode()] ~= nil then
             return "  " .. alias[vim.fn.mode()] .. " "
           else

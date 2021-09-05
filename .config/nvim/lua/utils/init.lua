@@ -5,17 +5,17 @@ local autocmd = function(group, cmds, clear)
     cmds = {cmds}
   end
 
-  vim.api.nvim_command("augroup " .. group)
+  vim.cmd("augroup " .. group)
 
   if clear then
-    vim.api.nvim_command("autocmd!")
+    vim.cmd("autocmd!")
   end
 
   for _, c in ipairs(cmds) do
-    vim.api.nvim_command("autocmd " .. c)
+    vim.cmd("autocmd " .. c)
   end
 
-  vim.api.nvim_command("augroup END")
+  vim.cmd("augroup END")
 end
 
 local bufmap = function(buffer, mode, lhs, rhs, opts)
