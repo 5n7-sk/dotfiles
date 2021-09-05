@@ -7,6 +7,14 @@ return require("packer").startup {
     -- packer
     use {"wbthomason/packer.nvim", opt = true}
 
+    -- plugin list viewer
+    use {
+      "nvim-telescope/telescope-packer.nvim",
+      config = function()
+        vim.cmd("command! Packers lua require(\"telescope\").extensions.packer.plugins()")
+      end
+    }
+
     -- core
 
     -- speed-up
