@@ -44,9 +44,13 @@ local config = function()
     local opts = {on_attach = on_attach}
 
     if server.name == "efm" then
-      opts.filetypes = {"python"}
+      opts.filetypes = {"markdown", "python"}
       opts.settings = {
         languages = {
+          markdown = {
+            -- markdownlint
+            {lintCommand = "markdownlint --stdin", lintStdin = true, lintFormats = {"%f:%l %m"}}
+          },
           python = {
             -- flake8
             {lintCommand = "flake8 --stdin-display-name ${INPUT} -", lintStdin = true, lintFormats = {"%f:%l%c: %m"}}
