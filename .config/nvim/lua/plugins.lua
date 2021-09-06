@@ -254,10 +254,10 @@ return require("packer").startup {
         {"kdheepak/cmp-latex-symbols"},
         {"hrsh7th/cmp-nvim-lsp"},
         {"hrsh7th/cmp-nvim-lua"},
-        {"hrsh7th/cmp-path"},
-        {"onsails/lspkind-nvim"},
         {"quangnguyen30192/cmp-nvim-ultisnips"},
+        {"hrsh7th/cmp-path"},
         {"tzachar/cmp-tabnine", run = "./install.sh"},
+        {"onsails/lspkind-nvim"},
         {
           "windwp/nvim-autopairs",
           config = function()
@@ -565,7 +565,7 @@ return require("packer").startup {
 
     use {
       "folke/todo-comments.nvim",
-      requires = {"folke/trouble.nvim", "nvim-telescope/telescope.nvim"},
+      requires = {"nvim-telescope/telescope.nvim", "folke/trouble.nvim"},
       config = function()
         require("todo-comments").setup()
       end,
