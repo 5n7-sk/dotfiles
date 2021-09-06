@@ -186,7 +186,8 @@ return require("packer").startup {
       "jghauser/mkdir.nvim",
       config = function()
         require("mkdir")
-      end
+      end,
+      event = {"BufWritePre"}
     }
 
     use {
