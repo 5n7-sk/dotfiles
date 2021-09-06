@@ -401,7 +401,7 @@ return require("packer").startup {
                 ["of"] = "@function.outer"
               }
             },
-            swap = {enable = true, swap_next = {["sw"] = "@parameter.inner"}}
+            swap = {enable = true, swap_next = {["<leader>sw"] = "@parameter.inner"}}
           }
         }
       end
