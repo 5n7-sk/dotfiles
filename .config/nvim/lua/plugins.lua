@@ -41,6 +41,15 @@ return require("packer").startup {
     }
 
     use {
+      "monaqa/dial.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<m-l>", "<plug>(dial-increment)", {noremap = false})
+        map("n", "<m-h>", "<plug>(dial-decrement)", {noremap = false})
+      end
+    }
+
+    use {
       "sindrets/diffview.nvim",
       requires = {"kyazdani42/nvim-web-devicons"},
       config = function()
@@ -365,6 +374,14 @@ return require("packer").startup {
           highlight = {enable = true},
           indent = {enable = true}
         }
+      end
+    }
+
+    use {
+      "romgrk/nvim-treesitter-context",
+      requires = {"nvim-treesitter/nvim-treesitter"},
+      config = function()
+        require("treesitter-context").setup {enable = true, throttle = true}
       end
     }
 
