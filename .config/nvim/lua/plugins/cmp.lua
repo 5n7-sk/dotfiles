@@ -7,6 +7,15 @@ local config = function()
         vim.fn["UltiSnips#Anon"](args.body)
       end
     },
+    mapping = {
+      ["<c-k>"] = cmp.mapping.select_prev_item(),
+      ["<c-j>"] = cmp.mapping.select_next_item(),
+      ["<c-u>"] = cmp.mapping.scroll_docs(-5),
+      ["<c-d>"] = cmp.mapping.scroll_docs(5),
+      ["<c-space>"] = cmp.mapping.complete(),
+      ["<c-e>"] = cmp.mapping.close(),
+      ["<cr>"] = cmp.mapping.confirm {behavior = cmp.ConfirmBehavior.Replace, select = true}
+    },
     formatting = {
       format = function(entry, vim_item)
         vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
@@ -24,15 +33,6 @@ local config = function()
 
         return vim_item
       end
-    },
-    mapping = {
-      ["<c-k>"] = cmp.mapping.select_prev_item(),
-      ["<c-j>"] = cmp.mapping.select_next_item(),
-      ["<c-u>"] = cmp.mapping.scroll_docs(-5),
-      ["<c-d>"] = cmp.mapping.scroll_docs(5),
-      ["<c-space>"] = cmp.mapping.complete(),
-      ["<c-e>"] = cmp.mapping.close(),
-      ["<cr>"] = cmp.mapping.confirm {behavior = cmp.ConfirmBehavior.Replace, select = true}
     },
     sources = {
       {name = "buffer"},
