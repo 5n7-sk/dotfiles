@@ -412,7 +412,8 @@ return require("packer").startup {
       requires = {"nvim-treesitter"},
       config = function()
         require("nvim-treesitter.configs").setup {autotag = {enable = true}}
-      end
+      end,
+      ft = {"html", "xml"}
     }
 
     use {
