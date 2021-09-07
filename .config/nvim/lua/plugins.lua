@@ -313,9 +313,14 @@ return require("packer").startup {
           end
         },
         {"ray-x/lsp_signature.nvim", after = {"nvim-lspconfig"}},
-        {"williamboman/nvim-lsp-installer", after = {"nvim-notify"}, requires = {"rcarriga/nvim-notify"}}
+        {
+          "williamboman/nvim-lsp-installer",
+          requires = {"rcarriga/nvim-notify"},
+          event = {"BufRead"}
+        }
       },
-      config = require("plugins.lspconfig").config
+      config = require("plugins.lspconfig").config,
+      event = {"BufRead"}
     }
 
     use {"rinx/nvim-minimap", cmd = {"MinimapOpen", "MinimapToggle"}}
