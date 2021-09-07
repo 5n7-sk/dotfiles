@@ -33,6 +33,7 @@ RUN apt-get update && \
     make \
     tk-dev \
     tmux \
+    unzip \
     wget \
     xz-utils \
     zlib1g-dev \
