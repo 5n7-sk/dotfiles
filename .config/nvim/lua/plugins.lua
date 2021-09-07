@@ -116,14 +116,6 @@ return require("packer").startup {
     }
 
     use {
-      "stevearc/gkeep.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>gk", "<cmd>GkeepToggle<cr>")
-      end
-    }
-
-    use {
       "npxbr/glow.nvim",
       setup = function()
         local map = require("utils").map
