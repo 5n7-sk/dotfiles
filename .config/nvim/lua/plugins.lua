@@ -12,6 +12,7 @@ return require("packer").startup {
 
     use {
       "sudormrfbin/cheatsheet.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       cmd = {"Cheatsheet", "CheatsheetEdit"}
     }
@@ -91,7 +92,16 @@ return require("packer").startup {
 
     use {
       "glepnir/galaxyline.nvim",
-      requires = {"kyazdani42/nvim-web-devicons"},
+      requires = {
+        {
+          "SmiteshP/nvim-gps",
+          requires = {"nvim-treesitter/nvim-treesitter"},
+          config = function()
+            require("nvim-gps").setup()
+          end
+        },
+        {"kyazdani42/nvim-web-devicons"}
+      },
       config = require("plugins.galaxyline").config
     }
 
@@ -156,7 +166,7 @@ return require("packer").startup {
 
     use {"lewis6991/impatient.nvim", rocks = {"mpack"}}
 
-    use {"lukas-reineke/indent-blankline.nvim"}
+    use {"lukas-reineke/indent-blankline.nvim", event = {"BufRead"}}
 
     use {
       "b3nj5m1n/kommentary",
@@ -169,13 +179,6 @@ return require("packer").startup {
         map("v", "<c-_>", "<plug>kommentary_visual_default", {noremap = false})
 
         vim.g.kommentary_create_default_mappings = false
-      end
-    }
-
-    use {
-      "ahmedkhalf/lsp-rooter.nvim",
-      config = function()
-        require("lsp-rooter").setup()
       end
     }
 
@@ -260,6 +263,7 @@ return require("packer").startup {
         {"onsails/lspkind-nvim", after = {"nvim-cmp"}},
         {
           "windwp/nvim-autopairs",
+          after = {"nvim-cmp"},
           config = function()
             require("nvim-autopairs").setup()
             require("nvim-autopairs.completion.cmp").setup({map_complete = true})
@@ -269,14 +273,16 @@ return require("packer").startup {
       config = require("plugins.cmp").config,
       setup = function()
         vim.opt.completeopt = {"menuone", "noselect"}
-      end
+      end,
+      event = {"InsertEnter"}
     }
 
     use {
       "norcalli/nvim-colorizer.lua",
       config = function()
         require("colorizer").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {"yamatsum/nvim-cursorline"}
@@ -297,8 +303,16 @@ return require("packer").startup {
 
     use {
       "neovim/nvim-lspconfig",
+      after = {"nvim-lsp-installer"},
       requires = {
-        {"ray-x/lsp_signature.nvim"},
+        {
+          "ahmedkhalf/lsp-rooter.nvim",
+          after = {"nvim-lspconfig"},
+          config = function()
+            require("lsp-rooter").setup()
+          end
+        },
+        {"ray-x/lsp_signature.nvim", after = {"nvim-lspconfig"}},
         {"williamboman/nvim-lsp-installer", requires = {"rcarriga/nvim-notify"}}
       },
       config = require("plugins.lspconfig").config
@@ -308,6 +322,7 @@ return require("packer").startup {
 
     use {
       "AckslD/nvim-neoclip.lua",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("neoclip")
@@ -328,7 +343,7 @@ return require("packer").startup {
 
     use {"famiu/nvim-reload", cmd = {"Reload"}}
 
-    use {"dstein64/nvim-scrollview"}
+    use {"dstein64/nvim-scrollview", event = {"BufEnter"}}
 
     use {
       "windwp/nvim-spectre",
@@ -380,6 +395,7 @@ return require("packer").startup {
 
     use {
       "romgrk/nvim-treesitter-context",
+      after = {"nvim-treesitter"},
       requires = {"nvim-treesitter/nvim-treesitter"},
       config = function()
         require("treesitter-context").setup {enable = true, throttle = true}
@@ -388,6 +404,7 @@ return require("packer").startup {
 
     use {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      after = {"nvim-treesitter"},
       requires = {"nvim-treesitter/nvim-treesitter"},
       config = function()
         require("nvim-treesitter.configs").setup {
@@ -410,6 +427,7 @@ return require("packer").startup {
 
     use {
       "windwp/nvim-ts-autotag",
+      after = {"nvim-treesitter"},
       requires = {"nvim-treesitter"},
       config = function()
         require("nvim-treesitter.configs").setup {autotag = {enable = true}}
@@ -419,6 +437,7 @@ return require("packer").startup {
 
     use {
       "p00f/nvim-ts-rainbow",
+      after = {"nvim-treesitter"},
       requires = {"nvim-treesitter"},
       config = function()
         require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
@@ -427,6 +446,7 @@ return require("packer").startup {
 
     use {
       "pwntester/octo.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("octo").setup()
@@ -445,6 +465,7 @@ return require("packer").startup {
 
     use {
       "nvim-treesitter/playground",
+      after = {"nvim-treesitter"},
       requires = {"nvim-treesitter"},
       config = function()
         require("nvim-treesitter.configs").setup {playground = {enable = true}}
@@ -480,6 +501,7 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope-bibtex.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("bibtex")
@@ -488,6 +510,7 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope-ghq.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("ghq")
@@ -496,6 +519,7 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope-github.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("gh")
@@ -504,6 +528,7 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope-media-files.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("media_files")
@@ -512,6 +537,7 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope-packer.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         vim.cmd("command! Packers lua require(\"telescope\").extensions.packer.plugins()")
@@ -519,10 +545,15 @@ return require("packer").startup {
       cmd = {"Packers"}
     }
 
-    use {"nvim-telescope/telescope-symbols.nvim", requires = {"telescope-nvim/telescope.nvim"}}
+    use {
+      "nvim-telescope/telescope-symbols.nvim",
+      after = {"telescope.nvim"},
+      requires = {"nvim-telescope/telescope.nvim"}
+    }
 
     use {
       "fhill2/telescope-ultisnips.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim", "SirVer/ultisnips"},
       config = function()
         require("telescope").load_extension("ultisnips")
@@ -560,11 +591,13 @@ return require("packer").startup {
           "<cmd>Telescope find_files find_command=rg,--files,--glob=!.git/**,--hidden,--no-ignore<cr>")
         map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
         map("n", "<c-m>", "<cmd>Telescope lsp_workspace_diagnostics<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
       "folke/todo-comments.nvim",
+      after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim", "folke/trouble.nvim"},
       config = function()
         require("todo-comments").setup()
@@ -578,18 +611,17 @@ return require("packer").startup {
 
     use {
       "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd("colorscheme tokyonight")
-      end,
       setup = function()
         vim.g.tokyonight_italic_keywords = false
         vim.g.tokyonight_style = "night"
         vim.opt.termguicolors = true
+        vim.cmd("colorscheme tokyonight")
       end
     }
 
     use {
       "folke/twilight.nvim",
+      after = {"nvim-treesitter"},
       requires = {"nvim-treesitter/nvim-treesitter"},
       config = function()
         require("twilight").setup()
