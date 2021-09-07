@@ -64,7 +64,7 @@ return require("packer").startup {
 
     }
 
-    use {"editorconfig/editorconfig-vim"}
+    use {"editorconfig/editorconfig-vim", event = {"BufRead"}}
 
     use {
       "lukas-reineke/format.nvim",
@@ -87,15 +87,18 @@ return require("packer").startup {
           yaml = {{cmd = {"prettier -w"}}},
           zsh = {{cmd = {"shfmt -i 2 -w"}}}
         }
-      end
+      end,
+      event = {"BufWritePre"}
     }
 
     use {
       "glepnir/galaxyline.nvim",
+      after = {"tokyonight.nvim"},
       requires = {
         {
           "SmiteshP/nvim-gps",
-          requires = {"nvim-treesitter/nvim-treesitter"},
+          after = {"nvim-treesitter", "tokyonight.nvim"},
+          requires = {"nvim-treesitter/nvim-treesitter", "folke/tokyonight.nvim"},
           config = function()
             require("nvim-gps").setup()
           end
@@ -105,14 +108,16 @@ return require("packer").startup {
       config = require("plugins.galaxyline").config
     }
 
-    use {"f-person/git-blame.nvim"}
+    use {"f-person/git-blame.nvim", event = {"BufRead"}}
 
     use {
       "lewis6991/gitsigns.nvim",
-      requires = {"nvim-lua/plenary.nvim"},
+      after = {"plenary.nvim"},
+      requires = {"nvim-lua/plenary.nvim", event = {"BufRead"}},
       config = function()
         require("gitsigns").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -154,7 +159,7 @@ return require("packer").startup {
       cmd = {"HopWord"}
     }
 
-    use {"mboughaba/i3config.vim"}
+    use {"mboughaba/i3config.vim", ft = {"conf"}}
 
     use {"lewis6991/impatient.nvim", rocks = {"mpack"}}
 
@@ -196,25 +201,28 @@ return require("packer").startup {
 
     use {
       "TimUntersberger/neogit",
-      requires = {"nvim-lua/plenary.nvim"},
+      requires = {"nvim-lua/plenary.nvim", event = {"BufRead"}},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
       "karb94/neoscroll.nvim",
       config = function()
         require("neoscroll").setup {mappings = {"<C-d>", "<C-u>"}}
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
       "nacro90/numb.nvim",
       config = function()
         require("numb").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -277,9 +285,9 @@ return require("packer").startup {
       event = {"BufRead"}
     }
 
-    use {"yamatsum/nvim-cursorline"}
+    use {"yamatsum/nvim-cursorline", event = {"BufRead"}}
 
-    use {"kevinhwang91/nvim-hlslens"}
+    use {"kevinhwang91/nvim-hlslens", event = {"BufRead"}}
 
     use {
       "gennaro-tedesco/nvim-jqx",
@@ -305,7 +313,7 @@ return require("packer").startup {
           end
         },
         {"ray-x/lsp_signature.nvim", after = {"nvim-lspconfig"}},
-        {"williamboman/nvim-lsp-installer", requires = {"rcarriga/nvim-notify"}}
+        {"williamboman/nvim-lsp-installer", after = {"nvim-notify"}, requires = {"rcarriga/nvim-notify"}}
       },
       config = require("plugins.lspconfig").config
     }
@@ -330,12 +338,13 @@ return require("packer").startup {
       "rcarriga/nvim-notify",
       config = function()
         vim.notify = require("notify")
-      end
+      end,
+      event = {"VimEnter"}
     }
 
     use {"famiu/nvim-reload", cmd = {"Reload"}}
 
-    use {"dstein64/nvim-scrollview", event = {"BufEnter"}}
+    use {"dstein64/nvim-scrollview", event = {"BufRead"}}
 
     use {
       "windwp/nvim-spectre",
@@ -351,7 +360,8 @@ return require("packer").startup {
       "akinsho/nvim-toggleterm.lua",
       config = function()
         require("toggleterm").setup {open_mapping = "<c-t>t", direction = "float"}
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -382,7 +392,8 @@ return require("packer").startup {
           highlight = {enable = true},
           indent = {enable = true}
         }
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -465,11 +476,12 @@ return require("packer").startup {
       cmd = {"TSPlaygroundToggle"}
     }
 
-    use {"andweeb/presence.nvim"}
+    use {"andweeb/presence.nvim", event = {"VimEnter"}}
 
     use {
       "winston0410/range-highlight.nvim",
-      requires = {"winston0410/cmd-parser.nvim"},
+      after = {"cmd-parser.nvim"},
+      requires = {{"winston0410/cmd-parser.nvim", event = {"BufRead"}}},
       config = function()
         require("range-highlight").setup()
       end
@@ -479,7 +491,8 @@ return require("packer").startup {
       "blackCauldron7/surround.nvim",
       config = function()
         require("surround").setup({})
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -558,7 +571,12 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope.nvim",
-      requires = {"kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
+      after = {"plenary.nvim", "popup.nvim"},
+      requires = {
+        {"kyazdani42/nvim-web-devicons"},
+        {"nvim-lua/plenary.nvim", event = {"BufRead"}},
+        {"nvim-lua/popup.nvim", event = {"BufRead"}}
+      },
       config = function()
         require("telescope").setup {
           defaults = {
@@ -589,8 +607,8 @@ return require("packer").startup {
 
     use {
       "folke/todo-comments.nvim",
-      after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim", "folke/trouble.nvim"},
+      after = {"telescope.nvim", "trouble.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}, {"folke/trouble.nvim", event = {"BufRead"}}},
       config = function()
         require("todo-comments").setup()
       end,
@@ -694,7 +712,8 @@ return require("packer").startup {
       "folke/which-key.nvim",
       config = function()
         require("which-key").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -713,7 +732,8 @@ return require("packer").startup {
       "yuki-yano/zero.nvim",
       config = function()
         require("zero").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
   end
 }
