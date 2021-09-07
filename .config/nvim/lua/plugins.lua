@@ -248,16 +248,16 @@ return require("packer").startup {
     use {
       "hrsh7th/nvim-cmp",
       requires = {
-        {"hrsh7th/cmp-buffer"},
-        {"hrsh7th/cmp-calc"},
-        {"hrsh7th/cmp-emoji"},
-        {"kdheepak/cmp-latex-symbols"},
-        {"hrsh7th/cmp-nvim-lsp"},
-        {"hrsh7th/cmp-nvim-lua"},
-        {"quangnguyen30192/cmp-nvim-ultisnips"},
-        {"hrsh7th/cmp-path"},
-        {"tzachar/cmp-tabnine", run = "./install.sh"},
-        {"onsails/lspkind-nvim"},
+        {"hrsh7th/cmp-buffer", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-calc", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-emoji", after = {"nvim-cmp"}},
+        {"kdheepak/cmp-latex-symbols", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-nvim-lsp", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-nvim-lua", after = {"nvim-cmp"}},
+        {"quangnguyen30192/cmp-nvim-ultisnips", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-path", after = {"nvim-cmp"}},
+        {"tzachar/cmp-tabnine", after = {"nvim-cmp"}, run = "./install.sh"},
+        {"onsails/lspkind-nvim", after = {"nvim-cmp"}},
         {
           "windwp/nvim-autopairs",
           config = function()
@@ -605,7 +605,8 @@ return require("packer").startup {
       "SirVer/ultisnips",
       setup = function()
         vim.g.UltiSnipsSnippetDirectories = {"~/.config/nvim/ultisnips"}
-      end
+      end,
+      event = {"InsertEnter"}
     }
 
     use {
