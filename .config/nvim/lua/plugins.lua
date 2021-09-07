@@ -476,7 +476,7 @@ return require("packer").startup {
       cmd = {"TSPlaygroundToggle"}
     }
 
-    use {"andweeb/presence.nvim", event = {"VimEnter"}}
+    use {"andweeb/presence.nvim", event = {"BufRead"}}
 
     use {
       "winston0410/range-highlight.nvim",
