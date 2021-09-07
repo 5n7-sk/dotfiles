@@ -315,6 +315,7 @@ return require("packer").startup {
         {"ray-x/lsp_signature.nvim", after = {"nvim-lspconfig"}},
         {
           "williamboman/nvim-lsp-installer",
+          commit = "31b3310fb66eba0d28743a170c8474327b1f9154",
           requires = {"rcarriga/nvim-notify"},
           event = {"BufRead"}
         }
