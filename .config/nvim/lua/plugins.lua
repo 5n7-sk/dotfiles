@@ -180,6 +180,14 @@ return require("packer").startup {
     }
 
     use {
+      "ahmedkhalf/lsp-rooter.nvim",
+      config = function()
+        require("lsp-rooter").setup()
+      end,
+      event = {"BufRead"}
+    }
+
+    use {
       "glepnir/lspsaga.nvim",
       config = function()
         require("lspsaga").init_lsp_saga()
@@ -305,13 +313,6 @@ return require("packer").startup {
       "neovim/nvim-lspconfig",
       after = {"nvim-lsp-installer"},
       requires = {
-        {
-          "ahmedkhalf/lsp-rooter.nvim",
-          after = {"nvim-lspconfig"},
-          config = function()
-            require("lsp-rooter").setup()
-          end
-        },
         {"ray-x/lsp_signature.nvim", after = {"nvim-lspconfig"}, event = {"BufRead"}},
         {"williamboman/nvim-lsp-installer", requires = {"rcarriga/nvim-notify"}, event = {"BufRead"}}
       },
