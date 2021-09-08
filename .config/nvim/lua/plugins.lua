@@ -604,7 +604,7 @@ return require("packer").startup {
         map("n", "<leader>lg", "<cmd>Telescope live_grep<cr>")
         map("n", "<c-m>", "<cmd>Telescope lsp_workspace_diagnostics<cr>")
       end,
-      event = {"BufRead"}
+      event = {"BufEnter"}
     }
 
     use {
