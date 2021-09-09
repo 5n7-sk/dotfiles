@@ -101,7 +101,7 @@ return require("packer").startup {
       requires = {
         {
           "SmiteshP/nvim-gps",
-          after = {"nvim-treesitter", "tokyonight.nvim"},
+          after = {"nvim-treesitter"},
           requires = {"nvim-treesitter/nvim-treesitter", "folke/tokyonight.nvim"},
           config = function()
             require("nvim-gps").setup()
@@ -646,7 +646,6 @@ return require("packer").startup {
 
     use {
       "folke/tokyonight.nvim",
-      opt = true,
       setup = function()
         vim.g.tokyonight_italic_keywords = false
         vim.g.tokyonight_style = "night"
