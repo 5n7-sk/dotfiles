@@ -7,7 +7,8 @@ return require("packer").startup {
       setup = function()
         local map = require("utils").map
         map("n", "<m-w>", "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -38,7 +39,8 @@ return require("packer").startup {
         map("n", "<leader>cn", "<cmd>DashboardNewFile<cr>")
 
         vim.g.dashboard_default_executive = "telescope"
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -47,12 +49,14 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<m-l>", "<plug>(dial-increment)", {noremap = false})
         map("n", "<m-h>", "<plug>(dial-decrement)", {noremap = false})
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
       "sindrets/diffview.nvim",
-      requires = {"kyazdani42/nvim-web-devicons"},
+      after = {"nvim-web-devicons"},
+      requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = function()
         require("diffview").setup()
       end,
@@ -60,8 +64,8 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<leader>df", "<cmd>DiffviewOpen<cr>")
         map("n", "<leader>dF", "<cmd>DiffviewClose<cr>")
-      end
-
+      end,
+      cmd = {"DiffviewOpen"}
     }
 
     use {"editorconfig/editorconfig-vim", event = {"BufRead"}}
@@ -93,7 +97,7 @@ return require("packer").startup {
 
     use {
       "glepnir/galaxyline.nvim",
-      after = {"tokyonight.nvim"},
+      after = {"nvim-web-devicons", "tokyonight.nvim"},
       requires = {
         {
           "SmiteshP/nvim-gps",
@@ -103,9 +107,10 @@ return require("packer").startup {
             require("nvim-gps").setup()
           end
         },
-        {"kyazdani42/nvim-web-devicons"}
+        {"kyazdani42/nvim-web-devicons", opt = true}
       },
-      config = require("plugins.galaxyline").config
+      config = require("plugins.galaxyline").config,
+      event = {"BufEnter"}
     }
 
     use {"f-person/git-blame.nvim", event = {"BufRead"}}
@@ -113,7 +118,7 @@ return require("packer").startup {
     use {
       "lewis6991/gitsigns.nvim",
       after = {"plenary.nvim"},
-      requires = {"nvim-lua/plenary.nvim", event = {"BufRead"}},
+      requires = {"nvim-lua/plenary.nvim", opt = true},
       config = function()
         require("gitsigns").setup()
       end,
@@ -147,7 +152,8 @@ return require("packer").startup {
         map("n", "gpd", "<cmd>lua require(\"goto-preview\").goto_preview_definition()<CR>")
         map("n", "gpi", "<cmd>lua require(\"goto-preview\").goto_preview_implementation()<CR>")
         map("n", "gP", "<cmd>lua require(\"goto-preview\").close_all_win()<CR>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -176,7 +182,8 @@ return require("packer").startup {
         map("v", "<c-_>", "<plug>kommentary_visual_default", {noremap = false})
 
         vim.g.kommentary_create_default_mappings = false
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -196,7 +203,8 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<f2>", "<cmd>Lspsaga rename<cr>")
         map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -209,7 +217,7 @@ return require("packer").startup {
 
     use {
       "TimUntersberger/neogit",
-      requires = {"nvim-lua/plenary.nvim", event = {"BufRead"}},
+      requires = {"nvim-lua/plenary.nvim", opt = true},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
@@ -235,7 +243,8 @@ return require("packer").startup {
 
     use {
       "akinsho/nvim-bufferline.lua",
-      requires = {"kyazdani42/nvim-web-devicons"},
+      after = {"nvim-web-devicons"},
+      requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = function()
         require("bufferline").setup {
           options = {
@@ -253,7 +262,8 @@ return require("packer").startup {
 
         vim.g.indent_blankline_filetype_exclude = {"dashboard", "help", "packer"}
         vim.g.indent_blankline_show_first_indent_level = false
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -333,7 +343,8 @@ return require("packer").startup {
       setup = function()
         local map = require("utils").map
         map("n", "<leader>cb", "<cmd>Telescope neoclip<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -355,7 +366,8 @@ return require("packer").startup {
         map("n", "<leader>s", "<cmd>lua require(\"spectre\").open()<cr>")
         map("n", "<leader>S", "<cmd>lua require(\"spectre\").open_visual({select_word = true})<cr>")
         map("v", "<leader>s", "<cmd>lua require(\"spectre\").open_visual()<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -376,7 +388,8 @@ return require("packer").startup {
 
     use {
       "kyazdani42/nvim-tree.lua",
-      requires = {"kyazdani42/nvim-web-devicons"},
+      after = {"nvim-web-devicons"},
+      requires = {"kyazdani42/nvim-web-devicons", opt = true},
       config = require("plugins.nvim-tree").config,
       setup = function()
         local map = require("utils").map
@@ -427,7 +440,8 @@ return require("packer").startup {
             swap = {enable = true, swap_next = {["<leader>sw"] = "@parameter.inner"}}
           }
         }
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -446,7 +460,8 @@ return require("packer").startup {
       requires = {"nvim-treesitter"},
       config = function()
         require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -455,7 +470,8 @@ return require("packer").startup {
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("octo").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -486,7 +502,8 @@ return require("packer").startup {
       requires = {{"winston0410/cmd-parser.nvim", event = {"BufRead"}}},
       config = function()
         require("range-highlight").setup()
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -512,7 +529,8 @@ return require("packer").startup {
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("bibtex")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -521,7 +539,8 @@ return require("packer").startup {
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("ghq")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -530,7 +549,8 @@ return require("packer").startup {
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("gh")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -539,7 +559,8 @@ return require("packer").startup {
       requires = {"nvim-telescope/telescope.nvim"},
       config = function()
         require("telescope").load_extension("media_files")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -555,7 +576,8 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-symbols.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"}
+      requires = {"nvim-telescope/telescope.nvim"},
+      event = {"BufRead"}
     }
 
     use {
@@ -568,16 +590,17 @@ return require("packer").startup {
       setup = function()
         local map = require("utils").map
         map("n", "<leader>sp", "<cmd>Telescope ultisnips<cr>")
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
       "nvim-telescope/telescope.nvim",
-      after = {"plenary.nvim", "popup.nvim"},
+      after = {"nvim-web-devicons", "plenary.nvim", "popup.nvim"},
       requires = {
-        {"kyazdani42/nvim-web-devicons"},
-        {"nvim-lua/plenary.nvim", event = {"BufRead"}},
-        {"nvim-lua/popup.nvim", event = {"BufRead"}}
+        {"kyazdani42/nvim-web-devicons", opt = true},
+        {"nvim-lua/plenary.nvim", opt = true},
+        {"nvim-lua/popup.nvim", opt = true}
       },
       config = function()
         require("telescope").setup {
@@ -623,6 +646,7 @@ return require("packer").startup {
 
     use {
       "folke/tokyonight.nvim",
+      opt = true,
       setup = function()
         vim.g.tokyonight_italic_keywords = false
         vim.g.tokyonight_style = "night"
@@ -669,7 +693,8 @@ return require("packer").startup {
       "ntpeters/vim-better-whitespace",
       setup = function()
         vim.g.better_whitespace_filetypes_blacklist = {"dashboard", "TelescopePrompt"}
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -707,7 +732,8 @@ return require("packer").startup {
           ["Mouse Word"] = "<m-rightmouse>"
         }
         vim.g.VM_mouse_mappings = true
-      end
+      end,
+      event = {"BufRead"}
     }
 
     use {
@@ -735,7 +761,7 @@ return require("packer").startup {
       config = function()
         require("zero").setup()
       end,
-      event = {"BufRead"}
+      keys = {"0"}
     }
   end
 }
