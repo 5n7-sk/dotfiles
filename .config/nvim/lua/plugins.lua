@@ -524,6 +524,16 @@ return require("packer").startup {
     }
 
     use {
+      "abecodes/tabout.nvim",
+      after = {"nvim-treesitter"},
+      required = {"nvim-treesitter"},
+      config = function()
+        require("tabout").setup()
+      end,
+      event = {"InsertEnter"}
+    }
+
+    use {
       "nvim-telescope/telescope-bibtex.nvim",
       after = {"telescope.nvim"},
       requires = {"nvim-telescope/telescope.nvim"},
@@ -672,6 +682,7 @@ return require("packer").startup {
       "SirVer/ultisnips",
       setup = function()
         vim.g.UltiSnipsSnippetDirectories = {"~/.config/nvim/ultisnips"}
+        vim.g.UltiSnipsExpandTrigger = "<nul>"
       end,
       event = {"InsertEnter"}
     }
