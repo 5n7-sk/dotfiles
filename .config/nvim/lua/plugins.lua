@@ -484,6 +484,13 @@ return require("packer").startup {
     }
 
     use {
+      "kristijanhusak/orgmode.nvim",
+      config = function()
+        require("orgmode").setup()
+      end,
+      event = {"BufRead"}
+    }
+    use {
       "vuki656/package-info.nvim",
       config = function()
         require("package-info").setup()
