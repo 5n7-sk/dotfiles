@@ -566,6 +566,10 @@ return require("packer").startup {
       config = function()
         require("telescope").load_extension("ghq")
       end,
+      map = function()
+        local map = require("utils").map
+        map("n", "<leader>ghq", "<cmd>Telescope ghq list<cr>")
+      end,
       event = {"BufRead"}
     }
 
