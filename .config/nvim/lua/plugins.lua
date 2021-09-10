@@ -157,6 +157,14 @@ return require("packer").startup {
     }
 
     use {
+      "lukas-reineke/headlines.nvim",
+      config = function()
+        require("headlines").setup()
+      end,
+      ft = {"markdown"}
+    }
+
+    use {
       "phaazon/hop.nvim",
       setup = function()
         local map = require("utils").map
