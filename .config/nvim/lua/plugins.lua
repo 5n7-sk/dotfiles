@@ -56,7 +56,7 @@ return require("packer").startup {
     use {
       "sindrets/diffview.nvim",
       after = {"nvim-web-devicons"},
-      requires = {"kyazdani42/nvim-web-devicons", opt = true},
+      requires = {{"kyazdani42/nvim-web-devicons", event = {"BufRead"}}},
       config = function()
         require("diffview").setup()
       end,
@@ -107,7 +107,7 @@ return require("packer").startup {
             require("nvim-gps").setup()
           end
         },
-        {"kyazdani42/nvim-web-devicons", opt = true}
+        {"kyazdani42/nvim-web-devicons", event = {"BufRead"}}
       },
       config = require("plugins.galaxyline").config,
       event = {"BufEnter"}
@@ -118,7 +118,7 @@ return require("packer").startup {
     use {
       "lewis6991/gitsigns.nvim",
       after = {"plenary.nvim"},
-      requires = {"nvim-lua/plenary.nvim", opt = true},
+      requires = {{"nvim-lua/plenary.nvim", event = {"BufRead"}}},
       config = function()
         require("gitsigns").setup()
       end,
@@ -217,7 +217,7 @@ return require("packer").startup {
 
     use {
       "TimUntersberger/neogit",
-      requires = {"nvim-lua/plenary.nvim", opt = true},
+      requires = {{"nvim-lua/plenary.nvim", event = {"BufRead"}}},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
@@ -244,7 +244,7 @@ return require("packer").startup {
     use {
       "akinsho/nvim-bufferline.lua",
       after = {"nvim-web-devicons"},
-      requires = {"kyazdani42/nvim-web-devicons", opt = true},
+      requires = {{"kyazdani42/nvim-web-devicons", event = {"BufRead"}}},
       config = function()
         require("bufferline").setup {
           options = {
@@ -389,7 +389,7 @@ return require("packer").startup {
     use {
       "kyazdani42/nvim-tree.lua",
       after = {"nvim-web-devicons"},
-      requires = {"kyazdani42/nvim-web-devicons", opt = true},
+      requires = {{"kyazdani42/nvim-web-devicons", event = {"BufRead"}}},
       config = require("plugins.nvim-tree").config,
       setup = function()
         local map = require("utils").map
@@ -607,7 +607,10 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope.nvim",
       after = {"nvim-web-devicons", "plenary.nvim"},
-      requires = {{"kyazdani42/nvim-web-devicons", opt = true}, {"nvim-lua/plenary.nvim", opt = true}},
+      requires = {
+        {"kyazdani42/nvim-web-devicons", event = {"BufRead"}},
+        {"nvim-lua/plenary.nvim", event = {"BufEnter"}}
+      },
       config = function()
         require("telescope").setup {
           defaults = {
