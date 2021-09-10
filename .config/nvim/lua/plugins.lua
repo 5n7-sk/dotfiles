@@ -606,12 +606,8 @@ return require("packer").startup {
 
     use {
       "nvim-telescope/telescope.nvim",
-      after = {"nvim-web-devicons", "plenary.nvim", "popup.nvim"},
-      requires = {
-        {"kyazdani42/nvim-web-devicons", opt = true},
-        {"nvim-lua/plenary.nvim", opt = true},
-        {"nvim-lua/popup.nvim", opt = true}
-      },
+      after = {"nvim-web-devicons", "plenary.nvim"},
+      requires = {{"kyazdani42/nvim-web-devicons", opt = true}, {"nvim-lua/plenary.nvim", opt = true}},
       config = function()
         require("telescope").setup {
           defaults = {
