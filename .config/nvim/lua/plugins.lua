@@ -161,7 +161,7 @@ return require("packer").startup {
       config = function()
         require("headlines").setup()
       end,
-      ft = {"markdown"}
+      ft = {"markdown", "org"}
     }
 
     use {
