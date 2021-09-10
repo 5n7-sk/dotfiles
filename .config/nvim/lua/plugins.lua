@@ -540,7 +540,7 @@ return require("packer").startup {
       config = function()
         require("telescope").load_extension("bibtex")
       end,
-      event = {"BufRead"}
+      ft = {"bib", "tex"}
     }
 
     use {
