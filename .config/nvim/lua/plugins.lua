@@ -8,13 +8,13 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<m-w>", "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
       end,
-      event = {"BufRead"}
+      event = {"BufDelete"}
     }
 
     use {
       "sudormrfbin/cheatsheet.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       cmd = {"Cheatsheet", "CheatsheetEdit"}
     }
 
@@ -29,7 +29,7 @@ return require("packer").startup {
 
     use {
       "glepnir/dashboard-nvim",
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>fb", "<cmd>DashboardJumpMarks<cr>")
@@ -50,7 +50,7 @@ return require("packer").startup {
         map("n", "<m-l>", "<plug>(dial-increment)", {noremap = false})
         map("n", "<m-h>", "<plug>(dial-decrement)", {noremap = false})
       end,
-      event = {"BufRead"}
+      event = {"CursorMoved"}
     }
 
     use {
@@ -102,7 +102,7 @@ return require("packer").startup {
         {
           "SmiteshP/nvim-gps",
           after = {"nvim-treesitter"},
-          requires = {"nvim-treesitter/nvim-treesitter", "folke/tokyonight.nvim"},
+          requires = {{"nvim-treesitter/nvim-treesitter"}, {"folke/tokyonight.nvim"}},
           config = function()
             require("nvim-gps").setup()
           end
@@ -118,7 +118,7 @@ return require("packer").startup {
     use {
       "lewis6991/gitsigns.nvim",
       after = {"plenary.nvim"},
-      requires = {{"nvim-lua/plenary.nvim", event = {"BufRead"}}},
+      requires = {{"nvim-lua/plenary.nvim", event = {"BufEnter"}}},
       config = function()
         require("gitsigns").setup()
       end,
@@ -217,7 +217,8 @@ return require("packer").startup {
 
     use {
       "TimUntersberger/neogit",
-      requires = {{"nvim-lua/plenary.nvim", event = {"BufRead"}}},
+      after = {"plenary.nvim"},
+      requires = {{"nvim-lua/plenary.nvim", event = {"BufEnter"}}},
       setup = function()
         local map = require("utils").map
         map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
@@ -277,7 +278,7 @@ return require("packer").startup {
         {"hrsh7th/cmp-nvim-lua", after = {"nvim-cmp"}},
         {"quangnguyen30192/cmp-nvim-ultisnips", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-path", after = {"nvim-cmp"}},
-        {"tzachar/cmp-tabnine", after = {"nvim-cmp"}, run = "./install.sh"},
+        {"tzachar/cmp-tabnine", after = {"nvim-cmp"}, run = {"./install.sh"}},
         {"onsails/lspkind-nvim", after = {"nvim-cmp"}},
         {
           "windwp/nvim-autopairs",
@@ -324,7 +325,7 @@ return require("packer").startup {
       after = {"nvim-lsp-installer"},
       requires = {
         {"ray-x/lsp_signature.nvim", after = {"nvim-lspconfig"}, event = {"BufRead"}},
-        {"williamboman/nvim-lsp-installer", requires = {"rcarriga/nvim-notify"}, event = {"BufRead"}}
+        {"williamboman/nvim-lsp-installer", requires = {{"rcarriga/nvim-notify"}}, event = {"BufRead"}}
       },
       config = require("plugins.lspconfig").config,
       event = {"BufRead"}
@@ -335,7 +336,7 @@ return require("packer").startup {
     use {
       "AckslD/nvim-neoclip.lua",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         require("telescope").load_extension("neoclip")
         require("neoclip").setup()
@@ -400,7 +401,7 @@ return require("packer").startup {
 
     use {
       "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
+      run = {":TSUpdate"},
       config = function()
         require("nvim-treesitter.configs").setup {
           ensure_installed = "maintained",
@@ -414,7 +415,7 @@ return require("packer").startup {
     use {
       "romgrk/nvim-treesitter-context",
       after = {"nvim-treesitter"},
-      requires = {"nvim-treesitter/nvim-treesitter"},
+      requires = {{"nvim-treesitter/nvim-treesitter"}},
       config = function()
         require("treesitter-context").setup {enable = true, throttle = true}
       end
@@ -423,7 +424,7 @@ return require("packer").startup {
     use {
       "nvim-treesitter/nvim-treesitter-textobjects",
       after = {"nvim-treesitter"},
-      requires = {"nvim-treesitter/nvim-treesitter"},
+      requires = {{"nvim-treesitter/nvim-treesitter"}},
       config = function()
         require("nvim-treesitter.configs").setup {
           textobjects = {
@@ -447,7 +448,7 @@ return require("packer").startup {
     use {
       "windwp/nvim-ts-autotag",
       after = {"nvim-treesitter"},
-      requires = {"nvim-treesitter"},
+      requires = {{"nvim-treesitter"}},
       config = function()
         require("nvim-treesitter.configs").setup {autotag = {enable = true}}
       end,
@@ -457,7 +458,7 @@ return require("packer").startup {
     use {
       "p00f/nvim-ts-rainbow",
       after = {"nvim-treesitter"},
-      requires = {"nvim-treesitter"},
+      requires = {{"nvim-treesitter"}},
       config = function()
         require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
       end,
@@ -467,7 +468,7 @@ return require("packer").startup {
     use {
       "pwntester/octo.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         require("octo").setup()
       end,
@@ -487,7 +488,7 @@ return require("packer").startup {
     use {
       "nvim-treesitter/playground",
       after = {"nvim-treesitter"},
-      requires = {"nvim-treesitter"},
+      requires = {{"nvim-treesitter"}},
       config = function()
         require("nvim-treesitter.configs").setup {playground = {enable = true}}
       end,
@@ -536,7 +537,7 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-bibtex.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         require("telescope").load_extension("bibtex")
       end,
@@ -546,7 +547,7 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-ghq.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         require("telescope").load_extension("ghq")
       end,
@@ -556,7 +557,7 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-github.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         require("telescope").load_extension("gh")
       end,
@@ -566,7 +567,7 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-media-files.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         require("telescope").load_extension("media_files")
       end,
@@ -576,7 +577,7 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-packer.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       config = function()
         vim.cmd("command! Packers lua require(\"telescope\").extensions.packer.plugins()")
       end,
@@ -586,14 +587,14 @@ return require("packer").startup {
     use {
       "nvim-telescope/telescope-symbols.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim"}},
       event = {"BufRead"}
     }
 
     use {
       "fhill2/telescope-ultisnips.nvim",
       after = {"telescope.nvim"},
-      requires = {"nvim-telescope/telescope.nvim", "SirVer/ultisnips"},
+      requires = {{"nvim-telescope/telescope.nvim"}, {"SirVer/ultisnips"}},
       config = function()
         require("telescope").load_extension("ultisnips")
       end,
@@ -666,7 +667,7 @@ return require("packer").startup {
     use {
       "folke/twilight.nvim",
       after = {"nvim-treesitter"},
-      requires = {"nvim-treesitter/nvim-treesitter"},
+      requires = {{"nvim-treesitter/nvim-treesitter"}},
       config = function()
         require("twilight").setup()
       end,
