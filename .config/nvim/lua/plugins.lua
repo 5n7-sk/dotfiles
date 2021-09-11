@@ -727,6 +727,18 @@ return require("packer").startup {
     }
 
     use {
+      "heavenshell/vim-pydocstring",
+      run = {"make install"},
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>ds", "<cmd>Pydocstring<cr>")
+
+        vim.g.pydocstring_formatter = "google"
+      end,
+      ft = {"python"}
+    }
+
+    use {
       "thinca/vim-quickrun",
       setup = function()
         local map = require("utils").map
