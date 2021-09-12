@@ -1,4 +1,6 @@
-local config = function()
+local M = {}
+
+M.config = function()
   local autocmd = require("utils").autocmd
   autocmd("Format", "BufWritePost * FormatWrite", true)
 
@@ -19,4 +21,4 @@ local config = function()
   }
 end
 
-return {config = config}
+return M

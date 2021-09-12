@@ -1,4 +1,6 @@
-local config = function()
+local M = {}
+
+M.config = function()
   local cond = require("galaxyline.condition")
   local gl = require("galaxyline")
   local gps = require("nvim-gps")
@@ -152,4 +154,4 @@ local config = function()
   }
 end
 
-return {config = config}
+return M

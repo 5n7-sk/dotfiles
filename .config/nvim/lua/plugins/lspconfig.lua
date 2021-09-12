@@ -1,4 +1,6 @@
-local config = function()
+local M = {}
+
+M.config = function()
   local bufmap = require("utils").bufmap
   local bufset = require("utils").bufset
   local installer = require("nvim-lsp-installer")
@@ -71,4 +73,4 @@ local config = function()
   end)
 end
 
-return {config = config}
+return M

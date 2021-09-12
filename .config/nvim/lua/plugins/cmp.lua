@@ -1,4 +1,6 @@
-local config = function()
+local M = {}
+
+M.config = function()
   local cmp = require("cmp")
 
   cmp.setup {
@@ -49,4 +51,4 @@ local config = function()
   }
 end
 
-return {config = config}
+return M
