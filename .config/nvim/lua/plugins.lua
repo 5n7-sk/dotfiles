@@ -8,7 +8,7 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<m-w>", "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
       end,
-      event = {"BufDelete"}
+      event = {"BufEnter", "BufRead"}
     }
 
     use {
