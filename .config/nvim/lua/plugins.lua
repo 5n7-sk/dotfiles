@@ -683,6 +683,8 @@ return require("packer").startup {
       setup = function()
         vim.g.UltiSnipsSnippetDirectories = {"~/.config/nvim/ultisnips"}
         vim.g.UltiSnipsExpandTrigger = "<nul>"
+        vim.g.UltiSnipsJumpForwardTrigger = "<c-n>"
+        vim.g.UltiSnipsJumpBackwardTrigger = "<c-p>"
       end,
       event = {"InsertEnter"}
     }
