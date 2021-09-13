@@ -6,3 +6,15 @@ snippet ifmain "ifmain"
 if __name__ == "__main__":
 	${1:main()}
 endsnippet
+
+snippet class "class"
+class $1:
+	def __init__(self):
+	 	${2:pass}
+endsnippet
+
+snippet dataclass "dataclass"
+@dataclass
+class $1:
+ 	$2
+endsnippet
