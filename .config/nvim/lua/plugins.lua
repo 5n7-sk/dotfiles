@@ -473,6 +473,13 @@ return require("packer").startup {
     }
 
     use {
+      "haringsrob/nvim_context_vt",
+      wants = {"nvim-treesitter"},
+      requires = {{"nvim-treesitter", opt = true}},
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
       "pwntester/octo.nvim",
       wants = {"telescope.nvim"},
       requires = {{"nvim-telescope/telescope.nvim", opt = true}},
