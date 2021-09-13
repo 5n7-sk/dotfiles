@@ -78,6 +78,13 @@ return require("packer").startup {
     use {"editorconfig/editorconfig-vim", event = {"BufNewFile", "BufRead"}}
 
     use {
+      "glacambre/firenvim",
+      run = function()
+        vim.fn["firenvim#install"](0)
+      end
+    }
+
+    use {
       "beauwilliams/focus.nvim",
       config = function()
         require("focus").setup()
