@@ -60,13 +60,13 @@ endsnippet
 
 snippet struct "struct declaration"
 type $1 struct {
-	${0:${VISUAL}}
+	$2
 }
 endsnippet
 
 snippet interface "interface declaration"
 type $1 interface {
-	${0:${VISUAL}}
+	$2
 }
 endsnippet
 
@@ -79,8 +79,8 @@ const (
 endsnippet
 
 snippet if "if statement"
-if ${1:condition}${1/(.+)/ /}{
-	${0:${VISUAL}}
+if $1${1/(.+)/ /}{
+	$2
 }
 endsnippet
 
@@ -119,16 +119,16 @@ endsnippet
 
 snippet iferr "error handling"
 if err != nil {
-	${0:${VISUAL}}
+	$1
 }
 endsnippet
 
 snippet iferrf "error handling"
 if err := $1($2); err != nil {
-	${0:${VISUAL}}
+	$1
 }
 endsnippet
 
 snippet fp "fmt.Println()"
-fmt.Println(${0:${VISUAL}})
+fmt.Println($1)
 endsnippet
