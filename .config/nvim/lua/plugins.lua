@@ -299,9 +299,6 @@ return require("packer").startup {
         }
       },
       config = require("plugins.cmp").config,
-      setup = function()
-        vim.opt.completeopt = {"menuone", "noselect"}
-      end,
       event = {"InsertEnter"}
     }
 
