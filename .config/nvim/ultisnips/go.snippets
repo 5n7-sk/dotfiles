@@ -3,7 +3,7 @@ import "$1"
 endsnippet
 
 snippet pkg "package declaration"
-package ${1:main}
+package ${1:`echo ${PWD##*/}`}
 endsnippet
 
 snippet pkgm "main package template"
