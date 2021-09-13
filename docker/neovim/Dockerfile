@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 SHELL ["/bin/bash", "-c"]
 
-ARG asdf_golang_version="1.16.7"
+ARG asdf_golang_version="1.17.1"
 ARG asdf_nodejs_version="16.6.1"
 ARG asdf_python_version="3.9.6"
 
