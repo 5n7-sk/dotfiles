@@ -93,13 +93,13 @@ endsnippet
 
 snippet main "main function"
 func main() {
-	${0:${VISUAL}}
+	$1
 }
 endsnippet
 
 snippet method "method"
-func ($1 $2) $3($4)${5/(.+)/ /}$5 {
-	${0:${VISUAL}}
+func (`!p s = t[1]; snip.rv = s[0].lower() if s else ""` *$1) $2($3)${4/(.+)/ /}$4 {
+	$5
 }
 endsnippet
 
