@@ -2,6 +2,14 @@ snippet shebang "shebang"
 #!/usr/bin/env python
 endsnippet
 
+snippet import "import"
+import $1
+endsnippet
+
+snippet imports "import multiple packages"
+`!p snip.rv = imports(snip.v.text)`
+endsnippet
+
 snippet ifmain "ifmain"
 def main():
  	${1:pass}
@@ -22,3 +30,11 @@ snippet dataclass "dataclass"
 class $1:
  	$2
 endsnippet
+
+global !p
+def imports(s: str) -> str:
+	r = ""
+	for pkg in s.split(","):
+		r += f"import {pkg}\n"
+	return r
+endglobal
