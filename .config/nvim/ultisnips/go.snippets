@@ -1,7 +1,3 @@
-snippet import "import declaration"
-import "$1"
-endsnippet
-
 snippet pkg "package declaration"
 package ${1:`echo ${PWD##*/}`}
 endsnippet
@@ -58,6 +54,11 @@ func main() {
 }
 endsnippet
 
+snippet import "import declaration"
+import "$1"
+endsnippet
+
+
 snippet struct "struct declaration"
 type $1 struct {
 	$2
@@ -97,15 +98,15 @@ func main() {
 }
 endsnippet
 
-snippet method "method"
-func (`!p s = t[1]; snip.rv = s[0].lower() if s else ""` *$1) $2($3)${4/(.+)/ /}$4 {
-	$5
+snippet func "function"
+func $1($2)${3/(.+)/ /}$3 {
+	$4
 }
 endsnippet
 
-snippet func "function"
-func $1($2)${3/(.+)/ /}$3 {
-	${0:${VISUAL}}
+snippet method "method"
+func (`!p s = t[1]; snip.rv = s[0].lower() if s else ""` *$1) $2($3)${4/(.+)/ /}$4 {
+	$5
 }
 endsnippet
 
