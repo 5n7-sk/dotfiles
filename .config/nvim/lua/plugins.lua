@@ -682,7 +682,7 @@ return require("packer").startup {
       "SirVer/ultisnips",
       setup = function()
         vim.g.UltiSnipsSnippetDirectories = {"~/.config/nvim/ultisnips"}
-        vim.g.UltiSnipsExpandTrigger = "<nul>"
+        vim.g.UltiSnipsExpandTrigger = "<cr>"
         vim.g.UltiSnipsJumpForwardTrigger = "<c-n>"
         vim.g.UltiSnipsJumpBackwardTrigger = "<c-p>"
       end,
