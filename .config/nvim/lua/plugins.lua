@@ -77,6 +77,14 @@ return require("packer").startup {
 
     use {"editorconfig/editorconfig-vim", event = {"BufNewFile", "BufRead"}}
 
+    use {
+      "beauwilliams/focus.nvim",
+      config = function()
+        require("focus").setup()
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
     use {"lukas-reineke/format.nvim", config = require("plugins.format").config, event = {"BufWritePre"}}
 
     use {
