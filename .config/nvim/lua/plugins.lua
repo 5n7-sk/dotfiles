@@ -294,7 +294,7 @@ return require("packer").startup {
           after = {"nvim-cmp"},
           config = function()
             require("nvim-autopairs").setup()
-            require("nvim-autopairs.completion.cmp").setup({map_complete = true})
+            require("nvim-autopairs.completion.cmp").setup()
           end
         }
       },
