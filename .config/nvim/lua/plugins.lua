@@ -79,6 +79,7 @@ return require("packer").startup {
 
     use {
       "glacambre/firenvim",
+      opt = true,
       run = function()
         vim.fn["firenvim#install"](0)
       end
