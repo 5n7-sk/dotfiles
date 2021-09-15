@@ -1,8 +1,6 @@
 local M = {}
 
 M.config = function()
-  vim.g.nvim_tree_width = 40
-
   local cb = require("nvim-tree.config").nvim_tree_callback
   vim.g.nvim_tree_bindings = {
     {key = {"<cr>"}, cb = cb("edit")},
@@ -38,6 +36,14 @@ M.config = function()
     {key = {"q"}, cb = cb("close")},
     {key = {"g?"}, cb = cb("toggle_help")}
   }
+end
+
+M.setup = function()
+  local map = require("utils").map
+  map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
+
+  vim.g.nvim_tree_width = 40
+  vim.g.nvim_tree_ignore = {"__pycache__"}
 end
 
 return M

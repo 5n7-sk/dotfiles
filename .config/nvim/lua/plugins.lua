@@ -396,10 +396,7 @@ return require("packer").startup {
       wants = {"nvim-web-devicons"},
       requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
       config = require("plugins.nvim-tree").config,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
-      end,
+      setup = require("plugins.nvim-tree").setup,
       cmd = {"NvimTreeToggle"}
     }
 
