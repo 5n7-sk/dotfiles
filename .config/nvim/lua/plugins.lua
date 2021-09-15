@@ -527,6 +527,8 @@ return require("packer").startup {
       event = {"BufNewFile", "BufRead"}
     }
 
+    use {"tversteeg/registers.nvim", cmd = {"Registers"}}
+
     use {
       "blackCauldron7/surround.nvim",
       config = function()
