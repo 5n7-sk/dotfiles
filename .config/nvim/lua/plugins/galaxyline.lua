@@ -64,6 +64,26 @@ M.config = function()
     return name and name or "UNKNOWN"
   end
 
+  local get_lsp_clients = function(msg)
+    msg = msg or "no clients available"
+
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
+    end
+
+    local ft = vim.api.nvim_buf_get_option(0, "filetype")
+    local names = {}
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, ft) ~= -1 then
+        table.insert(names, client.name)
+      end
+    end
+
+    return table.concat(names, " ")
+  end
+
   gls.left = {
     {Start = {provider = provider_space}},
     {
@@ -84,7 +104,7 @@ M.config = function()
     {
       ShowLspClient = {
         provider = function()
-          return require("galaxyline.provider_lsp").get_lsp_client("")
+          return get_lsp_clients("")
         end
       }
     }
