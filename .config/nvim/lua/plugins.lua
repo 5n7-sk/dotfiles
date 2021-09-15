@@ -769,6 +769,18 @@ return require("packer").startup {
     }
 
     use {
+      "sindrets/winshift.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<c-m-h>", "<cmd>WinShift left<cr>")
+        map("n", "<c-m-j>", "<cmd>WinShift down<cr>")
+        map("n", "<c-m-k>", "<cmd>WinShift up<cr>")
+        map("n", "<c-m-l>", "<cmd>WinShift right<cr>")
+      end,
+      cmd = {"WinShift"}
+    }
+
+    use {
       "folke/zen-mode.nvim",
       config = function()
         require("zen-mode").setup()
