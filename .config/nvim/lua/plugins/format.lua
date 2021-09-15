@@ -15,6 +15,7 @@ M.config = function()
     python = {{cmd = {"black", "isort -m 3"}}},
     sh = {{cmd = {"shfmt -i 2 -w"}}},
     terraform = {{cmd = {"terraform fmt -write"}}},
+    toml = {{cmd = {"prettier -w"}}},
     typescript = {{cmd = {"prettier -w"}}},
     yaml = {{cmd = {"prettier -w"}}},
     zsh = {{cmd = {"shfmt -i 2 -w"}}}
