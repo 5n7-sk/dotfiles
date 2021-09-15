@@ -44,6 +44,9 @@ M.setup = function()
 
   vim.g.nvim_tree_width = 40
   vim.g.nvim_tree_ignore = {"__pycache__"}
+  vim.g.nvim_tree_follow_update_path = true
+  vim.g.nvim_tree_lsp_diagnostics = true
+  vim.g.nvim_tree_update_cwd = true
 end
 
 return M
