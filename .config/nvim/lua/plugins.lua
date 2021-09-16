@@ -331,6 +331,10 @@ return require("packer").startup {
       wants = {"lsp_signature.nvim", "nvim-lsp-installer"},
       requires = {{"ray-x/lsp_signature.nvim", opt = true}, {"williamboman/nvim-lsp-installer", opt = true}},
       config = require("plugins.lspconfig").config,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>lr", "<cmd>LspRestart<cr>")
+      end,
       event = {"BufNewFile", "BufRead"}
     }
 
