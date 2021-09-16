@@ -211,7 +211,6 @@ return require("packer").startup {
       end,
       setup = function()
         local map = require("utils").map
-        map("n", "<f2>", "<cmd>Lspsaga rename<cr>")
         map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
       end,
       event = {"BufNewFile", "BufRead"}
