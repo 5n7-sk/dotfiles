@@ -711,6 +711,8 @@ return require("packer").startup {
       event = {"BufNewFile", "BufRead"}
     }
 
+    use {"dhruvasagar/vim-marp", ft = {"markdown"}}
+
     use {
       "heavenshell/vim-pydocstring",
       run = {"make install"},
