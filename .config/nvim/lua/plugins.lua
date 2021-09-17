@@ -33,6 +33,8 @@ return require("packer").startup {
       cmd = {"Chowcho"}
     }
 
+    use {"Pocco81/DAPInstall.nvim", event = {"BufNewFile", "BufRead"}}
+
     use {
       "glepnir/dashboard-nvim",
       wants = {"telescope.nvim"},
@@ -311,6 +313,29 @@ return require("packer").startup {
     }
 
     use {"yamatsum/nvim-cursorline", event = {"BufNewFile", "BufRead"}}
+
+    use {
+      "mfussenegger/nvim-dap",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>dg", "<cmd>lua require(\"dap\").run()<cr>")
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
+      "rcarriga/nvim-dap-ui",
+      wants = {"nvim-dap"},
+      requires = {"mfussenegger/nvim-dap", opt = true},
+      config = function()
+        require("dapui").setup()
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>du", "<cmd>lua require(\"dapui\").toggle()<cr>")
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
 
     use {"kevinhwang91/nvim-hlslens", event = {"BufNewFile", "BufRead"}}
 
