@@ -51,14 +51,11 @@ font:
 
 colors: *tokyo-night
 
-# 360
 background_opacity: 0.7
 
-# 370
 cursor:
   style: Block
 
-# 422
 shell:
   program: sh
   args:
