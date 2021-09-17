@@ -651,7 +651,7 @@ return require("packer").startup {
         local map = require("utils").map
         map("n", "<leader>td", "<cmd>TodoTelescope<cr>")
       end,
-      cmd = {"TodoTelescope"}
+      event = {"BufNewFile", "BufRead"}
     }
 
     use {
