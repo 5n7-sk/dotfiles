@@ -378,6 +378,8 @@ return require("packer").startup {
       event = {"BufNewFile", "BufRead"}
     }
 
+    use {"alec-gibson/nvim-tetris", cmd = {"Tetris"}}
+
     use {
       "akinsho/nvim-toggleterm.lua",
       config = function()
@@ -476,6 +478,8 @@ return require("packer").startup {
       requires = {{"nvim-treesitter", opt = true}},
       event = {"BufNewFile", "BufRead"}
     }
+
+    use {"seandewar/nvimesweeper", cmd = {"Nvimesweeper"}}
 
     use {
       "pwntester/octo.nvim",
