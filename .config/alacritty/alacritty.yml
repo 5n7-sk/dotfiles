@@ -47,7 +47,7 @@ font:
   bold_italic:
     family: MesloLGM Nerd Font
     style: Bold Italic
-  size: 11
+  size: 10
 
 colors: *tokyo-night
 
