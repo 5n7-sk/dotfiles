@@ -595,6 +595,16 @@ return require("packer").startup {
     }
 
     use {
+      "crispgm/telescope-heading.nvim",
+      wants = {"telescope.nvim"},
+      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
+      config = function()
+        require("telescope").load_extension("heading")
+      end,
+      ft = {"markdown"}
+    }
+
+    use {
       "nvim-telescope/telescope-media-files.nvim",
       wants = {"telescope.nvim"},
       requires = {{"nvim-telescope/telescope.nvim", opt = true}},
