@@ -69,6 +69,13 @@ return require("packer").startup {
       cmd = {"DiffviewOpen"}
     }
 
+    use {
+      "kat0h/dps-bufpreview.vim",
+      wants = {"denops.vim"},
+      requires = {{"vim-denops/denops.vim", opt = true}},
+      ft = {"markdown"}
+    }
+
     use {"editorconfig/editorconfig-vim", event = {"BufNewFile", "BufRead"}}
 
     use {
