@@ -21,6 +21,10 @@ if hash "poetry" >/dev/null 2>&1; then
   poetry self update
 fi
 
+if hash "tmux" >/dev/null 2>&1; then
+  cd ~/.tmux/plugins/tpm && git pull origin master
+fi
+
 # yay
 if hash "yay" >/dev/null 2>&1; then
   yay -Syyu --noconfirm
