@@ -33,6 +33,7 @@ map("n", "<m-L>", "<cmd>vertical resize +10<cr>")
 
 -- kill line without copying
 map("n", "<m-k>", "\"_dd")
+map("v", "<m-k>", "\"_dd")
 
 map("n", "<c-t>n", "<cmd>tabnew<cr>")
 
