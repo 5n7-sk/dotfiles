@@ -196,6 +196,8 @@ return require("packer").startup {
       event = {"BufNewFile", "BufRead"}
     }
 
+    use {"notomo/lreload.nvim", opt = true}
+
     use {
       "ahmedkhalf/lsp-rooter.nvim",
       config = function()
