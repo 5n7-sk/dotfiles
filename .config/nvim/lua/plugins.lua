@@ -78,6 +78,14 @@ return require("packer").startup {
     use {"editorconfig/editorconfig-vim", event = {"BufNewFile", "BufRead"}}
 
     use {
+      "nathom/filetype.nvim",
+      setup = function()
+        vim.g.did_load_filetypes = 1
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
       "glacambre/firenvim",
       opt = true,
       run = function()
@@ -178,6 +186,14 @@ return require("packer").startup {
     use {"mboughaba/i3config.vim", ft = {"conf"}}
 
     use {"lewis6991/impatient.nvim", rocks = {"mpack"}}
+
+    use {
+      "Darazaki/indent-o-matic",
+      config = function()
+        require("indent-o-matic").setup {max_lines = 2048}
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
 
     use {"lukas-reineke/indent-blankline.nvim", event = {"BufNewFile", "BufRead"}}
 
@@ -534,6 +550,29 @@ return require("packer").startup {
     }
 
     use {"tversteeg/registers.nvim", cmd = {"Registers"}}
+
+    use {
+      "GustavoKatel/sidebar.nvim",
+      wants = {"todo-comments.nvim"},
+      requires = {{"folke/todo-comments.nvim", opt = true}},
+      rocks = {"luatz"},
+      config = function()
+        require("sidebar-nvim").setup {
+          bindings = {
+            ["q"] = function()
+              require("sidebar-nvim").close()
+            end
+          },
+          sections = {"datetime", "git-status", "lsp-diagnostics", "todos"},
+          datetime = {format = "%Y-%m-%d %a %H:%M:%S"}
+        }
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>sb", "<cmd>SidebarNvimToggle<cr>")
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
 
     use {
       "blackCauldron7/surround.nvim",
