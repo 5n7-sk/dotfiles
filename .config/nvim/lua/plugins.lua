@@ -14,13 +14,7 @@ return require("packer").startup {
     use {
       "sudormrfbin/cheatsheet.nvim",
       wants = {"telescope.nvim"},
-      requires = {
-        {
-          "nvim-telescope/telescope.nvim",
-          opt = true,
-          requires = {{"kyazdani42/nvim-web-devicons", opt = true}, {"nvim-lua/plenary.nvim", opt = true}}
-        }
-      },
+      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
       cmd = {"Cheatsheet", "CheatsheetEdit"}
     }
 
@@ -110,8 +104,6 @@ return require("packer").startup {
         {
           "SmiteshP/nvim-gps",
           opt = true,
-          wants = {"nvim-treesitter"},
-          requires = {{"nvim-treesitter/nvim-treesitter", opt = true}},
           config = function()
             require("nvim-gps").setup()
           end
