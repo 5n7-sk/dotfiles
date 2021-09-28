@@ -551,7 +551,7 @@ return require("packer").startup {
     use {"tversteeg/registers.nvim", cmd = {"Registers"}}
 
     use {
-      "GustavoKatel/sidebar.nvim",
+      "sidebar-nvim/sidebar.nvim",
       wants = {"todo-comments.nvim"},
       requires = {{"folke/todo-comments.nvim", opt = true}},
       rocks = {"luatz"},
