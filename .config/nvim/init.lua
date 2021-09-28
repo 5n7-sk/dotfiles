@@ -12,6 +12,7 @@ vim.opt.whichwrap = vim.o.whichwrap .. "h,l"
 -- tab appearance/behavior
 vim.opt.expandtab = true
 vim.opt.list = true
+vim.opt.listchars:append({eol = "↴", space = "⋅"})
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
