@@ -186,6 +186,8 @@ return require("packer").startup {
 
     use {"lewis6991/impatient.nvim", rocks = {"mpack"}}
 
+    use {"lukas-reineke/indent-blankline.nvim", event = {"BufNewFile", "BufRead"}}
+
     use {
       "Darazaki/indent-o-matic",
       config = function()
@@ -193,8 +195,6 @@ return require("packer").startup {
       end,
       event = {"BufNewFile", "BufRead"}
     }
-
-    use {"lukas-reineke/indent-blankline.nvim", event = {"BufNewFile", "BufRead"}}
 
     use {
       "b3nj5m1n/kommentary",
