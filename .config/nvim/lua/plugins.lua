@@ -99,6 +99,14 @@ return require("packer").startup {
     }
 
     use {
+      "windwp/floatline.nvim",
+      config = function()
+        require("floatline").setup()
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
       "beauwilliams/focus.nvim",
       config = function()
         require("focus").setup()
