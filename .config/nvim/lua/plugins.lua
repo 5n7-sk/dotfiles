@@ -48,8 +48,12 @@ return require("packer").startup {
       "monaqa/dial.nvim",
       setup = function()
         local map = require("utils").map
-        map("n", "<m-l>", "<plug>(dial-increment)", {noremap = false})
-        map("n", "<m-h>", "<plug>(dial-decrement)", {noremap = false})
+        map("n", "<c-a>", "<plug>(dial-increment)", {noremap = false})
+        map("n", "<c-x>", "<plug>(dial-decrement)", {noremap = false})
+        map("v", "<c-a>", "<plug>(dial-increment)", {noremap = false})
+        map("v", "<c-x>", "<plug>(dial-decrement)", {noremap = false})
+        map("v", "g<c-a>", "<plug>(dial-increment-additional)", {noremap = false})
+        map("v", "g<c-x>", "<plug>(dial-decrement-additional)", {noremap = false})
       end,
       event = {"CursorMoved"}
     }
