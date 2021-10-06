@@ -260,6 +260,18 @@ return require("packer").startup {
     }
 
     use {
+      "fedepujol/move.nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<m-down>", "<cmd>MoveLine(1)<cr>")
+        map("n", "<m-up>", "<cmd>MoveLine(-1)<cr>")
+        map("v", "<m-down>", "<cmd>MoveBlock(1)<cr>")
+        map("v", "<m-up>", "<cmd>MoveBlock(-1)<cr>")
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
       "TimUntersberger/neogit",
       wants = {"plenary.nvim"},
       requires = {{"nvim-lua/plenary.nvim", opt = true}},
