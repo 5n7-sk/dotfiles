@@ -28,6 +28,33 @@ return require("packer").startup {
     }
 
     use {
+      "noib3/cokeline.nvim",
+      wants = {"nvim-web-devicons"},
+      requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
+      config = function()
+        require("cokeline").setup {cycle_prev_next_mappings = true}
+      end,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<m-1>", "<plug>(cokeline-focus-1)", {noremap = false})
+        map("n", "<m-2>", "<plug>(cokeline-focus-2)", {noremap = false})
+        map("n", "<m-3>", "<plug>(cokeline-focus-3)", {noremap = false})
+        map("n", "<m-4>", "<plug>(cokeline-focus-4)", {noremap = false})
+        map("n", "<m-5>", "<plug>(cokeline-focus-5)", {noremap = false})
+        map("n", "<m-6>", "<plug>(cokeline-focus-6)", {noremap = false})
+        map("n", "<m-7>", "<plug>(cokeline-focus-7)", {noremap = false})
+        map("n", "<m-8>", "<plug>(cokeline-focus-8)", {noremap = false})
+        map("n", "<m-9>", "<plug>(cokeline-focus-9)", {noremap = false})
+        map("n", "<m-0>", "<plug>(cokeline-focus-10)", {noremap = false})
+        map("n", "<m-h>", "<plug>(cokeline-focus-prev)", {noremap = false})
+        map("n", "<m-l>", "<plug>(cokeline-focus-next)", {noremap = false})
+        map("n", "<leader>bh", "<plug>(cokeline-switch-prev)", {noremap = false})
+        map("n", "<leader>bl", "<plug>(cokeline-switch-next)", {noremap = false})
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
       "glepnir/dashboard-nvim",
       wants = {"telescope.nvim"},
       requires = {{"nvim-telescope/telescope.nvim", opt = true}},
@@ -294,31 +321,6 @@ return require("packer").startup {
       "nacro90/numb.nvim",
       config = function()
         require("numb").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "akinsho/nvim-bufferline.lua",
-      wants = {"nvim-web-devicons"},
-      requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
-      config = function()
-        require("bufferline").setup {
-          options = {
-            middle_mouse_command = "bdelete! %d",
-            diagnostics = "nvim_lsp",
-            offsets = {{filetype = "NvimTree"}}
-          }
-        }
-      end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "bh", "<cmd>BufferLineCyclePrev<cr>")
-        map("n", "bl", "<cmd>BufferLineCycleNext<cr>")
-        map("n", "bp", "<cmd>BufferLinePick<cr>")
-
-        vim.g.indent_blankline_filetype_exclude = {"dashboard", "help", "packer"}
-        vim.g.indent_blankline_show_first_indent_level = false
       end,
       event = {"BufNewFile", "BufRead"}
     }
