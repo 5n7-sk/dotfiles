@@ -14,7 +14,7 @@ M.config = function()
     bufmap(buffer, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
     bufmap(buffer, "n", "<c-i>", "<cmd>lua vim.lsp.buf.hover()<cr>")
     bufmap(buffer, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
-    bufmap(buffer, "n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
+    bufmap(buffer, "n", "<space>lw", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>")
     bufmap(buffer, "n", "<f2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
     bufmap(buffer, "n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>")
   end
