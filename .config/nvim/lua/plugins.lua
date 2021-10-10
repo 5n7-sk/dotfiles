@@ -1,6 +1,8 @@
 vim.cmd("packadd packer.nvim")
 
 return require("packer").startup {
+  config = {compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"},
+
   function(use)
     use {
       "famiu/bufdelete.nvim",
