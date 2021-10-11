@@ -133,7 +133,14 @@ return require("packer").startup {
       event = {"BufNewFile", "BufRead"}
     }
 
-    use {"is0n/fm-nvim", cmd = {"Ranger"}}
+    use {
+      "is0n/fm-nvim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>rr", "<cmd>Ranger<cr>")
+      end,
+      cmd = {"Ranger"}
+    }
 
     use {
       "beauwilliams/focus.nvim",
