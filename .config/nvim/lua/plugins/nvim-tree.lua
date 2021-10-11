@@ -4,7 +4,7 @@ M.config = function()
   local cb = require("nvim-tree.config").nvim_tree_callback
 
   require("nvim-tree").setup {
-    lsp_diagnostics = true,
+    diagnostics = {enable = true},
     view = {
       width = 40,
       mappings = {
