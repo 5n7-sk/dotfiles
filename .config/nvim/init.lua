@@ -1,5 +1,4 @@
 pcall(require, "impatient")
-pcall(require, "packer_compiled")
 
 vim.g.mapleader = " "
 
