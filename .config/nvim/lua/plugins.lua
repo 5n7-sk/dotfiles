@@ -565,7 +565,15 @@ return require("packer").startup {
       ft = {"json"}
     }
 
-    use {"wbthomason/packer.nvim", opt = true}
+    use {
+      "wbthomason/packer.nvim",
+      opt = true,
+      setup = function()
+        local map = require("utils").map
+        map("n", "<leader>pc", "<cmd>PackerCompile<cr>")
+        map("n", "<leader>ps", "<cmd>PackerSync<cr>")
+      end
+    }
 
     use {
       "nvim-treesitter/playground",
