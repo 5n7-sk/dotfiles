@@ -345,6 +345,13 @@ return require("packer").startup {
         {"hrsh7th/cmp-nvim-lua", after = {"nvim-cmp"}},
         {"quangnguyen30192/cmp-nvim-ultisnips", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-path", after = {"nvim-cmp"}},
+        {
+          "f3fora/cmp-spell",
+          after = {"nvim-cmp"},
+          setup = function()
+            vim.opt.spell = true
+          end
+        },
         {"tzachar/cmp-tabnine", after = {"nvim-cmp"}, run = {"./install.sh"}},
         {"onsails/lspkind-nvim", after = {"nvim-cmp"}},
         {

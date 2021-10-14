@@ -30,6 +30,7 @@ M.config = function()
           nvim_lsp = "[LSP]",
           nvim_lua = "[Lua]",
           path = "[Path]",
+          spell = "[Spell]",
           ultisnips = "[UltiSnips]"
         })[entry.source.name]
 
@@ -45,6 +46,7 @@ M.config = function()
       {name = "nvim_lsp"},
       {name = "nvim_lua"},
       {name = "path"},
+      {name = "spell"},
       {name = "ultisnips"}
     }
   }
