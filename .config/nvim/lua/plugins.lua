@@ -145,6 +145,7 @@ return require("packer").startup {
 
     use {
       "beauwilliams/focus.nvim",
+      disable = true,
       config = function()
         require("focus").setup()
       end,
