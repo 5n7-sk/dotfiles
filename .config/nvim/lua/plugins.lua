@@ -127,6 +127,7 @@ return require("packer").startup {
 
     use {
       "windwp/floatline.nvim",
+      commit = "d36702341cef923f9b34228d818ad78ae6e7797c",
       config = function()
         require("floatline").setup()
       end,
