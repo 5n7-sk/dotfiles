@@ -29,7 +29,6 @@ return require("packer").startup {
 
     use {
       "noib3/cokeline.nvim",
-      commit = "99fb7272a2d60ca5d5680fdb71b4c7854d659b90",
       wants = {"nvim-web-devicons"},
       requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
       config = function()
