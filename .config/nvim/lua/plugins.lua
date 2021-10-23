@@ -338,6 +338,7 @@ return require("packer").startup {
 
     use {
       "hrsh7th/nvim-cmp",
+      wants = {"cmp-under-comparator"},
       requires = {
         {"hrsh7th/cmp-buffer", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-calc", after = {"nvim-cmp"}},
@@ -355,6 +356,7 @@ return require("packer").startup {
           end
         },
         {"tzachar/cmp-tabnine", after = {"nvim-cmp"}, run = {"./install.sh"}},
+        {"lukas-reineke/cmp-under-comparator", opt = true},
         {"onsails/lspkind-nvim", after = {"nvim-cmp"}},
         {
           "windwp/nvim-autopairs",
