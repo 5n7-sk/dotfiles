@@ -787,6 +787,17 @@ return require("packer").startup {
     }
 
     use {
+      "skanehira/translate.vim",
+      setup = function()
+        local map = require("utils").map
+        map("n", "tr", "<plug>(Translate)", {noremap = false})
+        map("v", "tr", "<plug>(VTranslate)", {noremap = false})
+
+        vim.g.translate_popup_window = 0
+      end
+    }
+
+    use {
       "folke/twilight.nvim",
       wants = {"nvim-treesitter"},
       requires = {{"nvim-treesitter/nvim-treesitter", opt = true}},
