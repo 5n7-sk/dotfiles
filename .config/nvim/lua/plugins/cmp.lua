@@ -22,12 +22,10 @@ M.config = function()
       }
     },
     mapping = {
-      ["<c-k>"] = cmp.mapping.select_prev_item(),
-      ["<c-j>"] = cmp.mapping.select_next_item(),
-      ["<c-u>"] = cmp.mapping.scroll_docs(-5),
-      ["<c-d>"] = cmp.mapping.scroll_docs(5),
-      ["<c-space>"] = cmp.mapping.complete(),
-      ["<c-e>"] = cmp.mapping.close()
+      ["<c-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"c", "i"}),
+      ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), {"c", "i"}),
+      ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), {"c", "i"}),
+      ["<cr>"] = cmp.mapping({c = cmp.mapping.confirm({select = false}), i = cmp.mapping.confirm({select = true})})
     },
     formatting = {
       format = function(entry, vim_item)
@@ -62,6 +60,9 @@ M.config = function()
       {name = "ultisnips"}
     }
   }
+
+  cmp.setup.cmdline("/", {sources = {{name = "buffer"}}})
+  cmp.setup.cmdline(":", {sources = cmp.config.sources({{name = "cmdline"}}, {{name = "path"}})})
 end
 
 return M

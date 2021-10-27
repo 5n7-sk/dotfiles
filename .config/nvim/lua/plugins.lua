@@ -342,6 +342,7 @@ return require("packer").startup {
       requires = {
         {"hrsh7th/cmp-buffer", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-calc", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-cmdline", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-emoji", after = {"nvim-cmp"}},
         {"kdheepak/cmp-latex-symbols", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-nvim-lsp", after = {"nvim-cmp"}},
@@ -368,7 +369,7 @@ return require("packer").startup {
         }
       },
       config = require("plugins.cmp").config,
-      event = {"InsertEnter"}
+      event = {"CmdlineEnter", "InsertEnter"}
     }
 
     use {
