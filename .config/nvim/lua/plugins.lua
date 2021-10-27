@@ -278,7 +278,7 @@ return require("packer").startup {
     }
 
     use {
-      "glepnir/lspsaga.nvim",
+      "tami5/lspsaga.nvim",
       config = function()
         require("lspsaga").init_lsp_saga()
       end,
