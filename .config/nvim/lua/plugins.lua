@@ -349,6 +349,7 @@ return require("packer").startup {
         {"hrsh7th/cmp-nvim-lua", after = {"nvim-cmp"}},
         {"quangnguyen30192/cmp-nvim-ultisnips", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-path", after = {"nvim-cmp"}},
+        {"lukas-reineke/cmp-rg", after = {"nvim-cmp"}},
         {
           "f3fora/cmp-spell",
           after = {"nvim-cmp"},
