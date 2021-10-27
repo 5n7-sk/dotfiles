@@ -63,7 +63,7 @@ M.config = function()
     }
   }
 
-  cmp.setup.cmdline("/", {sources = {{name = "buffer"}}})
+  cmp.setup.cmdline("/", {sources = cmp.config.sources({{name = "buffer"}}, {{name = "nvim_lsp_document_symbol"}})})
   cmp.setup.cmdline(":", {sources = cmp.config.sources({{name = "cmdline"}}, {{name = "path"}})})
 end
 

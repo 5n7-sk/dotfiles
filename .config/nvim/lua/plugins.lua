@@ -346,6 +346,7 @@ return require("packer").startup {
         {"hrsh7th/cmp-emoji", after = {"nvim-cmp"}},
         {"kdheepak/cmp-latex-symbols", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-nvim-lsp", after = {"nvim-cmp"}},
+        {"hrsh7th/cmp-nvim-lsp-document-symbol", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-nvim-lua", after = {"nvim-cmp"}},
         {"quangnguyen30192/cmp-nvim-ultisnips", after = {"nvim-cmp"}},
         {"hrsh7th/cmp-path", after = {"nvim-cmp"}},
