@@ -47,7 +47,7 @@ M.config = function()
     local opts = {on_attach = on_attach}
 
     if server.name == "efm" then
-      opts.filetypes = {"markdown", "python"}
+      opts.filetypes = {"markdown", "python", "sh"}
       opts.settings = {
         languages = {
           markdown = {
@@ -57,6 +57,13 @@ M.config = function()
           python = {
             -- flake8
             {lintCommand = "flake8 --stdin-display-name ${INPUT} -", lintStdin = true, lintFormats = {"%f:%l%c: %m"}}
+          },
+          sh = {
+            -- shellcheck
+            {
+              lintCommand = "shellcheck -f gcc -x",
+              lintFormats = {"%f:%l:%c: error: %m", "%f:%l:%c: note: %m", "%f:%l:%c: warning: %m"}
+            }
           }
         }
       }
