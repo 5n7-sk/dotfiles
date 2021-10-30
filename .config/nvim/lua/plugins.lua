@@ -366,7 +366,7 @@ return require("packer").startup {
           after = {"nvim-cmp"},
           config = function()
             require("nvim-autopairs").setup()
-            require("nvim-autopairs.completion.cmp").setup()
+            require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
           end
         }
       },
