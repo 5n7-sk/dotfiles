@@ -51,8 +51,6 @@ end
 M.setup = function()
   local map = require("utils").map
   map("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
-
-  vim.g.nvim_tree_ignore = {"__pycache__"}
 end
 
 return M
