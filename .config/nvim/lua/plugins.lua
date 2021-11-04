@@ -225,6 +225,9 @@ return require("packer").startup {
 
     use {
       "phaazon/hop.nvim",
+      config = function()
+        require("hop").setup()
+      end,
       setup = function()
         local map = require("utils").map
         map("n", "<leader><cr>", "<cmd>HopWord<cr>", {silent = true})
