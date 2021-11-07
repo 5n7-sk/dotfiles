@@ -29,7 +29,7 @@ M.config = function()
     "pyright",
     "sumneko_lua",
     "terraformls",
-    -- "texlab",
+    "texlab",
     "vimls",
     "yamlls"
   }

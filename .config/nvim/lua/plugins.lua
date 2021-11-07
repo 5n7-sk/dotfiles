@@ -756,6 +756,14 @@ return require("packer").startup {
     }
 
     use {
+      "jakewvincent/texmagic.nvim",
+      config = function()
+        require("texmagic").setup()
+      end,
+      ft = {"tex"}
+    }
+
+    use {
       "folke/todo-comments.nvim",
       wants = {"telescope.nvim", "trouble.nvim"},
       requires = {{"nvim-telescope/telescope.nvim", opt = true}, {"folke/trouble.nvim", opt = true}},
