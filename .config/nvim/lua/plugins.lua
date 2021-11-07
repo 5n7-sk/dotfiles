@@ -155,6 +155,14 @@ return require("packer").startup {
     use {"lukas-reineke/format.nvim", config = require("plugins.format").config, event = {"BufWritePre"}}
 
     use {
+      "gukz/ftFT.nvim",
+      config = function()
+        require("ftFT").setup()
+      end,
+      event = {"BufNewFile", "BufRead"}
+    }
+
+    use {
       "glepnir/galaxyline.nvim",
       wants = {"nvim-gps", "nvim-web-devicons", "tokyonight.nvim"},
       requires = {
