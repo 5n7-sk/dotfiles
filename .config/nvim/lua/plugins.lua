@@ -568,14 +568,6 @@ return require("packer").startup {
     }
 
     use {
-      "kristijanhusak/orgmode.nvim",
-      config = function()
-        require("orgmode").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
       "vuki656/package-info.nvim",
       wants = {"nui.nvim"},
       requires = {{"MunifTanjim/nui.nvim", opt = true}},
