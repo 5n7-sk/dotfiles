@@ -1,5 +1,5 @@
 if [[ ! -f "$HOME/.zinit/bin/zinit.zsh" ]]; then
-  sh -c "$(curl -L https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+  sh -c "$(curl -L https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
@@ -11,5 +11,5 @@ zinit wait lucid light-mode for \
   paulirish/git-open \
   reegnz/jq-zsh-plugin \
   wfxr/forgit \
-  zdharma/fast-syntax-highlighting \
+  zdharma-continuum/fast-syntax-highlighting \
   zsh-users/zsh-autosuggestions
