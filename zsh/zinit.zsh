@@ -1,8 +1,10 @@
-if [[ ! -f "$HOME/.zinit/bin/zinit.zsh" ]]; then
-  sh -c "$(curl -L https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+ZINIT_PATH="$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+
+if [[ ! -f "$ZINIT_PATH" ]]; then
+  sh -c "$(curl -L https://git.io/zinit-install)"
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
+source "$ZINIT_PATH"
 
 zinit wait lucid light-mode for \
   agkozak/zsh-z \
