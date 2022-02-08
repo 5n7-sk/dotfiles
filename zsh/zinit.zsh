@@ -11,7 +11,6 @@ zinit light-mode for \
   agkozak/zsh-z \
   mollifier/cd-gitroot \
   NullSense/fuzzy-sys \
-  paulirish/git-open \
   reegnz/jq-zsh-plugin \
   wfxr/forgit \
   zdharma-continuum/fast-syntax-highlighting \
