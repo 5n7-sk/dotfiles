@@ -6,7 +6,7 @@ fi
 
 source "$ZINIT_PATH"
 
-zinit ice lucid wait
+zinit ice blockf depth"1" lucid wait
 zinit light-mode for \
   agkozak/zsh-z \
   mollifier/cd-gitroot \
