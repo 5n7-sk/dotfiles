@@ -30,6 +30,7 @@
     ~/.config/starship.toml: .config/starship/starship.toml
     ~/.config/vin: .config/vin
     ~/.config/zathura: .config/zathura
+    ~/.config/zeno: .config/zeno
     ~/.gitconfig: .gitconfig
     ~/.imwheelrc: .imwheelrc
     ~/.profile: .profile

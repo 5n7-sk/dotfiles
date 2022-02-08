@@ -13,5 +13,6 @@ zinit light-mode for \
   NullSense/fuzzy-sys \
   reegnz/jq-zsh-plugin \
   wfxr/forgit \
+  yuki-yano/zeno.zsh \
   zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions

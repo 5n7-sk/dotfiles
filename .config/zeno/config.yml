@@ -1,0 +1,9 @@
+snippets:
+  - keyword: ga
+    snippet: git add {{file}}
+  - keyword: gco
+    snippet: git checkout {{branch}}
+  - keyword: gd
+    snippet: git diff {{branch}}
+  - keyword: gs
+    snippet: git status --branch --short --show-stash
