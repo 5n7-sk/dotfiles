@@ -1,7 +1,7 @@
 ZINIT_PATH="$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 
 if [[ ! -f "$ZINIT_PATH" ]]; then
-  sh -c "$(curl -L https://git.io/zinit-install)"
+  NO_EDIT=1 NO_TUTORIAL=1 sh -c "$(curl -L https://git.io/zinit-install)"
 fi
 
 source "$ZINIT_PATH"
