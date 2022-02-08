@@ -14,4 +14,4 @@ zinit wait lucid light-mode for \
   reegnz/jq-zsh-plugin \
   wfxr/forgit \
   zdharma-continuum/fast-syntax-highlighting \
-  zsh-users/zsh-autosuggestions
+  atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
