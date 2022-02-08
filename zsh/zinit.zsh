@@ -6,7 +6,8 @@ fi
 
 source "$ZINIT_PATH"
 
-zinit wait lucid light-mode for \
+zinit ice lucid wait
+zinit light-mode for \
   agkozak/zsh-z \
   mollifier/cd-gitroot \
   NullSense/fuzzy-sys \
