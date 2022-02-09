@@ -32,7 +32,6 @@ if [ -d "$HOME/sandbox" ]; then
 fi
 
 alias h="history -i"
-alias open="xdg-open"
 
 alias cp="cp -ir"
 alias mkdir="mkdir -p"
@@ -154,6 +153,14 @@ ghg() {
 mkcd() {
   mkdir -p $1
   cd $1
+}
+
+open() {
+  if [[ $# == 0 ]]; then
+    gh browse
+  else
+    xdg-open "$@"
+  fi
 }
 
 targz() {
