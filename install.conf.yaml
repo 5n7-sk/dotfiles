@@ -14,7 +14,6 @@
 
 - link:
     ~/.config/alacritty: .config/alacritty
-    ~/.config/albert/albert.conf: .config/albert/albert.conf
     ~/.config/bat: .config/bat
     ~/.config/dunst: .config/dunst
     ~/.config/fs: .config/fs
@@ -48,7 +47,6 @@
 
 - yay:
     - alacritty
-    - albert
     - arandr
     - bluez
     - bluez-firmware
