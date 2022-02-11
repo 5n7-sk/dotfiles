@@ -25,6 +25,7 @@
     ~/.config/nvim: .config/nvim
     ~/.config/picom: .config/picom
     ~/.config/polybar: .config/polybar
+    ~/.config/pypoetry: .config/pypoetry
     ~/.config/ranger: .config/ranger
     ~/.config/rofi: .config/rofi
     ~/.config/starship.toml: .config/starship/starship.toml
