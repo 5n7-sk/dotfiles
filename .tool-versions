@@ -1,5 +1,5 @@
-deno 1.18.0
-golang 1.17.6
+deno 1.18.2
+golang 1.17.7
 nodejs lts
 python 3.10.2
 ruby 2.7.5
