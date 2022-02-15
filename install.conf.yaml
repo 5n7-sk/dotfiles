@@ -16,6 +16,7 @@
     ~/.config/alacritty: .config/alacritty
     ~/.config/bat: .config/bat
     ~/.config/dunst: .config/dunst
+    ~/.config/fd: .config/fd
     ~/.config/fs: .config/fs
     ~/.config/git: .config/git
     ~/.config/i3: .config/i3
