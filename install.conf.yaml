@@ -49,60 +49,36 @@
 - yay:
     - alacritty
     - arandr
+    - autorandr
     - bluez
-    - bluez-firmware
-    - bluez-libs
     - bluez-utils
     - discord
     - docker
-    - docker-compose
     - dropbox
     - dunst
     - enpass-bin
     - fcitx5-im
     - fcitx5-mozc
-    - feh
-    - ffmpegthumbnailer
-    - foliate
-    - fzf
-    - gawk
-    - gnome-epub-thumbnailer
-    - google-chrome
-    - i3lock-color-git
-    - imwheel
+    - imagemagick
     - maim
-    - muparser
-    - nautilus
-    - neofetch
-    - neovim
-    - obs-studio
     - okular
-    - pavucontrol
     - picom
+    - plasma-nm
     - polybar
-    - poppler-data
+    - pavucontrol
     - pulseaudio
-    - pulseaudio-alsa
-    - pulseaudio-bluetooth
-    - pulseaudio-control
-    - ranger
     - rofi
     - slack-desktop
-    - spicetify-cli
     - spotify
-    - tmux
-    - unzip
     - visual-studio-code-bin
-    - vlc
-    - xautolock
     - xclip
-    - xsel
-    - zathura
-    - zathura-pdf-mupdf
     - zoom
     - zsh
 
     # fonts
+    - icomoon-feather
+    - nerd-fonts-fira-code
+    - nerd-fonts-meslo
     - noto-fonts-emoji
     - otf-ipaexfont
-    - ttf-font-awesome
+    - ttf-ubuntu-font-family
