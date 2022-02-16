@@ -8,12 +8,11 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.virtualedit = "onemore"
 vim.opt.whichwrap = vim.o.whichwrap .. "h,l"
-
 -- tab appearance/behavior
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.expandtab = true
 vim.opt.list = true
-vim.opt.listchars:append({eol = "↴", space = "⋅"})
+vim.opt.listchars:append({ eol = "↴", space = "⋅" })
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
@@ -24,7 +23,6 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 
 vim.opt.timeoutlen = 300
-
 -- disable built-in plugins
 local disable_buildtin_plugins = {
   "2html_plugin",
@@ -44,7 +42,7 @@ local disable_buildtin_plugins = {
   "vimball",
   "vimballPlugin",
   "zip",
-  "zipPlugin"
+  "zipPlugin",
 }
 
 for _, plugin in pairs(disable_buildtin_plugins) do
@@ -55,7 +53,7 @@ end
 local path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(path)) > 0 then
-  vim.fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", path})
+  vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", path })
 end
 
 require("plugins")

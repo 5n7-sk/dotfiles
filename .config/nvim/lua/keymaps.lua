@@ -13,7 +13,7 @@ map("n", "gk", "k")
 function _G.smart_h()
   return string.len(vim.fn.getline(vim.fn.line(".") - 1)) > 0 and vim.fn.col(".") == 1 and "hl" or "h"
 end
-map("n", "h", "v:lua.smart_h()", {expr = true})
+map("n", "h", "v:lua.smart_h()", { expr = true })
 
 map("n", "$", "$l")
 
@@ -32,8 +32,8 @@ map("n", "<m-K>", "<cmd>resize -5<cr>")
 map("n", "<m-L>", "<cmd>vertical resize +10<cr>")
 
 -- kill line without copying
-map("n", "<m-k>", "\"_dd")
-map("v", "<m-k>", "\"_dd")
+map("n", "<m-k>", '"_dd')
+map("v", "<m-k>", '"_dd')
 
 map("n", "<c-t>n", "<cmd>tabnew<cr>")
 
