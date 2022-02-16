@@ -1,7 +1,5 @@
 alias s="source "$HOME/.zshrc" && source "$HOME/.zshenv""
 
-alias apu="sudo apt update && sudo apt upgrade -y"
-
 alias -g G="| grep"
 alias -g H="| head"
 alias -g L="| less"
@@ -14,10 +12,6 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 alias ghhome="cd "$HOME/src/github.com/skmatz""
-
-if [[ -d "$HOME/Desktop" ]]; then
-  alias de="cd "$HOME/Desktop""
-fi
 
 if [ -d "$HOME/Downloads" ]; then
   alias dl="cd "$HOME/Downloads""
@@ -43,11 +37,6 @@ if hash "docker" >/dev/null 2>&1; then
   alias dim="docker images"
   alias dps="docker ps"
   alias dpsa="docker ps -a"
-
-  alias aws="docker run -it --rm -v "$HOME/.aws:/root/.aws" -v "$(pwd):/work" -w /work amazon/aws-cli"
-  alias gcloud="docker run -it --rm -v "$(pwd):/work" -w /work gcr.io/google.com/cloudsdktool/cloud-sdk /bin/bash"
-
-  alias sbd="docker run -it --rm ghcr.io/skmatz/neovim /bin/bash"
 fi
 
 if hash "docker-compose" >/dev/null 2>&1; then
