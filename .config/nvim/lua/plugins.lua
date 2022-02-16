@@ -1,791 +1,509 @@
 vim.cmd("packadd packer.nvim")
 
-return require("packer").startup {
+return require("packer").startup({
   function(use)
-    use {
-      "famiu/bufdelete.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<m-w>", "<cmd>lua require(\"bufdelete\").bufdelete(0, true)<cr>")
-      end,
-      event = {"BufEnter"}
-    }
-
-    use {
-      "sudormrfbin/cheatsheet.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      cmd = {"Cheatsheet", "CheatsheetEdit"}
-    }
-
-    use {
-      "tkmpypy/chowcho.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>pw", "<cmd>Chowcho<cr>")
-      end,
-      cmd = {"Chowcho"}
-    }
-
-    use {
-      "noib3/cokeline.nvim",
-      wants = {"nvim-web-devicons"},
-      requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
+    use({
+      "numToStr/Comment.nvim",
       config = function()
-        require("cokeline").setup {cycle_prev_next_mappings = true}
+        require("Comment").setup({})
       end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<m-1>", "<plug>(cokeline-focus-1)", {noremap = false})
-        map("n", "<m-2>", "<plug>(cokeline-focus-2)", {noremap = false})
-        map("n", "<m-3>", "<plug>(cokeline-focus-3)", {noremap = false})
-        map("n", "<m-4>", "<plug>(cokeline-focus-4)", {noremap = false})
-        map("n", "<m-5>", "<plug>(cokeline-focus-5)", {noremap = false})
-        map("n", "<m-6>", "<plug>(cokeline-focus-6)", {noremap = false})
-        map("n", "<m-7>", "<plug>(cokeline-focus-7)", {noremap = false})
-        map("n", "<m-8>", "<plug>(cokeline-focus-8)", {noremap = false})
-        map("n", "<m-9>", "<plug>(cokeline-focus-9)", {noremap = false})
-        map("n", "<m-0>", "<plug>(cokeline-focus-10)", {noremap = false})
-        map("n", "<m-h>", "<plug>(cokeline-focus-prev)", {noremap = false})
-        map("n", "<m-l>", "<plug>(cokeline-focus-next)", {noremap = false})
-        map("n", "<leader>bh", "<plug>(cokeline-switch-prev)", {noremap = false})
-        map("n", "<leader>bl", "<plug>(cokeline-switch-next)", {noremap = false})
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {
-      "glepnir/dashboard-nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>fb", "<cmd>DashboardJumpMarks<cr>")
-        map("n", "<leader>tc", "<cmd>DashboardChangeColorscheme<cr>")
-        map("n", "<leader>fh", "<cmd>DashboardFindHistory<cr>")
-        map("n", "<leader>fa", "<cmd>DashboardFindWord<cr>")
-        map("n", "<leader>cn", "<cmd>DashboardNewFile<cr>")
-
-        vim.g.dashboard_default_executive = "telescope"
-      end,
-      event = {"VimEnter"}
-    }
-
-    use {
+    use({
       "monaqa/dial.nvim",
       setup = function()
-        local map = require("utils").map
-        map("n", "<c-a>", "<plug>(dial-increment)", {noremap = false})
-        map("n", "<c-x>", "<plug>(dial-decrement)", {noremap = false})
-        map("v", "<c-a>", "<plug>(dial-increment)", {noremap = false})
-        map("v", "<c-x>", "<plug>(dial-decrement)", {noremap = false})
-        map("v", "g<c-a>", "<plug>(dial-increment-additional)", {noremap = false})
-        map("v", "g<c-x>", "<plug>(dial-decrement-additional)", {noremap = false})
+        vim.keymap.set({ "n", "v" }, "<c-a>", "<plug>(dial-increment)")
+        vim.keymap.set({ "n", "v" }, "<c-x>", "<plug>(dial-decrement)")
+        vim.keymap.set("v", "g<c-a>", "<plug>(dial-increment-additional)")
+        vim.keymap.set("v", "g<c-x>", "<plug>(dial-decrement-additional)")
       end,
-      event = {"CursorMoved"}
-    }
+      event = { "CursorMoved" },
+    })
 
-    use {
-      "sindrets/diffview.nvim",
-      wants = {"nvim-web-devicons"},
-      requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
+    use({
+      "mhartington/formatter.nvim",
       config = function()
-        require("diffview").setup()
+        require("formatter").setup({
+          filetype = {
+            lua = {
+              function()
+                return {
+                  exe = "stylua",
+                  args = {
+                    "-",
+                  },
+                  stdin = true,
+                }
+              end,
+            },
+          },
+        })
+
+        vim.api.nvim_exec(
+          [[
+            augroup FormatAutogroup
+              autocmd!
+              autocmd BufWritePost * FormatWrite
+            augroup END
+          ]],
+          false
+        )
       end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>df", "<cmd>DiffviewOpen<cr>")
-        map("n", "<leader>dF", "<cmd>DiffviewClose<cr>")
-      end,
-      cmd = {"DiffviewOpen"}
-    }
+      event = { "BufWritePost" },
+    })
 
-    use {
-      "kat0h/dps-bufpreview.vim",
-      wants = {"denops.vim"},
-      requires = {{"vim-denops/denops.vim", opt = true}},
-      ft = {"markdown"}
-    }
+    use({ "f-person/git-blame.nvim", event = { "VimEnter" } })
 
-    use {"editorconfig/editorconfig-vim", event = {"BufNewFile", "BufRead"}}
-
-    use {
-      "nathom/filetype.nvim",
-      setup = function()
-        vim.g.did_load_filetypes = 1
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "glacambre/firenvim",
-      opt = true,
-      run = function()
-        vim.fn["firenvim#install"](0)
-      end
-    }
-
-    use {
-      "windwp/floatline.nvim",
-      commit = "d36702341cef923f9b34228d818ad78ae6e7797c",
-      config = function()
-        require("floatline").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "is0n/fm-nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>rr", "<cmd>Ranger<cr>")
-      end,
-      cmd = {"Ranger"}
-    }
-
-    use {
-      "beauwilliams/focus.nvim",
-      disable = true,
-      config = function()
-        require("focus").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"lukas-reineke/format.nvim", config = require("plugins.format").config, event = {"BufWritePre"}}
-
-    use {
-      "gukz/ftFT.nvim",
-      config = function()
-        require("ftFT").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "glepnir/galaxyline.nvim",
-      wants = {"nvim-gps", "nvim-web-devicons", "tokyonight.nvim"},
-      requires = {
-        {
-          "SmiteshP/nvim-gps",
-          opt = true,
-          config = function()
-            require("nvim-gps").setup()
-          end
-        },
-        {"kyazdani42/nvim-web-devicons", opt = true},
-        {"folke/tokyonight.nvim", opt = true}
-      },
-      config = require("plugins.galaxyline").config,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"f-person/git-blame.nvim", event = {"BufNewFile", "BufRead"}}
-
-    use {
-      "lewis6991/gitsigns.nvim",
-      wants = {"plenary.nvim"},
-      requires = {{"nvim-lua/plenary.nvim", opt = true}},
-      config = function()
-        require("gitsigns").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "npxbr/glow.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>gl", "<cmd>Glow<cr>")
-      end,
-      ft = {"markdown"}
-    }
-
-    use {
+    use({
       "ray-x/go.nvim",
+      run = { ":GoUpdateBinaries" },
       config = function()
         require("go").setup()
       end,
-      ft = {"go"}
-    }
+      ft = { "go" },
+    })
 
-    use {
-      "rmagatti/goto-preview",
+    use({
+      "edolphin-ydf/goimpl.nvim",
+      after = { "nvim-treesitter", "telescope.nvim" },
       config = function()
-        require("goto-preview").setup {width = 120, height = 30}
+        require("telescope").load_extension("goimpl")
       end,
       setup = function()
-        local map = require("utils").map
-        map("n", "gpd", "<cmd>lua require(\"goto-preview\").goto_preview_definition()<CR>")
-        map("n", "gpi", "<cmd>lua require(\"goto-preview\").goto_preview_implementation()<CR>")
-        map("n", "gP", "<cmd>lua require(\"goto-preview\").close_all_win()<CR>")
+        vim.keymap.set("n", "<leader>im", function()
+          require("telescope").extensions.goimpl.goimpl()
+        end)
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+    })
 
-    use {
-      "lukas-reineke/headlines.nvim",
+    use({
+      "rmagatti/goto-preview",
+      after = { "nvim-lspconfig" },
       config = function()
-        require("headlines").setup()
+        require("goto-preview").setup({ width = 120, height = 30 })
       end,
-      ft = {"markdown", "org"}
-    }
+      setup = function()
+        vim.keymap.set("n", "gpd", function()
+          require("goto-preview").goto_preview_definition()
+        end)
+        vim.keymap.set("n", "gpi", function()
+          require("goto-preview").goto_preview_implementation()
+        end)
+        vim.keymap.set("n", "gP", function()
+          require("goto-preview").close_all_win()
+        end)
+      end,
+    })
 
-    use {
+    use({
       "phaazon/hop.nvim",
       config = function()
         require("hop").setup()
       end,
       setup = function()
-        local map = require("utils").map
-        map("n", "<leader><cr>", "<cmd>HopWord<cr>", {silent = true})
+        vim.keymap.set("n", "<leader><cr>", "<cmd>HopWord<cr>")
       end,
-      cmd = {"HopWord"}
-    }
+      cmd = { "HopWord" },
+    })
 
-    use {"mboughaba/i3config.vim", ft = {"conf"}}
-
-    use {"lewis6991/impatient.nvim", rocks = {"mpack"}}
-
-    use {
+    use({
       "lukas-reineke/indent-blankline.nvim",
       config = function()
-        require("indent_blankline").setup {space_char_blankline = " ", show_current_context = true}
+        require("indent_blankline").setup({ space_char_blankline = " ", show_current_context = true })
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {
+    use({
       "Darazaki/indent-o-matic",
       config = function()
-        require("indent-o-matic").setup {max_lines = 2048}
+        require("indent-o-matic").setup({})
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {
-      "b3nj5m1n/kommentary",
+    use({
+      "ray-x/lsp_signature.nvim",
       config = function()
-        require("kommentary.config").configure_language("default", {prefer_single_line_comments = true})
+        require("lsp_signature").setup()
       end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<c-_>", "<plug>kommentary_line_default", {noremap = false})
-        map("v", "<c-_>", "<plug>kommentary_visual_default", {noremap = false})
+      event = { "VimEnter" },
+    })
 
-        vim.g.kommentary_create_default_mappings = false
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
+    use({ "onsails/lspkind-nvim", event = { "VimEnter" } })
 
-    use {"notomo/lreload.nvim", opt = true}
-
-    use {
-      "ahmedkhalf/lsp-rooter.nvim",
+    use({
+      "nvim-lualine/lualine.nvim",
+      after = { "nvim-gps", "tokyonight.nvim" },
+      requires = {
+        { "kyazdani42/nvim-web-devicons", opt = true },
+      },
       config = function()
-        require("lsp-rooter").setup()
+        require("lualine").setup({
+          options = {
+            theme = "tokyonight",
+          },
+          sections = {
+            lualine_a = { { "mode" } },
+            lualine_b = { { "filename", path = 1 } },
+            lualine_c = { { require("nvim-gps").get_location } },
+            lualine_x = { { "encoding" }, { "fileformat" }, { "filetype", icon_only = true } },
+            lualine_y = { { "branch" }, { "diff" }, { "diagnostics" } },
+            lualine_z = { { "location" } },
+          },
+          inactive_sections = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = { { "filename", path = 1 } },
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = {},
+          },
+          extensions = {
+            {
+              sections = { lualine_b = { { "filetype" } } },
+              filetypes = { "NvimTree", "packer" },
+            },
+          },
+        })
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+    })
 
-    use {
-      "tami5/lspsaga.nvim",
-      config = function()
-        require("lspsaga").init_lsp_saga()
-      end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "jghauser/mkdir.nvim",
-      config = function()
-        require("mkdir")
-      end,
-      event = {"BufWritePre"}
-    }
-
-    use {
-      "fedepujol/move.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<m-down>", "<cmd>MoveLine(1)<cr>")
-        map("n", "<m-up>", "<cmd>MoveLine(-1)<cr>")
-        map("v", "<m-down>", "<cmd>MoveBlock(1)<cr>")
-        map("v", "<m-up>", "<cmd>MoveBlock(-1)<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "TimUntersberger/neogit",
-      wants = {"plenary.nvim"},
-      requires = {{"nvim-lua/plenary.nvim", opt = true}},
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
+    use({
       "karb94/neoscroll.nvim",
       config = function()
-        require("neoscroll").setup {mappings = {"<C-d>", "<C-u>"}}
+        require("neoscroll").setup()
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {
+    use({
       "nacro90/numb.nvim",
       config = function()
         require("numb").setup()
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "CmdlineEnter" },
+    })
 
-    use {
+    use({
+      "windwp/nvim-autopairs",
+      after = { "nvim-cmp" },
+      config = function()
+        require("nvim-autopairs").setup()
+        require("cmp").event:on(
+          "confirm_done",
+          require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })
+        )
+      end,
+    })
+
+    use({
       "hrsh7th/nvim-cmp",
-      wants = {"cmp-under-comparator"},
+      after = { "lspkind-nvim" },
       requires = {
-        {"hrsh7th/cmp-buffer", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-calc", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-cmdline", after = {"nvim-cmp"}},
-        {"davidsierradz/cmp-conventionalcommits", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-emoji", after = {"nvim-cmp"}},
-        {"kdheepak/cmp-latex-symbols", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-nvim-lsp", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-nvim-lsp-document-symbol", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-nvim-lua", after = {"nvim-cmp"}},
-        {"quangnguyen30192/cmp-nvim-ultisnips", after = {"nvim-cmp"}},
-        {"hrsh7th/cmp-path", after = {"nvim-cmp"}},
-        {"lukas-reineke/cmp-rg", after = {"nvim-cmp"}},
-        {
-          "f3fora/cmp-spell",
-          after = {"nvim-cmp"},
-          setup = function()
-            vim.opt.spell = true
-          end
-        },
-        {"tzachar/cmp-tabnine", after = {"nvim-cmp"}, run = {"./install.sh"}},
-        {"lukas-reineke/cmp-under-comparator", opt = true},
-        {"onsails/lspkind-nvim", after = {"nvim-cmp"}},
-        {
-          "windwp/nvim-autopairs",
-          after = {"nvim-cmp"},
-          config = function()
-            require("nvim-autopairs").setup()
-            require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-          end
-        }
+        { "hrsh7th/cmp-buffer", after = { "nvim-cmp" } },
+        { "hrsh7th/cmp-calc", after = { "nvim-cmp" } },
+        { "hrsh7th/cmp-emoji", after = { "nvim-cmp" } },
+        -- { "petertriho/cmp-git", after = { "nvim-cmp" } },
+        { "hrsh7th/cmp-nvim-lua", after = { "nvim-cmp" } },
+        { "hrsh7th/cmp-nvim-lsp", after = { "nvim-cmp" } },
+        { "hrsh7th/cmp-path", after = { "nvim-cmp" } },
+        { "lukas-reineke/cmp-rg", after = { "nvim-cmp" } },
       },
-      config = require("plugins.cmp").config,
-      event = {"CmdlineEnter", "InsertEnter"}
-    }
+      config = function()
+        local cmp = require("cmp")
 
-    use {
+        cmp.setup({
+          mapping = {
+            ["<c-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "c", "i" }),
+            ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "c", "i" }),
+            ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), { "c", "i" }),
+            ["<c-e>"] = cmp.mapping({ c = cmp.mapping.close(), i = cmp.mapping.abort() }),
+            ["<cr>"] = cmp.mapping({
+              c = cmp.mapping.confirm({ select = false }),
+              i = cmp.mapping.confirm({ select = true }),
+            }),
+          },
+          formatting = {
+            format = require("lspkind").cmp_format({
+              with_text = true,
+              menu = {
+                buffer = "[Buffer]",
+                calc = "[Calc]",
+                emoji = "[Emoji]",
+                -- cmp_git = "[Git]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[Lua]",
+                path = "[Path]",
+                rg = "[RipGrep]",
+              },
+            }),
+          },
+          sources = cmp.config.sources({
+            { name = "buffer" },
+            { name = "emoji" },
+            { name = "nvim_lsp" },
+            { name = "nvim_lua" },
+            { name = "path" },
+            { name = "rg" },
+          }),
+        })
+
+        cmp.setup.filetype("gitcommit", {
+          sources = cmp.config.sources({
+            { name = "buffer" },
+            { name = "emoji" },
+            -- { name = "cmp_git" },
+            { name = "rg" },
+          }),
+        })
+      end,
+      event = { "CmdlineEnter", "InsertEnter" },
+    })
+
+    use({
+      "noib3/nvim-cokeline",
+      -- after = { "tokyonight.nvim" },
+      requires = {
+        { "kyazdani42/nvim-web-devicons", opt = true },
+      },
+      config = function()
+        require("cokeline").setup()
+      end,
+      setup = function()
+        vim.keymap.set("n", "<m-h>", "<plug>(cokeline-focus-prev)")
+        vim.keymap.set("n", "<m-l>", "<plug>(cokeline-focus-next)")
+
+        vim.keymap.set("n", "<m-1>", "<plug>(cokeline-focus-1)")
+        vim.keymap.set("n", "<m-2>", "<plug>(cokeline-focus-2)")
+        vim.keymap.set("n", "<m-3>", "<plug>(cokeline-focus-3)")
+        vim.keymap.set("n", "<m-4>", "<plug>(cokeline-focus-4)")
+        vim.keymap.set("n", "<m-5>", "<plug>(cokeline-focus-5)")
+        vim.keymap.set("n", "<m-6>", "<plug>(cokeline-focus-6)")
+        vim.keymap.set("n", "<m-7>", "<plug>(cokeline-focus-7)")
+        vim.keymap.set("n", "<m-8>", "<plug>(cokeline-focus-8)")
+        vim.keymap.set("n", "<m-9>", "<plug>(cokeline-focus-9)")
+        vim.keymap.set("n", "<m-0>", "<plug>(cokeline-focus-10)")
+      end,
+    })
+
+    use({
       "norcalli/nvim-colorizer.lua",
       config = function()
         require("colorizer").setup()
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {"yamatsum/nvim-cursorline", event = {"BufNewFile", "BufRead"}}
+    use({ "yamatsum/nvim-cursorline", event = { "VimEnter" } })
 
-    use {"kevinhwang91/nvim-hlslens", event = {"BufNewFile", "BufRead"}}
-
-    use {
-      "gennaro-tedesco/nvim-jqx",
+    use({
+      "booperlv/nvim-gomove",
       config = function()
-        require("nvim-jqx.config").query_key = "Q"
+        require("gomove").setup({
+          map_defaults = false,
+        })
       end,
       setup = function()
-        local map = require("utils").map
-        map("n", "<leader>jq", "<cmd>JqxList<cr>")
-      end,
-      ft = {"json"}
-    }
+        vim.keymap.set("n", "<m-left>", "<plug>GoNSMLeft")
+        vim.keymap.set("n", "<m-down>", "<plug>GoNSMDown")
+        vim.keymap.set("n", "<m-right>", "<plug>GoNSMRight")
+        vim.keymap.set("n", "<m-up>", "<plug>GoNSMUp")
 
-    use {
+        vim.keymap.set("v", "<m-left>", "<plug>GoVSMLeft")
+        vim.keymap.set("v", "<m-down>", "<plug>GoVSMDown")
+        vim.keymap.set("v", "<m-right>", "<plug>GoVSMRight")
+        vim.keymap.set("v", "<m-up>", "<plug>GoVSMUp")
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
+      "SmiteshP/nvim-gps",
+      after = { "nvim-treesitter" },
+      config = function()
+        require("nvim-gps").setup()
+      end,
+    })
+
+    use({ "kevinhwang91/nvim-hlslens", event = { "CmdLineEnter" } })
+
+    use({ "williamboman/nvim-lsp-installer", event = { "VimEnter" } })
+
+    use({
       "neovim/nvim-lspconfig",
-      wants = {"lsp_signature.nvim", "nvim-lsp-installer"},
-      requires = {{"ray-x/lsp_signature.nvim", opt = true}, {"williamboman/nvim-lsp-installer", opt = true}},
-      config = require("plugins.lspconfig").config,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>lr", "<cmd>LspRestart<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"rinx/nvim-minimap", cmd = {"MinimapOpen", "MinimapToggle"}}
-
-    use {
-      "AckslD/nvim-neoclip.lua",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
+      after = { "lsp_signature.nvim", "nvim-lsp-installer" },
       config = function()
-        require("telescope").load_extension("neoclip")
-        require("neoclip").setup()
-      end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>cb", "<cmd>Telescope neoclip<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
+        local installer = require("nvim-lsp-installer.servers")
 
-    use {
+        local on_attach = function(_, buffer)
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
+          vim.keymap.set("n", "<c-i>", vim.lsp.buf.hover, { buffer = buffer })
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = buffer })
+          vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
+        end
+
+        local servers = { "gopls", "pyright", "sumneko_lua", "vimls" }
+
+        for _, server_name in pairs(servers) do
+          local ok, server = installer.get_server(server_name)
+          if ok then
+            server:on_ready(function()
+              local opts = { on_attach = on_attach }
+              server:setup(opts)
+            end)
+            if not server:is_installed() then
+              server:install()
+            end
+          end
+        end
+      end,
+    })
+
+    use({
       "rcarriga/nvim-notify",
+      after = { "telescope.nvim" },
       config = function()
         vim.notify = require("notify")
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"famiu/nvim-reload", cmd = {"Reload"}}
-
-    use {"dstein64/nvim-scrollview", event = {"BufNewFile", "BufRead"}}
-
-    use {
-      "windwp/nvim-spectre",
       setup = function()
-        local map = require("utils").map
-        map("n", "<leader>s", "<cmd>lua require(\"spectre\").open()<cr>")
-        map("n", "<leader>S", "<cmd>lua require(\"spectre\").open_visual({select_word = true})<cr>")
-        map("v", "<leader>s", "<cmd>lua require(\"spectre\").open_visual()<cr>")
+        vim.keymap.set("n", "<leader>nf", function()
+          require("telescope").extensions.notify.notify()
+        end)
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+    })
 
-    use {"alec-gibson/nvim-tetris", cmd = {"Tetris"}}
+    use({ "dstein64/nvim-scrollview", event = { "VimEnter" } })
 
-    use {
+    use({
       "akinsho/nvim-toggleterm.lua",
       config = function()
-        require("toggleterm").setup {open_mapping = "<c-t>t", direction = "float"}
+        require("toggleterm").setup({ open_mapping = "<c-t>t", direction = "float" })
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      keys = { "<c-t>t" },
+    })
 
-    use {
-      "xiyaowong/nvim-transparent",
-      config = function()
-        require("transparent").setup {enable = false}
-      end,
-      cmd = {"TransparentToggle"}
-    }
-
-    use {
+    use({
       "kyazdani42/nvim-tree.lua",
-      wants = {"nvim-web-devicons"},
-      requires = {{"kyazdani42/nvim-web-devicons", opt = true}},
-      config = require("plugins.nvim-tree").config,
-      setup = require("plugins.nvim-tree").setup,
-      cmd = {"NvimTreeToggle"}
-    }
-
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = {":TSUpdate"},
+      requires = {
+        { "kyazdani42/nvim-web-devicons", opt = true },
+      },
       config = function()
-        require("nvim-treesitter.configs").setup {
-          ensure_installed = "maintained",
-          highlight = {enable = true},
-          indent = {enable = true}
-        }
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
+        local cb = require("nvim-tree.config").nvim_tree_callback
 
-    use {
-      "romgrk/nvim-treesitter-context",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter/nvim-treesitter", opt = true}},
-      config = function()
-        require("treesitter-context").setup {enable = true, throttle = true}
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter/nvim-treesitter", opt = true}},
-      config = function()
-        require("nvim-treesitter.configs").setup {
-          textobjects = {
-            select = {
-              enable = true,
-              lookahead = true,
-              keymaps = {
-                ["ic"] = "@class.inner",
-                ["oc"] = "@class.outer",
-                ["if"] = "@function.inner",
-                ["of"] = "@function.outer"
-              }
+        require("nvim-tree").setup({
+          diagnostics = { enable = true },
+          view = {
+            width = 40,
+            mappings = {
+              custom_only = true,
+              list = {
+                { key = { "<cr>" }, cb = cb("edit") },
+                { key = { "l" }, cb = cb("cd") },
+                { key = { "<c-v>" }, cb = cb("vsplit") },
+                { key = { "<c-x>" }, cb = cb("split") },
+                { key = { "<c-t>" }, cb = cb("tabnew") },
+                { key = { "<" }, cb = cb("prev_sibling") },
+                { key = { ">" }, cb = cb("next_sibling") },
+                { key = { "P" }, cb = cb("parent_node") },
+                { key = { "<bs>" }, cb = cb("close_node") },
+                { key = { "<s-cr>" }, cb = cb("close_node") },
+                { key = { "<tab>" }, cb = cb("preview") },
+                { key = { "K" }, cb = cb("first_sibling") },
+                { key = { "J" }, cb = cb("last_sibling") },
+                { key = { "I" }, cb = cb("toggle_ignored") },
+                { key = { "H" }, cb = cb("toggle_dotfiles") },
+                { key = { "R" }, cb = cb("refresh") },
+                { key = { "a" }, cb = cb("create") },
+                { key = { "d" }, cb = cb("remove") },
+                { key = { "r", "<f2>" }, cb = cb("rename") },
+                { key = { "<c-r>" }, cb = cb("full_rename") },
+                { key = { "x" }, cb = cb("cut") },
+                { key = { "c" }, cb = cb("copy") },
+                { key = { "p" }, cb = cb("paste") },
+                { key = { "y" }, cb = cb("copy_name") },
+                { key = { "Y" }, cb = cb("copy_path") },
+                { key = { "gy" }, cb = cb("copy_absolute_path") },
+                { key = { "[c}" }, cb = cb("prev_git_item") },
+                { key = { "]c}" }, cb = cb("next_git_item") },
+                { key = { "h" }, cb = cb("dir_up") },
+                { key = { "o" }, cb = cb("system_open") },
+                { key = { "q" }, cb = cb("close") },
+                { key = { "g?" }, cb = cb("toggle_help") },
+              },
             },
-            swap = {enable = true, swap_next = {["<leader>sw"] = "@parameter.inner"}}
-          }
-        }
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "windwp/nvim-ts-autotag",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter", opt = true}},
-      config = function()
-        require("nvim-treesitter.configs").setup {autotag = {enable = true}}
-      end,
-      ft = {"html", "xml"}
-    }
-
-    use {
-      "p00f/nvim-ts-rainbow",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter", opt = true}},
-      config = function()
-        require("nvim-treesitter.configs").setup {rainbow = {enable = true}}
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "haringsrob/nvim_context_vt",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter", opt = true}},
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"seandewar/nvimesweeper", cmd = {"Nvimesweeper"}}
-
-    use {
-      "pwntester/octo.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        require("octo").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "vuki656/package-info.nvim",
-      wants = {"nui.nvim"},
-      requires = {{"MunifTanjim/nui.nvim", opt = true}},
-      config = function()
-        require("package-info").setup()
-      end,
-      ft = {"json"}
-    }
-
-    use {
-      "wbthomason/packer.nvim",
-      opt = true,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>pc", "<cmd>PackerCompile<cr>")
-        map("n", "<leader>ps", "<cmd>PackerSync<cr>")
-      end
-    }
-
-    use {
-      "nvim-treesitter/playground",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter", wants = true}},
-      config = function()
-        require("nvim-treesitter.configs").setup {playground = {enable = true}}
-      end,
-      cmd = {"TSPlaygroundToggle"}
-    }
-
-    use {"andweeb/presence.nvim", event = {"BufNewFile", "BufRead"}}
-
-    use {
-      "winston0410/range-highlight.nvim",
-      wants = {"cmd-parser.nvim"},
-      requires = {{"winston0410/cmd-parser.nvim", opt = true}},
-      config = function()
-        require("range-highlight").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"tversteeg/registers.nvim", cmd = {"Registers"}}
-
-    use {
-      "sidebar-nvim/sidebar.nvim",
-      wants = {"todo-comments.nvim"},
-      requires = {{"folke/todo-comments.nvim", opt = true}},
-      rocks = {"luatz"},
-      config = function()
-        require("sidebar-nvim").setup {
-          bindings = {
-            ["q"] = function()
-              require("sidebar-nvim").close()
-            end
           },
-          sections = {"datetime", "git-status", "lsp-diagnostics", "todos"},
-          datetime = {format = "%Y-%m-%d %a %H:%M:%S"}
-        }
+        })
       end,
       setup = function()
-        local map = require("utils").map
-        map("n", "<leader>sb", "<cmd>SidebarNvimToggle<cr>")
+        vim.keymap.set("n", "<c-b>", "<cmd>NvimTreeToggle<cr>")
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+    })
 
-    use {
-      "blackCauldron7/surround.nvim",
+    use({
+      "nvim-treesitter/nvim-treesitter",
+      run = { ":TSUpdate" },
       config = function()
-        require("surround").setup({})
+        require("nvim-treesitter.configs").setup({
+          ensure_installed = "maintained",
+          highlight = { enable = true },
+        })
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {
-      "simrat39/symbols-outline.nvim",
+    use({
+      "p00f/nvim-ts-rainbow",
+      after = { "nvim-treesitter" },
+      config = function()
+        require("nvim-treesitter.configs").setup({ rainbow = { enable = true } })
+      end,
+    })
+
+    use({ "kyazdani42/nvim-web-devicons" })
+
+    use({ "haringsrob/nvim_context_vt", after = { "nvim-treesitter" } })
+
+    use({
+      "wbthomason/packer.nvim",
       setup = function()
-        local map = require("utils").map
-        map("n", "<leader>ol", "<cmd>SymbolsOutline<cr>")
+        vim.keymap.set("n", "<leader>pc", "<cmd>PackerCompile<cr>")
+        vim.keymap.set("n", "<leader>ps", "<cmd>PackerSync<cr>")
       end,
-      cmd = {"SymbolsOutline"}
-    }
+    })
 
-    use {
-      "abecodes/tabout.nvim",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter", opt = true}},
+    use({
+      "nvim-treesitter/playground",
+      after = { "nvim-treesitter" },
       config = function()
-        require("tabout").setup()
+        require("nvim-treesitter.configs").setup({ playground = { enable = true } })
       end,
-      event = {"InsertEnter"}
-    }
+    })
 
-    use {
-      "nvim-telescope/telescope-bibtex.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        require("telescope").load_extension("bibtex")
-      end,
-      ft = {"bib", "tex"}
-    }
-
-    use {
-      "nvim-telescope/telescope-ghq.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        require("telescope").load_extension("ghq")
-      end,
-      map = function()
-        local map = require("utils").map
-        map("n", "<leader>ghq", "<cmd>Telescope ghq list<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "nvim-telescope/telescope-github.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        require("telescope").load_extension("gh")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "crispgm/telescope-heading.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        require("telescope").load_extension("heading")
-      end,
-      ft = {"markdown"}
-    }
-
-    use {
-      "nvim-telescope/telescope-media-files.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        require("telescope").load_extension("media_files")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "nvim-telescope/telescope-packer.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      config = function()
-        vim.cmd("command! Packers lua require(\"telescope\").extensions.packer.plugins()")
-      end,
-      cmd = {"Packers"}
-    }
-
-    use {
-      "nvim-telescope/telescope-symbols.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}},
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "fhill2/telescope-ultisnips.nvim",
-      wants = {"telescope.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}, {"SirVer/ultisnips", opt = true}},
-      config = function()
-        require("telescope").load_extension("ultisnips")
-      end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>sp", "<cmd>Telescope ultisnips<cr>")
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
+    use({
       "nvim-telescope/telescope.nvim",
-      wants = {"nvim-web-devicons", "plenary.nvim"},
-      requires = {{"kyazdani42/nvim-web-devicons", opt = true}, {"nvim-lua/plenary.nvim", opt = true}},
-      config = require("plugins.telescope").config,
-      setup = require("plugins.telescope").setup,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "jakewvincent/texmagic.nvim",
-      config = function()
-        require("texmagic").setup()
-      end,
-      ft = {"tex"}
-    }
-
-    use {
-      "folke/todo-comments.nvim",
-      wants = {"telescope.nvim", "trouble.nvim"},
-      requires = {{"nvim-telescope/telescope.nvim", opt = true}, {"folke/trouble.nvim", opt = true}},
-      config = function()
-        require("todo-comments").setup()
-      end,
+      requires = { { "kyazdani42/nvim-web-devicons", opt = true }, { "nvim-lua/plenary.nvim" } },
       setup = function()
-        local map = require("utils").map
-        map("n", "<leader>td", "<cmd>TodoTelescope<cr>")
+        vim.keymap.set("n", "<leader>dx", function()
+          require("telescope.builtin").diagnostics()
+        end)
+        vim.keymap.set("n", "<leader>ff", function()
+          require("telescope.builtin").find_files({ hidden = true })
+        end)
+        vim.keymap.set("n", "<leader>lg", function()
+          require("telescope.builtin").live_grep({
+            additional_args = function()
+              return "--hidden"
+            end,
+          })
+        end)
       end,
-      event = {"BufNewFile", "BufRead"}
-    }
+      event = { "VimEnter" },
+    })
 
-    use {
+    use({
       "folke/tokyonight.nvim",
       config = function()
         vim.cmd("colorscheme tokyonight")
@@ -794,157 +512,17 @@ return require("packer").startup {
         vim.g.tokyonight_italic_keywords = false
         vim.g.tokyonight_style = "night"
         vim.opt.termguicolors = true
-      end
-    }
-
-    use {
-      "skanehira/translate.vim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "tr", "<plug>(Translate)", {noremap = false})
-        map("v", "tr", "<plug>(VTranslate)", {noremap = false})
-
-        vim.g.translate_popup_window = 0
-      end
-    }
-
-    use {
-      "folke/twilight.nvim",
-      wants = {"nvim-treesitter"},
-      requires = {{"nvim-treesitter/nvim-treesitter", opt = true}},
-      config = function()
-        require("twilight").setup()
       end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>tw", "<cmd>Twilight<cr>")
-      end,
-      cmd = {"Twilight"}
-    }
+    })
 
-    use {
-      "SirVer/ultisnips",
-      setup = function()
-        vim.g.UltiSnipsSnippetDirectories = {"~/.config/nvim/ultisnips"}
-        vim.g.UltiSnipsExpandTrigger = "<nul>"
-        vim.g.UltiSnipsJumpForwardTrigger = "<c-n>"
-        vim.g.UltiSnipsJumpBackwardTrigger = "<c-p>"
-      end,
-      event = {"InsertEnter"}
-    }
+    use({ "dstein64/vim-startuptime", cmd = { "StartupTime" } })
 
-    use {
-      "mbbill/undotree",
-      config = function()
-        vim.g.undotree_SetFocusWhenToggle = 1
-      end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>ud", "<cmd>UndotreeToggle<cr>")
-      end,
-      cmd = {"UndotreeToggle"}
-    }
-
-    use {
-      "ntpeters/vim-better-whitespace",
-      setup = function()
-        vim.g.better_whitespace_filetypes_blacklist = {"dashboard", "TelescopePrompt"}
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {"dhruvasagar/vim-marp", ft = {"markdown"}}
-
-    use {
-      "heavenshell/vim-pydocstring",
-      run = {"make install"},
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>ds", "<cmd>Pydocstring<cr>")
-
-        vim.g.pydocstring_formatter = "google"
-        vim.g.pydocstring_enable_mapping = false
-      end,
-      ft = {"python"}
-    }
-
-    use {
-      "thinca/vim-quickrun",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>r", "<cmd>QuickRun<cr>")
-      end,
-      cmd = {"QuickRun"}
-    }
-
-    use {"drzel/vim-repo-edit", cmd = {"RepoEdit"}}
-
-    use {"thinca/vim-scouter", cmd = {"Scouter"}}
-
-    use {
-      "segeljakt/vim-silicon",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>ss", "<cmd>Silicon<cr>")
-      end,
-      cmd = {"Silicon"}
-    }
-
-    use {"dstein64/vim-startuptime", cmd = {"StartupTime"}}
-
-    use {
-      "mg979/vim-visual-multi",
-      setup = function()
-        vim.g.VM_leader = "<space>"
-        vim.g.VM_maps = {
-          ["Find Under"] = "<m-d>",
-          ["Find Subword Under"] = "<m-d>",
-          ["Mouse Cursor"] = "<m-leftmouse>",
-          ["Mouse Word"] = "<m-rightmouse>"
-        }
-        vim.g.VM_mouse_mappings = true
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup()
-      end,
-      event = {"BufNewFile", "BufRead"}
-    }
-
-    use {
-      "sindrets/winshift.nvim",
-      setup = function()
-        local map = require("utils").map
-        map("n", "<c-m-h>", "<cmd>WinShift left<cr>")
-        map("n", "<c-m-j>", "<cmd>WinShift down<cr>")
-        map("n", "<c-m-k>", "<cmd>WinShift up<cr>")
-        map("n", "<c-m-l>", "<cmd>WinShift right<cr>")
-      end,
-      cmd = {"WinShift"}
-    }
-
-    use {
-      "folke/zen-mode.nvim",
-      config = function()
-        require("zen-mode").setup()
-      end,
-      setup = function()
-        local map = require("utils").map
-        map("n", "<leader>zm", "<cmd>ZenMode<cr>")
-      end,
-      cmd = {"ZenMode"}
-    }
-
-    use {
+    use({
       "yuki-yano/zero.nvim",
       config = function()
         require("zero").setup()
       end,
-      keys = {"0"}
-    }
-  end
-}
+      keys = { "0" },
+    })
+  end,
+})
