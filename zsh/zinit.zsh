@@ -9,10 +9,10 @@ source "$ZINIT_PATH"
 zinit ice blockf depth"1" lucid wait
 zinit light-mode for \
   agkozak/zsh-z \
+  Aloxaf/fzf-tab \
   mollifier/cd-gitroot \
   NullSense/fuzzy-sys \
   reegnz/jq-zsh-plugin \
   wfxr/forgit \
-  yuki-yano/zeno.zsh \
   zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
