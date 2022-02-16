@@ -28,6 +28,10 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export DOTFILES="$HOME/src/github.com/skmatz/dotfiles"
 export PATH="$DOTFILES/bin:$PATH"
 
+# Homebrew (Linux)
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.linuxbrew/sbin:$PATH"
+
 # vin
 export PATH="$HOME/.vin/bin:$PATH"
 
