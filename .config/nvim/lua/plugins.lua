@@ -266,7 +266,7 @@ return require("packer").startup({
 
     use({
       "noib3/nvim-cokeline",
-      -- after = { "tokyonight.nvim" },
+      after = { "tokyonight.nvim" },
       requires = {
         { "kyazdani42/nvim-web-devicons", opt = true },
       },
