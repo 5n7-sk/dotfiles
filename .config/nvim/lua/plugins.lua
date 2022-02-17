@@ -21,38 +21,6 @@ return require("packer").startup({
       event = { "CursorMoved" },
     })
 
-    use({
-      "mhartington/formatter.nvim",
-      config = function()
-        require("formatter").setup({
-          filetype = {
-            lua = {
-              function()
-                return {
-                  exe = "stylua",
-                  args = {
-                    "-",
-                  },
-                  stdin = true,
-                }
-              end,
-            },
-          },
-        })
-
-        vim.api.nvim_exec(
-          [[
-            augroup FormatAutogroup
-              autocmd!
-              autocmd BufWritePost * FormatWrite
-            augroup END
-          ]],
-          false
-        )
-      end,
-      event = { "BufWritePost" },
-    })
-
     use({ "f-person/git-blame.nvim", event = { "VimEnter" } })
 
     use({
