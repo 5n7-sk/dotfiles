@@ -181,6 +181,45 @@ return require("packer").startup({
     })
 
     use({
+      "jose-elias-alvarez/null-ls.nvim",
+      after = { "nvim-lspconfig" },
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("null-ls").setup({
+          sources = {
+            -- diagnostics
+            require("null-ls").builtins.diagnostics.actionlint,
+            require("null-ls").builtins.diagnostics.flake8,
+            require("null-ls").builtins.diagnostics.markdownlint,
+            require("null-ls").builtins.diagnostics.protolint,
+            require("null-ls").builtins.diagnostics.shellcheck,
+            require("null-ls").builtins.diagnostics.staticcheck,
+            require("null-ls").builtins.diagnostics.textlint,
+            require("null-ls").builtins.diagnostics.zsh,
+            -- formatting
+            require("null-ls").builtins.formatting.black,
+            require("null-ls").builtins.formatting.goimports,
+            require("null-ls").builtins.formatting.markdownlint,
+            require("null-ls").builtins.formatting.prettier,
+            require("null-ls").builtins.formatting.protolint,
+            require("null-ls").builtins.formatting.shfmt,
+            require("null-ls").builtins.formatting.stylua,
+          },
+          on_attach = function(client)
+            if client.resolved_capabilities.document_formatting then
+              vim.cmd([[
+                augroup LspFormatting
+                  autocmd! * <buffer>
+                  autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                augroup END
+              ]])
+            end
+          end,
+        })
+      end,
+    })
+
+    use({
       "nacro90/numb.nvim",
       config = function()
         require("numb").setup()
