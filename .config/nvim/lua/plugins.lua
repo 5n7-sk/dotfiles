@@ -412,6 +412,7 @@ return require("packer").startup({
 
         require("nvim-tree").setup({
           diagnostics = { enable = true },
+          git = { ignore = false },
           view = {
             width = 40,
             mappings = {
