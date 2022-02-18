@@ -36,6 +36,14 @@ return require("packer").startup({
     use({ "f-person/git-blame.nvim", event = { "VimEnter" } })
 
     use({
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require("gitsigns").setup()
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
       "ray-x/go.nvim",
       run = { ":GoUpdateBinaries" },
       config = function()
