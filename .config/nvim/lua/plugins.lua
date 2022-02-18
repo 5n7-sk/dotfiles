@@ -31,6 +31,14 @@ return require("packer").startup({
       event = { "CursorMoved" },
     })
 
+    use({
+      "j-hui/fidget.nvim",
+      after = { "nvim-lspconfig" },
+      config = function()
+        require("fidget").setup()
+      end,
+    })
+
     use({ "rafamadriz/friendly-snippets", event = { "VimEnter" } })
 
     use({ "f-person/git-blame.nvim", event = { "VimEnter" } })
@@ -41,6 +49,17 @@ return require("packer").startup({
         require("gitsigns").setup()
       end,
       event = { "VimEnter" },
+    })
+
+    use({
+      "aspeddro/gitui.nvim",
+      config = function()
+        require("gitui").setup()
+      end,
+      setup = function()
+        vim.keymap.set("n", "<leader>gg", "<cmd>Gitui<cr>")
+      end,
+      cmd = { "Gitui" },
     })
 
     use({
