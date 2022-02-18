@@ -77,6 +77,8 @@ return require("packer").startup({
       cmd = { "HopWord" },
     })
 
+    -- use({ "lewis6991/impatient.nvim" })
+
     use({
       "lukas-reineke/indent-blankline.nvim",
       config = function()
