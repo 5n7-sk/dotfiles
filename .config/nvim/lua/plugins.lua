@@ -285,6 +285,7 @@ return require("packer").startup({
           },
           sources = cmp.config.sources({
             { name = "buffer" },
+            { name = "calc" },
             { name = "emoji" },
             { name = "luasnip" },
             { name = "nvim_lsp" },
