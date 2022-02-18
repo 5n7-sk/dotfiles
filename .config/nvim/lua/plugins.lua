@@ -538,6 +538,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>pc", "<cmd>PackerCompile<cr>")
         vim.keymap.set("n", "<leader>ps", "<cmd>PackerSync<cr>")
+        vim.keymap.set("n", "<leader>pt", "<cmd>PackerStatus<cr>")
       end,
     })
 
