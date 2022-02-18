@@ -198,11 +198,15 @@ return require("packer").startup({
             require("null-ls").builtins.formatting.black,
             require("null-ls").builtins.formatting.clang_format,
             require("null-ls").builtins.formatting.goimports,
+            require("null-ls").builtins.formatting.isort,
+            require("null-ls").builtins.formatting.latexindent,
             require("null-ls").builtins.formatting.markdownlint,
             require("null-ls").builtins.formatting.prettier,
             require("null-ls").builtins.formatting.protolint,
             require("null-ls").builtins.formatting.shfmt,
             require("null-ls").builtins.formatting.stylua,
+            require("null-ls").builtins.formatting.trim_newlines,
+            require("null-ls").builtins.formatting.trim_whitespace,
           },
           on_attach = function(client)
             if client.resolved_capabilities.document_formatting then
