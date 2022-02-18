@@ -21,6 +21,8 @@ return require("packer").startup({
       event = { "CursorMoved" },
     })
 
+    use({ "rafamadriz/friendly-snippets", event = { "VimEnter" } })
+
     use({ "f-person/git-blame.nvim", event = { "VimEnter" } })
 
     use({
@@ -139,6 +141,14 @@ return require("packer").startup({
     })
 
     use({
+      "L3MON4D3/LuaSnip",
+      after = { "friendly-snippets" },
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    })
+
+    use({
       "karb94/neoscroll.nvim",
       config = function()
         require("neoscroll").setup({
@@ -208,7 +218,7 @@ return require("packer").startup({
 
     use({
       "hrsh7th/nvim-cmp",
-      after = { "lspkind-nvim" },
+      after = { "LuaSnip", "lspkind-nvim" },
       requires = {
         { "hrsh7th/cmp-buffer", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-calc", after = { "nvim-cmp" } },
@@ -218,11 +228,18 @@ return require("packer").startup({
         { "hrsh7th/cmp-nvim-lsp", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-path", after = { "nvim-cmp" } },
         { "lukas-reineke/cmp-rg", after = { "nvim-cmp" } },
+        { "saadparwaiz1/cmp_luasnip", after = { "nvim-cmp" } },
       },
       config = function()
         local cmp = require("cmp")
+        local luasnip = require("luasnip")
 
         cmp.setup({
+          snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end,
+          },
           mapping = {
             ["<c-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "c", "i" }),
             ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "c", "i" }),
@@ -232,6 +249,20 @@ return require("packer").startup({
               c = cmp.mapping.confirm({ select = false }),
               i = cmp.mapping.confirm({ select = true }),
             }),
+            ["<tab>"] = cmp.mapping(function(fallback)
+              if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+              else
+                fallback()
+              end
+            end, { "i", "s" }),
+            ["<s-tab>"] = cmp.mapping(function(fallback)
+              if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+              end
+            end, { "i", "s" }),
           },
           formatting = {
             format = require("lspkind").cmp_format({
@@ -241,6 +272,7 @@ return require("packer").startup({
                 calc = "[Calc]",
                 emoji = "[Emoji]",
                 -- cmp_git = "[Git]",
+                luasnip = "[Snip]",
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Lua]",
                 path = "[Path]",
@@ -251,6 +283,7 @@ return require("packer").startup({
           sources = cmp.config.sources({
             { name = "buffer" },
             { name = "emoji" },
+            { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "path" },
