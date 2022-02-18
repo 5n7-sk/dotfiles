@@ -3,6 +3,16 @@ vim.cmd("packadd packer.nvim")
 return require("packer").startup({
   function(use)
     use({
+      "famiu/bufdelete.nvim",
+      setup = function()
+        vim.keymap.set("n", "<m-w>", function()
+          require("bufdelete").bufdelete(0, true)
+        end)
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({
       "numToStr/Comment.nvim",
       config = function()
         require("Comment").setup({})
