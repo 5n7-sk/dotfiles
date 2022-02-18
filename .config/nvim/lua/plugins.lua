@@ -244,10 +244,10 @@ return require("packer").startup({
             end,
           },
           mapping = {
-            ["<c-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "c", "i" }),
-            ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "c", "i" }),
-            ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), { "c", "i" }),
             ["<c-e>"] = cmp.mapping({ c = cmp.mapping.close(), i = cmp.mapping.abort() }),
+            ["<c-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "c", "i" }),
+            ["<c-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "c", "i" }),
+            ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), { "c", "i" }),
             ["<cr>"] = cmp.mapping({
               c = cmp.mapping.confirm({ select = false }),
               i = cmp.mapping.confirm({ select = true }),
