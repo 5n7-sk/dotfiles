@@ -224,6 +224,7 @@ return require("packer").startup({
       requires = {
         { "hrsh7th/cmp-buffer", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-calc", after = { "nvim-cmp" } },
+        { "hrsh7th/cmp-cmdline", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-emoji", after = { "nvim-cmp" } },
         -- { "petertriho/cmp-git", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-nvim-lua", after = { "nvim-cmp" } },
@@ -299,6 +300,18 @@ return require("packer").startup({
             { name = "emoji" },
             -- { name = "cmp_git" },
             { name = "rg" },
+          }),
+        })
+
+        cmp.setup.cmdline("/", {
+          sources = cmp.config.sources({
+            { name = "buffer" },
+          }),
+        })
+
+        cmp.setup.cmdline(":", {
+          sources = cmp.config.sources({
+            { name = "cmdline" },
           }),
         })
       end,
