@@ -31,6 +31,7 @@ return require("packer").startup({
       config = function()
         require("go").setup()
       end,
+      cmd = { "GoUpdateBinaries" },
       ft = { "go" },
     })
 
