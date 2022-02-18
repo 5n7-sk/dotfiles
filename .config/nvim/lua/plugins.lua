@@ -188,6 +188,7 @@ return require("packer").startup({
             require("null-ls").builtins.diagnostics.zsh,
             -- formatting
             require("null-ls").builtins.formatting.black,
+            require("null-ls").builtins.formatting.clang_format,
             require("null-ls").builtins.formatting.goimports,
             require("null-ls").builtins.formatting.markdownlint,
             require("null-ls").builtins.formatting.prettier,
@@ -413,7 +414,7 @@ return require("packer").startup({
           vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
         end
 
-        local servers = { "gopls", "pyright", "sumneko_lua", "vimls" }
+        local servers = { "clangd", "gopls", "pyright", "sumneko_lua", "vimls" }
 
         for _, server_name in pairs(servers) do
           local ok, server = installer.get_server(server_name)
