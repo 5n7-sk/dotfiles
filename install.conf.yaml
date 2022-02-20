@@ -26,7 +26,6 @@
     ~/.config/polybar: .config/polybar
     ~/.config/pypoetry: .config/pypoetry
     ~/.config/ranger: .config/ranger
-    ~/.config/rofi: .config/rofi
     ~/.config/starship.toml: .config/starship/starship.toml
     ~/.config/vin: .config/vin
     ~/.config/zathura: .config/zathura

@@ -1,5 +1,0 @@
-rofi.font:       MesloLGM Nerd Font 18px
-rofi.modi:       drun,run,ssh,window,windowcd
-rofi.show-icons: true
-rofi.theme:      gruvbox-dark
-rofi.width:      28
