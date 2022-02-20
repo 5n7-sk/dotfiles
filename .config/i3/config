@@ -155,8 +155,9 @@ bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser
 bindsym $mod+e            exec nautilus
 
 # Rofi
-bindsym $mod+space exec $config/rofi/bin/launcher_colorful
-bindsym $mod+p     exec $config/rofi/bin/powermenu
+bindsym $mod+space   exec $config/rofi/bin/launcher_colorful
+bindsym $mod+shift+s exec rofi -show ssh -terminal alacritty
+bindsym $mod+p       exec $config/rofi/bin/powermenu
 
 # screenshot
 bindsym --release Print            exec maim -B -i $(xdotool getactivewindow) -u ~/Pictures/screenshot-$(date '+%Y%m%d%H%M%S').png
