@@ -198,7 +198,6 @@ focus_follows_mouse no
 focus_wrapping no
 
 # window assignment
-assign [class="Google-chrome"] $ws1
 assign [class="Alacritty"]     $ws2
 assign [class="Code"]          $ws3
 assign [class="Slack"]         $ws4
