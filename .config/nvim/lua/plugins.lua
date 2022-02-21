@@ -659,6 +659,7 @@ return require("packer").startup({
       setup = function()
         vim.keymap.set("n", "<leader>ds", "<cmd>Pydocstring<cr>")
 
+        vim.g.pydocstring_enable_mapping = false
         vim.g.pydocstring_formatter = "google"
       end,
       ft = { "python" },
