@@ -653,6 +653,14 @@ return require("packer").startup({
       end,
     })
 
+    use({
+      "kkoomen/vim-doge",
+      run = { "call doge#install()" },
+      setup = function()
+        vim.g.doge_doc_standard_python = "google"
+      end,
+    })
+
     use({ "dstein64/vim-startuptime", cmd = { "StartupTime" } })
 
     use({
