@@ -239,7 +239,6 @@ return require("packer").startup({
             require("null-ls").builtins.formatting.shfmt,
             require("null-ls").builtins.formatting.stylua,
             require("null-ls").builtins.formatting.trim_newlines,
-            require("null-ls").builtins.formatting.trim_whitespace,
           },
           on_attach = function(client)
             if client.resolved_capabilities.document_formatting then
