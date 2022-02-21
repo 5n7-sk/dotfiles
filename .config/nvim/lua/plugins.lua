@@ -640,6 +640,19 @@ return require("packer").startup({
       end,
     })
 
+    use({
+      "folke/trouble.nvim",
+      after = { "nvim-lspconfig" },
+      requires = { "kyazdani42/nvim-web-devicons", opt = true },
+      config = function()
+        require("trouble").setup()
+      end,
+      setup = function()
+        vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>")
+        vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
+      end,
+    })
+
     use({ "dstein64/vim-startuptime", cmd = { "StartupTime" } })
 
     use({
