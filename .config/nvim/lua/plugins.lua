@@ -8,6 +8,12 @@ vim.cmd([[
   augroup END
 ]])
 
+require("packer").init({
+  display = {
+    open_fn = require("packer.util").float,
+  },
+})
+
 return require("packer").startup({
   function(use)
     use({
