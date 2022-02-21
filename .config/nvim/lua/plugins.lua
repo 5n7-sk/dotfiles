@@ -654,11 +654,14 @@ return require("packer").startup({
     })
 
     use({
-      "kkoomen/vim-doge",
-      run = { "call doge#install()" },
+      "heavenshell/vim-pydocstring",
+      run = { "make install" },
       setup = function()
-        vim.g.doge_doc_standard_python = "google"
+        vim.keymap.set("n", "<leader>ds", "<cmd>Pydocstring<cr>")
+
+        vim.g.pydocstring_formatter = "google"
       end,
+      ft = { "python" },
     })
 
     use({ "dstein64/vim-startuptime", cmd = { "StartupTime" } })
