@@ -13,6 +13,7 @@
     - ~/sandbox
 
 - link:
+    ~/.Brewfile: .Brewfile
     ~/.config/alacritty: .config/alacritty
     ~/.config/bat: .config/bat
     ~/.config/dunst: .config/dunst
