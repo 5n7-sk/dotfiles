@@ -1,5 +1,13 @@
 vim.cmd("packadd packer.nvim")
 
+vim.cmd([[
+  augroup PackerUserConfig
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd User PackerCompileDone lua vim.notify("[Packer] Compiled")
+  augroup END
+]])
+
 return require("packer").startup({
   function(use)
     use({
