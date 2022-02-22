@@ -276,7 +276,7 @@ return require("packer").startup({
 
     use({
       "hrsh7th/nvim-cmp",
-      after = { "LuaSnip", "lspkind-nvim" },
+      after = { "lspkind-nvim", "LuaSnip" },
       requires = {
         { "hrsh7th/cmp-buffer", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-calc", after = { "nvim-cmp" } },
