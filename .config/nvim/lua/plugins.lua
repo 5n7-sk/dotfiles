@@ -17,6 +17,16 @@ require("packer").init({
 return require("packer").startup({
   function(use)
     use({
+      "rmagatti/auto-session",
+      config = function()
+        require("auto-session").setup({
+          auto_save_enabled = true,
+          auto_restore_enabled = true,
+        })
+      end,
+    })
+
+    use({
       "famiu/bufdelete.nvim",
       setup = function()
         vim.keymap.set("n", "<m-w>", function()
