@@ -22,6 +22,7 @@ return require("packer").startup({
         require("auto-session").setup({
           auto_save_enabled = true,
           auto_restore_enabled = true,
+          auto_session_suppress_dirs = { "~" },
         })
       end,
     })
