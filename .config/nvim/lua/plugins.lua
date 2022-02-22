@@ -578,6 +578,28 @@ return require("packer").startup({
     })
 
     use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = { "nvim-treesitter" },
+      config = function()
+        require("nvim-treesitter.configs").setup({
+          textobjects = {
+            select = {
+              enable = true,
+              keymaps = {
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["al"] = "@loop.outer",
+                ["il"] = "@loop.inner",
+              },
+            },
+          },
+        })
+      end,
+    })
+
+    use({
       "p00f/nvim-ts-rainbow",
       after = { "nvim-treesitter" },
       config = function()
