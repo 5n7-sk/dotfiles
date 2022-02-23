@@ -640,6 +640,14 @@ return require("packer").startup({
     })
 
     use({
+      "nvim-telescope/telescope-ghq.nvim",
+      after = { "telescope.nvim" },
+      config = function()
+        require("telescope").load_extension("ghq")
+      end,
+    })
+
+    use({
       "nvim-telescope/telescope.nvim",
       requires = { { "kyazdani42/nvim-web-devicons", opt = true }, { "nvim-lua/plenary.nvim" } },
       setup = function()
