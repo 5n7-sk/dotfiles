@@ -49,10 +49,8 @@
     - alacritty
     - arandr
     - autorandr
-    - bibata-cursor-theme-bin
     - bluez
     - bluez-utils
-    - deepin-gtk-theme
     - discord
     - docker
     - dropbox
@@ -64,7 +62,6 @@
     - maim
     - nautilus
     - okular
-    - papirus-icon-theme
     - pavucontrol
     - picom
     - plasma-nm
@@ -85,3 +82,8 @@
     - noto-fonts-emoji
     - otf-ipaexfont
     - ttf-ubuntu-font-family
+
+    # GTK
+    - bibata-cursor-theme-bin
+    - deepin-gtk-theme
+    - papirus-icon-theme
