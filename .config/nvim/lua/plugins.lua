@@ -298,6 +298,7 @@ return require("packer").startup({
         { "hrsh7th/cmp-nvim-lua", after = { "nvim-cmp" } },
         { "hrsh7th/cmp-path", after = { "nvim-cmp" } },
         { "lukas-reineke/cmp-rg", after = { "nvim-cmp" } },
+        { "tzachar/cmp-tabnine", after = { "nvim-cmp" }, run = { "./install.sh" } },
         { "saadparwaiz1/cmp_luasnip", after = { "nvim-cmp" } },
       },
       config = function()
@@ -347,6 +348,7 @@ return require("packer").startup({
                 nvim_lua = "[Lua]",
                 path = "[Path]",
                 rg = "[RipGrep]",
+                tabnine = "[Tabnine]",
               },
             }),
           },
@@ -359,6 +361,7 @@ return require("packer").startup({
             { name = "nvim_lua" },
             { name = "path" },
             { name = "rg" },
+            { name = "tabnine" },
           }),
         })
 
