@@ -19,6 +19,7 @@
     ~/.config/dunst: .config/dunst
     ~/.config/fd: .config/fd
     ~/.config/git: .config/git
+    ~/.config/gtk-3.0/settings.ini: .config/gtk-3.0/settings.ini
     ~/.config/i3: .config/i3
     ~/.config/lsd: .config/lsd
     ~/.config/luaformatter: .config/luaformatter
