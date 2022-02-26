@@ -51,6 +51,7 @@
     - autorandr
     - bluez
     - bluez-utils
+    - deepin-gtk-theme
     - discord
     - docker
     - dropbox
@@ -60,7 +61,9 @@
     - fcitx5-mozc
     - imagemagick
     - maim
+    - nautilus
     - okular
+    - papirus-icon-theme
     - picom
     - plasma-nm
     - polybar
