@@ -77,11 +77,11 @@
     - zsh
 
     # fonts
-    - icomoon-feather
     - nerd-fonts-fira-code
     - nerd-fonts-meslo
     - noto-fonts-emoji
     - otf-ipaexfont
+    - ttf-icomoon-feather
     - ttf-ubuntu-font-family
 
     # GTK
