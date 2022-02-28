@@ -57,6 +57,13 @@ return require("packer").startup({
     })
 
     use({
+      "stevearc/dressing.nvim",
+      config = function()
+        require("dressing").setup()
+      end,
+    })
+
+    use({
       "j-hui/fidget.nvim",
       after = { "nvim-lspconfig" },
       config = function()
