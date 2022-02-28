@@ -10,6 +10,7 @@ zinit ice blockf depth"1" lucid wait
 zinit light-mode for \
   agkozak/zsh-z \
   Aloxaf/fzf-tab \
+  Bhupesh-V/ugit \
   darvid/zsh-poetry \
   mollifier/cd-gitroot \
   NullSense/fuzzy-sys \
