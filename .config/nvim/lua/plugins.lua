@@ -189,7 +189,7 @@ return require("packer").startup({
           sections = {
             lualine_a = { { "mode" } },
             lualine_b = { { "filename", path = 1 } },
-            lualine_c = { { require("nvim-gps").get_location } },
+            lualine_c = { { require("nvim-gps").get_location, cond = require("nvim-gps").is_available } },
             lualine_x = { { "encoding" }, { "fileformat" }, { "filetype", icon_only = true } },
             lualine_y = { { "branch" }, { "diff" }, { "diagnostics" } },
             lualine_z = { { "location" } },
