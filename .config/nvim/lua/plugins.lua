@@ -221,6 +221,13 @@ return require("packer").startup({
     })
 
     use({
+      "mvllow/modes.nvim",
+      config = function()
+        require("modes").setup()
+      end,
+    })
+
+    use({
       "karb94/neoscroll.nvim",
       config = function()
         require("neoscroll").setup({
