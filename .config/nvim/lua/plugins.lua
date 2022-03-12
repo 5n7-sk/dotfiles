@@ -245,7 +245,6 @@ return require("packer").startup({
         require("null-ls").setup({
           sources = {
             -- diagnostics
-            require("null-ls").builtins.diagnostics.actionlint,
             require("null-ls").builtins.diagnostics.flake8,
             require("null-ls").builtins.diagnostics.markdownlint,
             require("null-ls").builtins.diagnostics.protolint,
