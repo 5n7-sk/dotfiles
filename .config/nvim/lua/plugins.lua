@@ -18,6 +18,9 @@ return require("packer").startup({
   function(use)
     use({
       "rmagatti/auto-session",
+      setup = function()
+        vim.g.auto_session_pre_save_cmds = { "NvimTreeClose" }
+      end,
       config = function()
         require("auto-session").setup({
           auto_save_enabled = true,
