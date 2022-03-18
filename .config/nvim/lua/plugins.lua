@@ -103,6 +103,9 @@ return require("packer").startup({
       config = function()
         require("go").setup()
       end,
+      setup = function()
+        vim.keymap.set("n", "<leader>fs", "<cmd>GoFillStruct<cr>")
+      end,
       cmd = { "GoUpdateBinaries" },
       ft = { "go" },
     })
