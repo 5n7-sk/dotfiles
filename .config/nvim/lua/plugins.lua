@@ -190,6 +190,7 @@ return require("packer").startup({
       config = function()
         require("lualine").setup({
           options = {
+            globalstatus = 3,
             theme = "tokyonight",
           },
           sections = {
