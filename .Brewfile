@@ -23,6 +23,7 @@ brew "ghq"
 brew "git-delta"
 brew "gitui"
 brew "glow"
+brew "goreleaser"
 brew "jq"
 brew "lsd"
 brew "neovim", args: ["HEAD"]
