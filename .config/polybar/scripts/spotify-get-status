@@ -3,5 +3,5 @@
 if [[ $(spotify-cli fetch 2>/dev/null) = "" ]]; then
 	echo "Spotify offline"
 else
-	spotify-cli fetch --format "{{ .Title }} by {{ slice .Artists 0 }}"
+	spotify-cli fetch
 fi
