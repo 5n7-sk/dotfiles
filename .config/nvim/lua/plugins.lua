@@ -717,6 +717,16 @@ return require("packer").startup({
     })
 
     use({
+      "axieax/urlview.nvim",
+      config = function()
+        require("urlview").setup()
+      end,
+      setup = function()
+        vim.keymap.set("n", "<leader>uv", "<cmd>UrlView<cr>")
+      end,
+    })
+
+    use({
       "heavenshell/vim-pydocstring",
       run = { "make install" },
       setup = function()

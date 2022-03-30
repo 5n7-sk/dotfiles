@@ -31,7 +31,6 @@ local disable_buildtin_plugins = {
   "gzip",
   "logipat",
   "matchit",
-  "netrw",
   "netrwFileHandlers",
   "netrwPlugin",
   "netrwSettings",
