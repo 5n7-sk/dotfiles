@@ -17,6 +17,16 @@ require("packer").init({
 return require("packer").startup({
   function(use)
     use({
+      "goolord/alpha-nvim",
+      config = function()
+        require("alpha").setup(require("alpha.themes.startify").config)
+      end,
+      event = { "VimEnter" },
+    })
+
+    use({ "hotwatermorning/auto-git-diff", event = { "VimEnter" } })
+
+    use({
       "rmagatti/auto-session",
       setup = function()
         vim.g.auto_session_pre_save_cmds = { "NvimTreeClose" }
@@ -48,6 +58,8 @@ return require("packer").startup({
       event = { "VimEnter" },
     })
 
+    use({ "rhysd/committia.vim" })
+
     use({
       "monaqa/dial.nvim",
       setup = function()
@@ -64,6 +76,7 @@ return require("packer").startup({
       config = function()
         require("dressing").setup()
       end,
+      event = { "VimEnter" },
     })
 
     use({
@@ -76,12 +89,15 @@ return require("packer").startup({
 
     use({ "rafamadriz/friendly-snippets", event = { "VimEnter" } })
 
-    use({ "f-person/git-blame.nvim", event = { "VimEnter" } })
-
     use({
       "lewis6991/gitsigns.nvim",
       config = function()
-        require("gitsigns").setup()
+        require("gitsigns").setup({
+          current_line_blame = true,
+          current_line_blame_opts = {
+            delay = 0,
+          },
+        })
       end,
       event = { "VimEnter" },
     })
@@ -158,7 +174,11 @@ return require("packer").startup({
     use({
       "lukas-reineke/indent-blankline.nvim",
       config = function()
-        require("indent_blankline").setup({ space_char_blankline = " ", show_current_context = true })
+        require("indent_blankline").setup({
+          filetype_exclude = { "alpha" },
+          space_char_blankline = " ",
+          show_current_context = true,
+        })
       end,
       event = { "VimEnter" },
     })
@@ -269,6 +289,7 @@ return require("packer").startup({
             require("null-ls").builtins.formatting.protolint,
             require("null-ls").builtins.formatting.shfmt,
             require("null-ls").builtins.formatting.stylua,
+            require("null-ls").builtins.formatting.terraform_fmt,
             require("null-ls").builtins.formatting.trim_newlines,
           },
           on_attach = function(client)
@@ -346,14 +367,20 @@ return require("packer").startup({
               else
                 fallback()
               end
-            end, { "i", "s" }),
+            end, {
+              "i",
+              "s",
+            }),
             ["<s-tab>"] = cmp.mapping(function(fallback)
               if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
               else
                 fallback()
               end
-            end, { "i", "s" }),
+            end, {
+              "i",
+              "s",
+            }),
           },
           formatting = {
             format = require("lspkind").cmp_format({
@@ -443,7 +470,13 @@ return require("packer").startup({
       event = { "VimEnter" },
     })
 
-    use({ "yamatsum/nvim-cursorline", event = { "VimEnter" } })
+    use({
+      "yamatsum/nvim-cursorline",
+      config = function()
+        require("nvim-cursorline").setup()
+      end,
+      event = { "VimEnter" },
+    })
 
     use({
       "booperlv/nvim-gomove",
@@ -487,12 +520,24 @@ return require("packer").startup({
         local on_attach = function(_, buffer)
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buffer })
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buffer })
-          vim.keymap.set("n", "<c-i>", vim.lsp.buf.hover, { buffer = buffer })
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buffer })
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = buffer })
           vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { buffer = buffer })
         end
 
-        local servers = { "clangd", "gopls", "pyright", "sumneko_lua", "vimls" }
+        local servers = {
+          "bashls",
+          "clangd",
+          "dockerls",
+          "gopls",
+          "jsonls",
+          "pyright",
+          "sqls",
+          "sumneko_lua",
+          "terraformls",
+          "tsserver",
+          "vimls",
+        }
 
         for _, server_name in pairs(servers) do
           local ok, server = installer.get_server(server_name)
@@ -501,6 +546,14 @@ return require("packer").startup({
               local opts = { on_attach = on_attach }
 
               if server_name == "gopls" then
+                opts.on_attach = function(client, buffer)
+                  on_attach(client, buffer)
+                  client.resolved_capabilities.document_formatting = false
+                  client.resolved_capabilities.document_range_formatting = false
+                end
+              end
+
+              if server_name == "tsserver" then
                 opts.on_attach = function(client, buffer)
                   on_attach(client, buffer)
                   client.resolved_capabilities.document_formatting = false
@@ -604,11 +657,73 @@ return require("packer").startup({
       run = { ":TSUpdate" },
       config = function()
         require("nvim-treesitter.configs").setup({
-          ensure_installed = "maintained",
+          ensure_installed = {
+            "bash",
+            "bibtex",
+            "c",
+            "c_sharp",
+            "cmake",
+            "comment",
+            "cpp",
+            "css",
+            "cuda",
+            "devicetree",
+            "dockerfile",
+            "dot",
+            "fish",
+            "go",
+            "gomod",
+            "gowork",
+            "graphql",
+            "html",
+            "http",
+            "java",
+            "javascript",
+            "jsdoc",
+            "json",
+            "json5",
+            "jsonc",
+            "julia",
+            "kotlin",
+            "latex",
+            "llvm",
+            "lua",
+            "make",
+            "markdown",
+            "ninja",
+            "nix",
+            "perl",
+            "php",
+            "python",
+            "r",
+            "regex",
+            "rst",
+            "ruby",
+            "rust",
+            "scala",
+            "scss",
+            "swift",
+            "todotxt",
+            "toml",
+            "tsx",
+            "typescript",
+            "vim",
+            "vue",
+            "yaml",
+            "zig",
+          },
           highlight = { enable = true },
         })
       end,
       event = { "VimEnter" },
+    })
+
+    use({
+      "romgrk/nvim-treesitter-context",
+      after = { "nvim-treesitter" },
+      config = function()
+        require("treesitter-context").setup()
+      end,
     })
 
     use({
