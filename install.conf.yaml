@@ -55,6 +55,7 @@
     - fcitx5-im
     - fcitx5-mozc
     - imagemagick
+    - libxcrypt-compat 
     - maim
     - nautilus
     # - okular
