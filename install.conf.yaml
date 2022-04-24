@@ -8,8 +8,6 @@
 
 - create:
     - ~/.fonts
-    - ~/.vin/bin
-    - ~/go
     - ~/sandbox
 
 - link:
@@ -22,15 +20,12 @@
     ~/.config/gtk-3.0/settings.ini: .config/gtk-3.0/settings.ini
     ~/.config/i3: .config/i3
     ~/.config/lsd: .config/lsd
-    ~/.config/luaformatter: .config/luaformatter
     ~/.config/nvim: .config/nvim
     ~/.config/picom: .config/picom
     ~/.config/polybar: .config/polybar
     ~/.config/pypoetry: .config/pypoetry
     ~/.config/ranger: .config/ranger
     ~/.config/starship.toml: .config/starship/starship.toml
-    ~/.config/vin: .config/vin
-    ~/.config/zathura: .config/zathura
     ~/.gitconfig: .gitconfig
     ~/.imwheelrc: .imwheelrc
     ~/.profile: .profile
@@ -62,16 +57,17 @@
     - imagemagick
     - maim
     - nautilus
-    - okular
+    # - okular
     - pavucontrol
     - picom
-    - plasma-nm
+    # - plasma-nm
     - polybar
     - pulseaudio
     - rofi
     - slack-desktop
     - spotify
     - visual-studio-code-bin
+    - vivaldi
     - xclip
     - zsh
 
