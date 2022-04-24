@@ -119,3 +119,7 @@
     - bibata-cursor-theme-bin
     - deepin-gtk-theme
     - papirus-icon-theme
+
+    # LightDM
+    - lightdm-webkit2-greeter
+    - lightdm-webkit2-theme-glorious
