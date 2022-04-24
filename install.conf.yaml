@@ -74,6 +74,7 @@
     - glow
     - gomi-bin
     - goreleaser-bin
+    - i3lock-color
     - imagemagick
     - jq
     - lsd-bin
@@ -91,6 +92,7 @@
     - ranger
     - ripgrep
     - rofi
+    - shellcheck-bin
     - shfmt-bin
     - slack-desktop
     - spotify
