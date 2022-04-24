@@ -42,34 +42,67 @@
     /etc/X11/xorg.conf.d/30-touchpad.conf: etc/X11/xorg.conf.d/30-touchpad.conf
 
 - yay:
+    # dependencies
+    - gcc
+
+    - actionlint-bin
     - alacritty
     - arandr
+    - asdf-vm
     - autorandr
+    - bat
     - bluez
     - bluez-utils
+    - bottom
     - discord
     - docker
+    - docker-compose
     - dropbox
     - dunst
     - enpass-bin
     - fcitx5-im
     - fcitx5-mozc
+    - fd
+    - feh
+    - fzf
+    - gawk
+    - gdu-bin
+    - ghq-bin
+    - git-delta
+    - github-cli
+    - gitui
+    - glow
+    - gomi-bin
+    - goreleaser-bin
     - imagemagick
-    - libxcrypt-compat 
+    - jq
+    - lsd-bin
     - maim
+    - man
+    - mmv-go
     - nautilus
-    # - okular
+    - neofetch
+    - neovim-nightly-bin
     - pavucontrol
     - picom
-    # - plasma-nm
     - polybar
     - pulseaudio
+    - python-poetry
+    - ranger
+    - ripgrep
     - rofi
+    - shfmt-bin
     - slack-desktop
     - spotify
+    - starship
+    - staticcheck
+    - stylua
+    - tmux
+    - unzip
     - visual-studio-code-bin
     - vivaldi
     - xclip
+    - yq
     - zsh
 
     # fonts
