@@ -25,7 +25,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # dotfiles
-export DOTFILES="$HOME/src/github.com/skmatz/dotfiles"
+export DOTFILES="$HOME/src/github.com/5n7/dotfiles"
 export PATH="$DOTFILES/bin:$PATH"
 
 # Homebrew (Linux)
