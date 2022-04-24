@@ -1,1 +1,1 @@
-source "$HOME/.zshenv"
+# source "$HOME/.zshenv"
