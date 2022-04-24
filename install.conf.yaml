@@ -42,28 +42,17 @@
     /etc/X11/xorg.conf.d/30-touchpad.conf: etc/X11/xorg.conf.d/30-touchpad.conf
 
 - yay:
-    # dependencies
     - gcc
 
-    - actionlint-bin
-    - alacritty
-    - arandr
-    - asdf-vm
-    - autorandr
-    - bat
+    # Bluetooth
     - bluez
     - bluez-utils
+
+    # common CLI apps
+    - asdf-vm
+    - bat
     - bottom
-    - discord
-    - docker
-    - docker-compose
-    - dropbox
-    - dunst
-    - enpass-bin
-    - fcitx5-im
-    - fcitx5-mozc
     - fd
-    - feh
     - fzf
     - gawk
     - gdu-bin
@@ -73,39 +62,32 @@
     - gitui
     - glow
     - gomi-bin
-    - goreleaser-bin
-    - i3lock-color
-    - imagemagick
     - jq
     - lsd-bin
-    - maim
-    - man
     - mmv-go
-    - nautilus
     - neofetch
-    - neovim-nightly-bin
-    - pavucontrol
-    - picom
-    - polybar
-    - pulseaudio
-    - python-poetry
     - ranger
     - ripgrep
-    - rofi
-    - shellcheck-bin
-    - shfmt-bin
+    - unzip
+    - yq
+
+    # common GUI apps
+    - alacritty
+    - discord
+    - enpass-bin
+    - nautilus
     - slack-desktop
     - spotify
-    - starship
-    - staticcheck
-    - stylua
-    - tmux
-    - unzip
-    - visual-studio-code-bin
     - vivaldi
-    - xclip
-    - yq
-    - zsh
+
+    # editor
+    - neovim-nightly-bin
+    - visual-studio-code-bin
+
+    # fcitx5
+    - fcitx5-im
+    - fcitx5-material-color
+    - fcitx5-mozc
 
     # fonts
     - nerd-fonts-fira-code
@@ -120,6 +102,47 @@
     - deepin-gtk-theme
     - papirus-icon-theme
 
+    # language: go
+    - goreleaser-bin
+    - staticcheck
+    # language: lua
+    - stylua
+    # language: python
+    - python-poetry
+    # language: sh
+    - shellcheck-bin
+    - shfmt-bin
+    # language: others
+    - actionlint-bin
+
     # LightDM
     - lightdm-webkit2-greeter
     - lightdm-webkit2-theme-glorious
+
+    # others
+    - docker
+    - docker-compose
+    - dropbox
+    - dunst
+    - feh
+    - i3lock-color
+    - imagemagick
+    - maim
+    - man
+    - picom
+    - polybar
+    - rofi
+    - xclip
+
+    # shell
+    - starship
+    - tmux
+    - zsh
+
+    # sound
+    - pavucontrol
+    - pulseaudio
+
+    # X
+    - arandr
+    - autorandr
