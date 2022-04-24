@@ -52,6 +52,7 @@
     - asdf-vm
     - bat
     - bottom
+    - direnv
     - fd
     - fzf
     - gawk
