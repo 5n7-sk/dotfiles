@@ -11,7 +11,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
-alias ghhome="cd "$HOME/src/github.com/skmatz""
+alias ghhome="cd "$HOME/src/github.com/5n7""
 
 if [ -d "$HOME/Downloads" ]; then
   alias dl="cd "$HOME/Downloads""
