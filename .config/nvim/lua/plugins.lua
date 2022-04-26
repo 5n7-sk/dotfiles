@@ -143,7 +143,7 @@ return require("packer").startup({
       "rmagatti/goto-preview",
       after = { "nvim-lspconfig" },
       config = function()
-        require("goto-preview").setup({ width = 120, height = 30 })
+        require("goto-preview").setup({ width = 120, height = 45 })
       end,
       setup = function()
         vim.keymap.set("n", "gpd", function()
