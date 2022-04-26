@@ -1,40 +1,54 @@
 #!/usr/bin/env bash
 
-cd "$DOTFILES" && git pull origin master
+set -eu
 
-# asdf
-if hash "asdf" >/dev/null 2>&1; then
-  asdf update
-  asdf plugin update --all
-fi
+update_common() {
+	# dotfiles
+	cd "$DOTFILES" && git pull origin master
 
-# npm
-if hash "npm" >/dev/null 2>&1; then
-  npm install -g npm
-fi
+	# npm
+	if hash "npm" >/dev/null 2>&1; then
+		npm install -g npm
+	fi
 
-# pip
-if hash "pip" >/dev/null 2>&1; then
-  pip install --upgrade pip
-fi
+	# pip
+	if hash "pip" >/dev/null 2>&1; then
+		pip install --upgrade pip
+	fi
 
-# poetry
-if hash "poetry" >/dev/null 2>&1; then
-  poetry self update
-fi
+	# zinit
+	if hash "zinit" >/dev/null 2>&1; then
+		zinit self-update
+		zinit update
+	fi
+}
 
-if hash "tmux" >/dev/null 2>&1; then
-  cd ~/.tmux/plugins/tpm && git pull origin master
-fi
+update_darwin() {
+	# brew
+	if hash "brew" >/dev/null 2>&1; then
+		brew update
+		brew upgrade
+	fi
+}
 
-# yay
-if hash "yay" >/dev/null 2>&1; then
-  yay -Syyu --noconfirm
-  yay -Yc
-fi
+update_linux() {
+	# paru
+	if hash "paru" >/dev/null 2>&1; then
+		paru
+	fi
+}
 
-# zinit
-if hash "zinit" >/dev/null 2>&1; then
-  zinit self-update
-  zinit update
-fi
+main() {
+	update_common
+
+	case "$(uname -s)" in
+	"Darwin")
+		update_darwin
+		;;
+	"Linux")
+		update_linux
+		;;
+	esac
+}
+
+main
