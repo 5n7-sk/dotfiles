@@ -90,6 +90,13 @@ return require("packer").startup({
     use({ "rafamadriz/friendly-snippets", event = { "VimEnter" } })
 
     use({
+      "akinsho/git-conflict.nvim",
+      config = function()
+        require("git-conflict").setup()
+      end,
+    })
+
+    use({
       "lewis6991/gitsigns.nvim",
       config = function()
         require("gitsigns").setup({
