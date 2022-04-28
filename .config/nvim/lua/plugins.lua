@@ -555,6 +555,14 @@ return require("packer").startup({
                 end
               end
 
+              if server_name == "sqls" then
+                opts.on_attach = function(client, buffer)
+                  on_attach(client, buffer)
+                  client.resolved_capabilities.document_formatting = false
+                  client.resolved_capabilities.document_range_formatting = false
+                end
+              end
+
               if server_name == "tsserver" then
                 opts.on_attach = function(client, buffer)
                   on_attach(client, buffer)
