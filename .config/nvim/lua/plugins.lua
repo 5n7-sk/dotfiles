@@ -369,20 +369,14 @@ return require("packer").startup({
               else
                 fallback()
               end
-            end, {
-              "i",
-              "s",
-            }),
+            end, { "i", "s" }),
             ["<s-tab>"] = cmp.mapping(function(fallback)
               if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
               else
                 fallback()
               end
-            end, {
-              "i",
-              "s",
-            }),
+            end, { "i", "s" }),
           },
           formatting = {
             format = require("lspkind").cmp_format({
