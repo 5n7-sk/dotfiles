@@ -667,7 +667,6 @@ return require("packer").startup({
             "cpp",
             "css",
             "cuda",
-            "devicetree",
             "dockerfile",
             "dot",
             "fish",
