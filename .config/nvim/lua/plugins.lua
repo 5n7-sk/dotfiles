@@ -271,6 +271,8 @@ return require("packer").startup({
       after = { "nvim-lspconfig" },
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
+        local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
         require("null-ls").setup({
           sources = {
             -- diagnostics
@@ -294,14 +296,16 @@ return require("packer").startup({
             require("null-ls").builtins.formatting.terraform_fmt,
             require("null-ls").builtins.formatting.trim_newlines,
           },
-          on_attach = function(client)
-            if client.resolved_capabilities.document_formatting then
-              vim.cmd([[
-                augroup LspFormatting
-                  autocmd! * <buffer>
-                  autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-                augroup END
-              ]])
+          on_attach = function(client, buffer)
+            if client.supports_method("textDocument/formatting") then
+              vim.api.nvim_clear_autocmds({ group = augroup, buffer = buffer })
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = buffer,
+                callback = function()
+                  vim.lsp.buf.format({ bufnr = buffer })
+                end,
+              })
             end
           end,
         })
@@ -544,32 +548,32 @@ return require("packer").startup({
               if server_name == "gopls" then
                 opts.on_attach = function(client, buffer)
                   on_attach(client, buffer)
-                  client.resolved_capabilities.document_formatting = false
-                  client.resolved_capabilities.document_range_formatting = false
+                  client.server_capabilities.document_formatting = false
+                  client.server_capabilities.document_range_formatting = false
                 end
               end
 
               if server_name == "sumneko_lua" then
                 opts.on_attach = function(client, buffer)
                   on_attach(client, buffer)
-                  client.resolved_capabilities.document_formatting = false
-                  client.resolved_capabilities.document_range_formatting = false
+                  client.server_capabilities.document_formatting = false
+                  client.server_capabilities.document_range_formatting = false
                 end
               end
 
               if server_name == "sqls" then
                 opts.on_attach = function(client, buffer)
                   on_attach(client, buffer)
-                  client.resolved_capabilities.document_formatting = false
-                  client.resolved_capabilities.document_range_formatting = false
+                  client.server_capabilities.document_formatting = false
+                  client.server_capabilities.document_range_formatting = false
                 end
               end
 
               if server_name == "tsserver" then
                 opts.on_attach = function(client, buffer)
                   on_attach(client, buffer)
-                  client.resolved_capabilities.document_formatting = false
-                  client.resolved_capabilities.document_range_formatting = false
+                  client.server_capabilities.document_formatting = false
+                  client.server_capabilities.document_range_formatting = false
                 end
               end
 
